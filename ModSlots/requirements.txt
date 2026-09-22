@@ -1,0 +1,3 @@
+# These are optional, only for if you need .7z or .rar support.
+py7zr==1.0.0
+unrardll==0.1.7

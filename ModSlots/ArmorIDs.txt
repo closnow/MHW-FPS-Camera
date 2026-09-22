@@ -1,0 +1,154 @@
+# Scan for places where armor IDs are stored in memory (looks for f_helm, scroll down a lot to find the rest).
+70 6C 5C 66 5F 65 71 75 69 70 5C 70 6C ?? ?? ??
+5F ?? ?? ?? ?? 5C 68 65 6C 6D 5C 6D 6F 64 5C 66
+5F 68 65 6C 6D ?? ?? ?? 5F ?? ?? ?? ?? 5F 4E 4D
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+70 6C 5C 66 5F 65 71 75 69 70 5C 70 6C ?? ?? ??
+5F ?? ?? ?? ?? 5C 68 65 6C 6D 5C 6D 6F 64 5C 66
+5F 68 65 6C 6D ?? ?? ?? 5F ?? ?? ?? ?? ?? ?? ??
+
+# One line
+70 6C 5C 66 5F 65 71 75 69 70 5C 70 6C ?? ?? ?? 5F ?? ?? ?? ?? 5C 68 65 6C 6D 5C 6D 6F 64 5C 66 5F 68 65 6C 6D ?? ?? ?? 5F ?? ?? ?? ?? 5F 4E 4D 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 70 6C 5C 66 5F 65 71 75 69 70 5C 70 6C ?? ?? ?? 5F ?? ?? ?? ?? 5C 68 65 6C 6D 5C 6D 6F 64 5C 66 5F 68 65 6C 6D ?? ?? ?? 5F ?? ?? ?? ?? ?? ?? ??
+
+# Per-line, if there is no revision like (β) or (+), it means the ID remains the same.
+
+Leather: pl001_0000, slg000_0000
+Chainmail: pl014_0000, slg000_0000
+Hunter's: pl002_0000, slg000_0000, pl002_0010(β)
+Bone: pl003_0000, slg003_0000
+Vespoid: pl007_0000, slg007_0000, pl007_0001(+), slg007_0001(+)
+Kestodon: pl005_0000, slg000_0000 (Arm only)
+Gajau: pl006_0000 (Leg only)
+Jagras: pl008_0000, slg000_0000, pl008_0001(+)
+Kulu: pl009_0000, slg000_0000, pl009_0001(+)
+Alloy: pl004_0000, slg001_0000
+Pukei: pl010_0000, slg000_0000, pl010_0010(β), pl010_0001(+)
+Coral Pukei: pl010_0101(+), slg000_0000(+)
+Barroth: pl012_0000, slg012_0000, pl012_0001(+)
+Jyura: pl011_0000, slg011_0000, pl011_0001(+)
+Kadachi: pl013_0000, slg001_0000, pl013_0001(+)
+Viper Kadachi: pl013_0101(+), slg001_0000(+)
+High Metal: pl025_0000, slg002_0000
+Butterfly: pl019_0000, slg019_0000
+Shamos: pl058_0000 (Head only)
+Hornetaur: pl017_0000, slg017_0000, pl017_0001(+), slg017_0001(+)
+Anja: pl020_0000, slg020_0000, pl020_0010(β), pl020_0001(+), pl020_0011(β+)
+Fulgur Anja: pl020_0101(+), slg020_0100(+), pl020_0111(β+)
+Rathian: pl021_0000, slg021_0000, pl021_0010(β), pl021_0001(+), pl021_0011(β+)
+Rath Heart: pl021_0100, slg021_0100, pl021_0110(β), pl021_0101(+), pl021_0111(β+)
+Golden Lune: pl021_0200(+), pl021_0210(β+), slg021_0200(+)
+Tzitzi: pl023_0000, slg023_0000, pl023_0001(+)
+Lumu: pl024_0000, slg000_0000, pl024_0001(+)
+Lumu Phantasm: pl024_0101(+), slg000_0000(+)
+Girros: pl022_0000, slg000_0000, pl022_0001(+)
+Baan: pl028_0000, slg028_0000, pl028_0010(β), pl028_0001(+)
+Ingot: pl031_0000, slg031_0000
+Death Stench: pl026_0000, slg026_0000
+Brigade: pl036_0000, slg001_0000
+Legiana: pl027_0000, slg027_0000, pl027_0010(β), pl027_0001(+), pl027_0011(β+)
+Shrieking Legia: pl027_0500(+), slg027_0500(+), pl027_0510(β+)
+Odogaron: pl029_0000, slg029_0000, pl029_0010(β), pl029_0001(+), pl029_0011(β+)
+Death Garon: pl029_0101(+), slg029_0100(+), pl029_0111(β+)
+Rathalos: pl033_0000, slg033_0000, pl033_0010(β), pl033_0001(+), pl033_0011(β+)
+Rath Soul: pl033_0100, slg033_0100, pl033_0110(β), pl033_0101(+), pl033_0111(β+)
+Silver Sol: pl033_0200(+), slg033_0200(+), pl033_0210(β+)
+Diablos: pl034_0000, slg034_0000, pl034_0010(β), pl034_0001(+), pl034_0011(β+)
+Diablos Nero: pl034_0100, slg034_0100, pl034_0110(β), pl034_0101(+), pl034_0111(β+)
+Kirin: pl035_0000, slg000_0000, pl035_0010(β), pl035_0020(γ), pl035_0001(+), pl035_0011(β+)
+Blossom: pl074_0000, slg074_0000
+Diver: pl075_0000, slg000_0000
+Harvest: pl076_0000, slg076_0000
+Orion: pl077_0000, slg077_0000
+Gala Suit: pl078_0000, slg078_0000
+--- End of Low Rank, Start of High Rank ---
+Mosswine Mask: pl056_0000 (Head only)
+Gastodon: pl015_0000 (Head only)
+Barnos: pl016_0000 (Chest only)
+Dodogama: pl039_0000, slg039_0000, pl039_0001(+)
+Zorah: pl038_0000, slg038_0000, pl038_0010(β), pl038_0020(γ)
+Faux Felyne: pl055_0000 (Head only)
+Strategist/Strategist Spectacles: pl060_0000 (Head only)
+Lavasioth: pl040_0000, slg040_0000, pl040_0010(β), pl040_0001(+)
+Uragaan: pl041_0000, slg041_0000, pl041_0010(β), pl041_0001(+)
+Bazel: pl042_0000, slg002_0000, pl042_0010(β)
+Seething Bazel: pl042_0500(+), slg002_0000(+), pl042_0510(β+)
+Damascus: pl043_0000, slg043_0000, pl043_0010(β)
+Dober: pl044_0000, slg044_0000
+Skull: pl054_0000 (Head only)
+Nergigante: pl030_0000, slg030_0000, pl030_0010(β), pl030_0020(γ), slg030_0020(γ)
+Ruiner Nergi: pl030_0500(+), slg030_0500(+), pl030_0510(β+)
+Teostra: pl046_0000, slg046_0000, pl046_0010(β), pl046_0001(+), pl046_0011(β+)
+Kushala: pl047_0000, slg047_0000, pl047_0010(β), pl047_0020(γ), slg047_0020(γ), pl047_0001(+), pl047_0011(β+)
+Vaal Hazak: pl032_0000, slg032_0000, pl032_0010(β), pl032_0020(γ)
+Blackveil Hazak: pl032_0500(+), slg032_0500(+), pl032_0510(β+)
+Xeno'jiva: pl045_0000, slg045_0000, pl045_0010(β)
+Guild Cross: pl048_0000, slg000_0000
+Dragonking/Dragonking Eyepatch: pl061_0000 (Head only)
+Commission: pl053_0000, slg053_0000
+Deviljho: pl050_0000, slg050_0000, pl050_0010(β)
+Savage Jho: pl050_0500(+), slg050_0500(+), pl050_0510(β+)
+Kulve Taroth: pl049_0000, slg049_0000, pl049_0010(β), pl049_0020(γ)
+Lunastra: pl051_0000, slg051_0000, pl051_0010(β)
+Azure Starlord: pl072_0000, slg072_0000
+Azure Age: pl072_0001(+), slg072_0001(+)
+Drachen: pl073_0000, slg073_0000
+Shadow Shades: pl062_0000 (Head only)
+--- End of High Rank, Start of Master Rank ---
+Wulg: pl102_0000(+) (Head only)
+Cortos: pl103_0000(+) (Chest only)
+Beo: pl110_0000(+), slg000_0000(+)
+Banbaro: pl084_0000(+), slg084_0000(+), pl084_0010(β+)
+Artian: pl091_0000(+), slg091_0000(+)
+Clockwork: pl104_0000(+), slg104_0000(+), pl104_0010(β+,Head only)
+Barioth: pl089_0000(+), slg089_0000(+), pl089_0010(β+)
+Nargacuga: pl080_0000(+), slg000_0000(+), pl080_0010(β+)
+Glavenus: pl081_0000(+), slg081_0000(+), pl081_0010(β+)
+Acidic Glavenus: pl081_0100(+), slg081_0100(+), pl081_0110(β+)
+Brachydios: pl082_0000(+), slg082_0000(+), pl082_0010(β+)
+Raging Brachy: pl082_0500(+), slg082_0500(+), pl082_0510(β+)
+Tigrex: pl083_0000(+), slg000_0000(+), pl083_0010(β+)
+Brute Tigrex: pl083_0100(+), slg000_0000(+), pl083_0110(β+)
+Black Belt: pl093_0000(+), slg000_0000
+Velkhana: pl085_0000(+), slg085_0000(+), pl085_0010(β+)
+Namielle: pl086_0000(+), slg086_0000(+), pl086_0010(β+)
+Shara Ishvalda: pl088_0000(+), slg088_0000(+), pl088_0010(β+)
+Yian Garuga: pl108_0000(+), slg108_0000(+), pl108_0010(β+)
+Zinogre: pl107_0000(+), slg107_0000(+), pl107_0010(β+)
+Stygian Zin: pl107_0100(+), slg107_0100(+), pl107_0110(β+)
+Guildwork: pl092_0000(+), slg001_0000(+)
+Rajang: pl109_0000(+), slg109_0000(+), pl109_0010(β+)
+Furious Rajang: pl109_0500(+), slg109_0000(+), pl109_0510(β+)
+Safi'jiva: pl087_0000(+), slg087_0000(+), pl087_0010(β+)
+Alatreon: pl052_0000(+), slg052_0000(+), pl052_0010(β+)
+Fatalis: pl129_0000(+), slg129_0000(+), pl129_0010(β+)
+Oolong: pl127_0000(+), slg127_0000(+)
+Astral: pl128_0000(+), slg128_0000(+)
+Rose: pl124_0000(+), slg124_0000(+)
+Passion: pl125_0000(+), slg125_0000(+)
+Demonlord: pl126_0000(+), slg126_0000(+)
+Buff Body: pl115_0000(+), slg000_0000(+)
+Duffel Penguin Mask: pl098_0000(+) (Head only)
+Wyverian Ears: pl101_0000(+) (Head only)
+--- End of Master Rank, Start of Layered Only ---
+Bushi Kabuto "Sabi": pl066_0000 (Head only)
+Bushi Muneate "Sabi": pl066_0000 (Chest only)
+Bushi Kote "Sabi": pl066_0000, slg066_0000 (Arm only)
+Bushi Koshiate "Sabi": pl066_0000 (Waist only)
+Bushi Suneate "Sabi": pl066_0000 (Leg only)
+Bushi Kabuto "Homare": pl066_0010 (Head only)
+Bushi Muneate "Homare": pl066_0010 (Chest only)
+Bushi Kote "Homare": pl066_0010, slg066_0000 (Arm only)
+Bushi Koshiate "Homare": pl066_0010 (Waist only)
+Bushi Suneate "Homare": pl066_0010 (Leg only)
+Origin: pl018_0000, slg001_0000
+Kulu-Ya-Ku Head: pl065_0000 (Head only)
+Ryu: pl069_0000, slg000_0000 (Male)
+Geralt/Geralt of Rivia: pl118_0000, slg118_0000 (Male)
+Ciri: pl119_0000, slg000_0000
+Thermae: pl106_0000, slg106_0000
+Leon: pl130_0000(+), slg130_0000
+Faux Aptonoth: pl097_0000 (Head only)
+Kadachi Scarf: pl114_0000 (Head only)
+Pearlspring: pl113_0000(+) (Head only)
+Goldspring Macaque: pl113_0001 (Head only)

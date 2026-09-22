@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<OutputPath>C:\Program Files (x86)\Steam\steamapps\common\Monster Hunter World\nativePC\plugins\CSharp\NewCamera</OutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="SharpPluginLoader.ImGui" Version="1.90.2.3" />
+		<PackageReference Include="SharpPluginLoader.Core" Version="0.0.7.2" />
+	</ItemGroup>
+
+	<!-- 1. 通常の自動コピー機能を完全に無効化します -->
+	<ItemGroup>
+		<None Update="NewCamera.json">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</None>
+		<Content Update="NewCamera.json">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<!-- 2. 出力先に NewCamera.json が存在しない場合のみコピーします（存在すればスキップ） -->
+	<Target Name="CopyConfigIfNotExists" AfterTargets="Build">
+		<Copy SourceFiles="NewCamera.json"
+		      DestinationFiles="$(OutputPath)\NewCamera.json"
+		      Condition="!Exists('$(OutputPath)\NewCamera.json')" />
+	</Target>
+</Project>

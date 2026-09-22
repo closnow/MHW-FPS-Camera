@@ -1,0 +1,261 @@
+# # = Comment.
+# & = Add root. Cut this prefix out of any file's path so that it starts at nativePC/.
+# < = Ignore. Files beginning with this prefix will not be included unless they have further overrides.
+# | = Detach. Include file directly but copy it into nativePC instead of symlink.
+# : = Define target. Can either be a file to directly include or a file/prefix to be the source of the next override.
+# > = General override. Can be a direct path or an armor substitute like [Anja], [Barroth+], [Kirin (β)]s (add 's' to include slinger).
+# * = Global override. Supply a Python re module format regex to match any defined target and override it.
+# XXX = End processing of this file here.
+
+;Stracker's Loader-1982-4-0-1717679465.zip
+<plugins/MonsterLoader.dll
+<plugins/QuestLoader.dll
+:dinput8.dll
+:loader.dll
+# Copy loader-config.json instead of linking it so any edits save to the game directory not the extracted mod folder.
+|loader-config.json
+
+;SharpPluginLoader-0.0.9-win32.zip
+:winmm.dll
+
+#;Cutscene Skip 1.1-5540-1-1-1739388623.zip
+# DPSTickFix
+#;Fatalis Patch-3474-1-4-1601540952.zip
+# BetterInputs
+#;Fatalis Patch-4333-1-4-1601540927.zip
+
+;2024 Patch 15.23 1.25-3473-1-25-1728572867.zip
+
+;MHWI - Hide main menu ad banner-7826-1-0-1728933976.zip
+
+#;MHWNewCamera_3.0.zip
+#|plugins/CSharp/MHWNewCamera.json
+
+;Fix_Tent_Animation_Face_Deform_v2.zip
+
+XXX
+
+#;Invisible Sheathed Weapons-2672-1-6-1607062981.7z
+#<wp/
+## Buster Sword I
+#:wp/two/two002/mod/two002.evwp
+#:wp/two/bs_two002/mod/bs_two002.evwp
+
+;Ver1.01 3D pubes for Highpoly Nude MOD with jiggle animation .zip-3173-1-01-1586996247.zip
+<pl/f_equip/pl002_0000/wst/mod/Shaved1.mod3
+<pl/f_equip/pl002_0000/wst/mod/Shaved2.mod3
+<pl/f_equip/pl002_0000/wst/mod/Hairy.mod3
+:pl/f_equip/pl002_0000/wst/mod/Unshaved.mod3
+>pl/f_equip/pl002_0000/wst/mod/f_wst002_0000.mod3
+
+#;Version1.0 Normal Fishnet for Highpoly Nude MOD Version 4-5030-1-0-1610636569.zip
+#<pl/f_equip/pl002_0000/body
+#:pl/f_equip/pl002_0000/arm
+#>[Hornetaur]
+#:pl/f_equip/pl002_0000/wst
+#>[Hornetaur]
+#:pl/f_equip/pl002_0000/leg
+#>[Hornetaur]
+
+#;Ver1.0 Pantie for Highpoly Nude MOD-3465-1-0-1589948707.zip
+;Ver2.0 HPNM V4 Pantie for Highpoly Nude MOD-3465-2-0-1605825156.rar
+<pl/f_equip/HPNM_KirinPantie/CMM_Normal.tex
+<pl/f_equip/HPNM_KirinPantie/CMM_Stripe.tex
+<pl/f_equip/HPNM_KirinPantie/CMM_PolkaDot.tex
+:Pantie_ColorMaskMap/CMM_Pantie_Palico.mrl3
+>pl/f_equip/pl002_0000/wst/mod/f_wst002_0000.mrl3
+:pl/f_equip/pl002_0000/wst
+>[Kirin]
+
+;Ver4.2 Small_Highpoly Nude MOD with jiggle animation-1965-4-2-1607065917.rar
+#;Ver3.1 SmallTitsVer_Highpoly Nude MOD with jiggle animation (Iceborne Compatible )-1965-3-1-1586846362.zip
+<pl/f_face/
+#<pl/f_equip/HighPolyNudeModTextures/ColorUnchangeable_Nail_CMM.tex
+#<pl/f_equip/HighPolyNudeModTextures/Nail_BML.tex
+#<pl/f_equip/HighPolyNudeModTextures/Nail_CMM.tex
+#<pl/f_equip/HighPolyNudeModTextures/Nail_Disable_snow_Col_CMM.tex
+#<pl/f_equip/HighPolyNudeModTextures/Nail_NM.tex
+#<pl/f_equip/HighPolyNudeModTextures/Nail_RMT.tex
+##:pl/f_equip/pl501_0000/body/mod/f_body501_0000.ctc
+##*pl/f_equip/pl[0-9]+_[0-9]+/body/mod/f_body[0-9]+_[0-9]+.ctc
+##:pl/f_equip/pl501_0000/leg/mod/f_leg501_0000.ctc
+##*pl/f_equip/pl[0-9]+_[0-9]+/leg/mod/f_leg[0-9]+_[0-9]+.ctc
+
+#;Atrarch's Namielle For Dytsers Armor's-4490-4-0-1630065481.zip
+#<pl/f_equip/pl
+#:pl/f_equip/pl500_0000/body/mod/f_body500_0000.ctc
+## Regex to match any f_body.ctc and override it for all included mods.
+#*pl/f_equip/pl[0-9]+_[0-9]+/body/mod/f_body[0-9]+_[0-9]+.ctc
+
+#;4k Skin Textures.zip
+#:4k body texture/skin_NM.tex
+#*pl/f_equip/mangie/.*/skin.*_NM.tex
+#:4k face textures/f_face000_RMT_dry.tex
+#>pl/f_face/face000/mod/f_face000_RMT.tex
+#:4k face textures/f_face_edit_NM.tex
+#>pl/f_face/face000/mod/f_face_edit_NM.tex
+
+#;Skin Glossiness Options.zip
+#:skin_BM_dry.tex
+#>pl/f_equip/mangie_foam/skin_BM.tex
+#>pl/f_equip/mangie_fortune/skin_BM.tex
+#*pl/f_equip/mangie/.*/skin.*_BM.tex
+
+;Bikini Collections - Barefoot-2891-1-0-1584527076.zip
+<pl/f_equip/pl
+:pl/f_equip/pl002_0000
+>[Barroth]
+
+#;Bikini Collections - Sandals-2891-1-0-1584526839.zip
+#<pl/f_equip/pl
+#:pl/f_equip/pl117_0000
+#>[Chainmail]
+
+;Fur Bikini.zip
+>[Chainmail]
+
+;Lewd Lingerie.zip
+>[Jyura]
+
+#;Secret Report.zip
+#>[Brigade]
+
+;Eternal Summer.zip
+# The uncensored files will be used with this order.
+&03. Eternal Summer - Uncensored
+&01. Eternal Summer - Main File
+>[Hunter's (β)]
+
+;Oppression.zip
+>[Barroth+]
+
+;Mood For Love.zip
+>[Lavasioth]
+
+;DOAXVV Fortune.zip
+>[Lavasioth (β)]
+
+;Venus Valkyrie.zip
+>[Lavasioth+]
+
+;DOA5LR Leifang_s Black Skirt.zip
+>[Hornetaur+]
+
+;Peace.zip
+>[Vespoid+]
+
+;Dragon Leotard.zip
+>[High Metal]
+
+;Stellar Scorpion.zip
+>[Artian+]s
+
+;Dark Widow.zip
+>[Jyura+]
+
+;Lake Elven.zip
+>[Azure Age]
+
+;DOAXVV Foam Bikini.zip
+>[Jagras]
+
+;DOAXVV Cure Angel.zip
+>[Jagras+]
+
+sBamboo Shoot.zip
++White Prince.zip
++Kaine.zip
++Nyo Latex.zip
++DOA6 Tamaki Bikini.zip
++Hebijo Shinobi Costume.zip
++Honoka Newcomer Costume.zip
++Leifang Yin Yang.zip
++Poll Winner - Black Rubber.zip
++Swimsuit.zip
++Sailor Outfit.zip
++Queen Marika.zip
++Bunny Girl Costume 3.zip
++Sailor Swimsuit.zip
++Desert Costume.zip
++2nd Design Contest Swimsuit.zip
++DOA5LR Kasumi_s Battlesuit.zip
++Rabbit Joker.zip
++Princess Warrior.zip
++Pistachio.zip
++DOA5LR Momiji Kimono.zip
++Stellar Scorpion.zip
++Destiny Child Mona Costume.zip
++Lingerie.zip
++Demonlord.zip
++Secret Report.zip
++DOAXVV Angel_s Smile.zip
++Tifa Mature Outfit.zip
++DOA5LR Rachel_s Halloween Costume.zip
++Bunny Girl Costume 1.zip
++2023 Halloween Costume.zip
++DOA6 Leather Jacket.zip
++DOAXVV Martini.zip
++Dark Widow.zip
++Fraise Noel.zip
++Nyo Pirate.zip
++Code Rouge.zip
++Venus Valkyrie.zip
++Venus Nine.zip
++Noble Tutu.zip
++Black Lily.zip
++DOA5LR Christie Halloween Costume.zip
++Endorphine Sky.zip
++DOAXVV Fortune.zip
++White Summer Bikini.zip
++Ice Dress.zip
++Lewd Sailor.zip
++Bunny Girl Costume 2.zip
++Peace.zip
++Rachel Crop Top.zip
++Marionette.zip
++Luminate Tube.zip
++Kunimitsu Outfit.zip
++Mikomai.zip
++Venus Cage.zip
++Lake Elven.zip
++Mood For Love.zip
++DOAXVV Foam Bikini.zip
++Aventure.zip
++Dragon Leotard.zip
++Christie_s Elegance Dress.zip
++DOAXVV Noctilca.zip
++Crimson Sakura.zip
++Nyotengu_s Halloween Costume.zip
++Momiji Costume.zip
++Fur Bikini.zip
++Claire Noir.zip
++DOAXVV Cure Angel.zip
++Auspicious Blossom.zip
++Momo Denim.zip
++Appetizer Shrimp.zip
++Ada Wong Dress.zip
++Christmas Gift.zip
++Jewel Topaz.zip
++DOA5LR Leifang_s Black Skirt.zip
++Hinode.zip
++Alluring Mandarin.zip
++Neoncrow.zip
++1st Swimsuit Contest.zip
++DOA6 Kunoichi Costumes (Ayane, Kasumi).zip
++Rachel Fiend Costume.zip
++Midnight Light.zip
++DOA6 Christie_s Costume.zip
++DOAXVV Velvet Time Pearl.zip
++Crystal.zip
++Kunoichi - Kasumi.zip
++Oppression.zip
++DOAXVV Asari.zip
++DOAXVV Narwhal.zip
++DOA6 Summer Breeze.zip
++Kasumi Award Outfit.zip
++Succubus Damaged.zip
++Lewd Lingerie.zip
++Kunoichi - Ayane.zip
++Nier Automata YoRHa 2B.zip
+ROLL
+>[Diver]
