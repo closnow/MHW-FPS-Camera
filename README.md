@@ -11,6 +11,7 @@ A mod that enables a First-Person Shooter (FPS) perspective in *Monster Hunter: 
 Based on [NewCamera](https://www.nexusmods.com/monsterhunterworld/mods/8300) by Akon City Software, heavily modified and tuned for FPS gameplay.
 
 ### ⚠️ Disclaimer & Notice
+- **Warning**: Severe screen shake and rapid camera rotations. May cause motion sickness or seizures.
 - **This mod is provided "AS-IS". No technical support, bug fixes, or feature requests will be accepted.**
 - Most of the modifications in this code were created with the **assistance of AI**. As such, the author cannot address technical issues such as code optimization, unexpected bugs, or conflicts with other mods.
 - Camera profiles are **only fully tuned for Lance**. Great Sword, Switch Axe, and Bow are partially tuned (WIP/incomplete). All other weapon types are untouched. Please edit `NewCamera.json` yourself to adjust other weapons (see Profile System below).
@@ -40,7 +41,7 @@ Place both **`NewCamera.dll`** (built) and **`NewCamera.json`** into the followi
 > ⚠️ **Important Note on the GUI "Binds" Menu:**  
 > The "Binds" section is still visible in the in-game GUI, but **all shortcut features there have been deprecated/disabled** in the code to prevent misfires. Changing bindings in the GUI will have no effect. Please use the fixed hotkeys below instead:
 
-* **[F7]**: Toggle Free Camera ON / OFF
+* **[F7]**: Toggle Free Camera ON / OFF (Use this to temporarily disable the mod camera when reading the Quest Board or Handler's book, as the UI is too far to read in first-person).
 * **[F9] (Short Press)**: Toggle 0.1x Slow Motion ON / OFF
 * **[F9] (Hold 400ms)**: 10x Fast Forward *(Press F9 twice to reset back to normal speed: Fast -> 0.1x -> 1.0x).*
 
@@ -95,6 +96,7 @@ Profiles in `NewCamera.json` are evaluated **top-to-bottom; the first matching p
 既存のMOD「[NewCamera](https://www.nexusmods.com/monsterhunterworld/mods/8300)」をベースに、FPS視点向けに改造・コードの調整を行いました。
 
 ### ⚠️ 免責事項・注意事項
+- **画面揺れ・3D酔い注意**: アクション中に画面が激しく揺れたり急回転します。酔いやすい方や発作の恐れがある方はご注意ください。
 - **本MODは「現状渡し (As-is)」となります。カスタマーサポート、要望受付、バグ修正などは一切行いません。**
 - 本コードの改修の大部分は**AIの支援を受けて作成**しています。そのため、コードの最適化や予期せぬ不具合、他MODとの競合などの技術的な問題への対応は一切できません。
 - プロファイル（カメラ視点）の調整は**ランスのみ**完了しています。大剣、スラッシュアックス、弓は調整途中のため不完全です。その他の武器種は未着手です。必要に応じてご自身で `NewCamera.json` を編集して調整してください（下記プロファイル仕様を参照）。
@@ -124,7 +126,7 @@ Profiles in `NewCamera.json` are evaluated **top-to-bottom; the first matching p
 > ⚠️ **GUI内の「Binds」メニューについて（重要）：**  
 > ゲーム内のGUI上に「Binds」という設定項目が表示されていますが、誤作動防止のため**ショートカット機能はコード側で廃止（無効化）**しています。GUI上でキー設定を変更しても機能しません。操作には以下の固定キーを使用してください。
 
-* **[F7]**: MODカメラ (Enable Free Camera) の ON / OFF
+* **[F7]**: MODカメラ (Enable Free Camera) の ON / OFF (※クエストボードや受付嬢の本はオブジェクト上にUIが表示されて遠くて見づらいため、利用時は一時的にF7でOFFにしてください)
 * **[F9] (短押し)**: 0.1倍速スローモーションの ON / OFF
 * **[F9] (400ms長押し)**: 10倍速早送り *(※解除はF9を2回押す：倍速 → 0.1倍 → 通常)*
 
