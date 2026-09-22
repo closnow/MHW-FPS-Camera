@@ -19,6 +19,11 @@ Based on [NewCamera](https://www.nexusmods.com/monsterhunterworld/mods/8300) by 
 ### Requirements
 - [SharpPluginLoader (SPL) for MHW](https://github.com/Fexty12573/SharpPluginLoader)  
 
+### Installation
+Place both **`NewCamera.dll`** (built) and **`NewCamera.json`** into the following folder:
+`nativePC/plugins/CSharp/NewCamera/`  
+*(In short, place `NewCamera.json` in the same directory as `NewCamera.dll`)*
+
 ### Recommended In-Game Settings
 * **GAME SETTINGS**
   * Head Armor: Do not show
@@ -97,6 +102,11 @@ Profiles in `NewCamera.json` are evaluated **top-to-bottom; the first matching p
 
 ### 必須MOD
 - [SharpPluginLoader (SPL) for MHW](https://github.com/Fexty12573/SharpPluginLoader)  
+
+### 導入方法
+ビルドした **`NewCamera.dll`** と **`NewCamera.json`** を、以下のフォルダに一緒に配置してください：
+`nativePC/plugins/CSharp/NewCamera/`  
+*(※要するに、`NewCamera.dll` と全く同じ場所に `NewCamera.json` を置けばOKです)*
 
 ### 推奨ゲーム内設定
 * **GAME SETTING**
