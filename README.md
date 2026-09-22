@@ -11,7 +11,7 @@ A mod that enables a First-Person Shooter (FPS) perspective in *Monster Hunter: 
 Based on [NewCamera](https://www.nexusmods.com/monsterhunterworld/mods/8300) by Akon City Software, heavily modified and tuned for FPS gameplay.
 
 ### ⚠️ Disclaimer & Notice
-- **Warning**: Severe screen shake and rapid camera rotations. May cause motion sickness or seizures.
+- **Warning**: Severe screen shake and rapid camera rotations may cause motion sickness. If you are prone to motion sickness or seizures, please use with caution and stop immediately if you feel unwell.
 - **This mod is provided "AS-IS". No technical support, bug fixes, or feature requests will be accepted.**
 - Most of the modifications in this code were created with the **assistance of AI**. As such, the author cannot address technical issues such as code optimization, unexpected bugs, or conflicts with other mods.
 - Camera profiles are **only fully tuned for Lance**. Great Sword, Switch Axe, and Bow are partially tuned (WIP/incomplete). All other weapon types are untouched. Please edit `NewCamera.json` yourself to adjust other weapons (see Profile System below).
@@ -80,7 +80,7 @@ Profiles in `NewCamera.json` are evaluated **top-to-bottom; the first matching p
 #### 3. How to Save & Load Profiles
 1. Open the SPL GUI.
 2. Under `DEBUG`, check `Simple Lock(position from Target Joint, rotation from below)`.
-3. Scroll down to find the **`Save All Settings`** and **`Reload Saved Setting`** buttons.
+3. Scroll down to find the **`Save All Settings`** and **`Reload Saved Settings`** buttons.
 4. Click them to save/reload your edits to `NewCamera.json`.
 
 ### Credits
