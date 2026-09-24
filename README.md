@@ -87,6 +87,10 @@ Profiles in `NewCamera.json` are evaluated **top-to-bottom; the first matching p
 * Original Mod: [NewCamera by Akon City Software](https://www.nexusmods.com/monsterhunterworld/mods/8300)
 * Base Framework: SharpPluginLoader by Fexty
 
+### Support / Donation
+If you enjoy this mod, you can support me here:  
+☕ [Ko-fi (Buy me a coffee)](https://ko-fi.com/closnow)
+
 ---
 
 <a name="japanese"></a>
@@ -170,3 +174,7 @@ Profiles in `NewCamera.json` are evaluated **top-to-bottom; the first matching p
 ### クレジット
 * Original Mod: [NewCamera by Akon City Software](https://www.nexusmods.com/monsterhunterworld/mods/8300)
 * Base Framework: SharpPluginLoader by Fexty
+
+### 寄付・サポート
+もしこのMODを気に入っていただけましたら、こちらからサポートしていただけると励みになります：  
+☕ [Ko-fi (Buy me a coffee)](https://ko-fi.com/closnow)
