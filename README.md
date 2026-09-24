@@ -27,15 +27,15 @@ Place both **`NewCamera.dll`** (built) and **`NewCamera.json`** into the followi
 
 ### Recommended In-Game Settings
 * **GAME SETTINGS**
-  * Head Armor: Do not show
+  * Head Armor: Hidden
 * **CONTROLS**
-  * Directional Control: Type 1
+  * Directional Control Type: Type 1
 * **CAMERA**
-  * Reticle Direction: Player Direction
-  * Terrain Camera: Off (Do not adjust)
-  * Dynamic Camera: OFF
+  * Reticle Direction: Character's Direction
+  * Camera Terrain Adjustment: Don't Adjust
+  * Dynamic Camera Settings: Off
 * **DISPLAY**
-  * Screen Vibration: None
+  * Screen Vibration: Off
 
 ### Controls & Hotkeys
 > ⚠️ **Important Note on the GUI "Binds" Menu:**  
