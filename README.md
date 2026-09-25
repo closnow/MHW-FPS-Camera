@@ -14,7 +14,7 @@ Based on [NewCamera](https://www.nexusmods.com/monsterhunterworld/mods/8300) by 
 - **Warning**: Severe screen shake and rapid camera rotations may cause motion sickness. If you are prone to motion sickness or seizures, please use with caution and stop immediately if you feel unwell.
 - **This mod is provided "AS-IS". No technical support, bug fixes, or feature requests will be accepted.**
 - Most of the modifications in this code were created with the **assistance of AI**. As such, the author cannot address technical issues such as code optimization, unexpected bugs, or conflicts with other mods.
-- Camera profiles are **only fully tuned for Lance**. Great Sword, Switch Axe, and Bow are partially tuned (WIP/incomplete). All other weapon types are untouched. Please edit `NewCamera.json` yourself to adjust other weapons (see Profile System below).
+- Camera profiles are **only fully tuned for Lance**. Great Sword, Switch Axe, and Bow are partially tuned (incomplete). All other weapon types are untouched. Please edit `NewCamera.json` yourself to adjust other weapons (see Profile System below).
 - Keyboard/mouse controls are not supported. **Gamepad (controller) is required.**
 
 ### Requirements
