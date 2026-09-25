@@ -2533,6 +2533,8 @@
       {
         "Mode": 2,
         "Keywords": [
+          "CREEP_TO_STAND_DASH",
+          "CREEP_TO_SIT_FRONT",
           "WP_00::WALK_END",
           "WP_00::WALK",
           "WP_00::IDLE",
