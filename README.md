@@ -18,7 +18,9 @@ Based on [NewCamera](https://www.nexusmods.com/monsterhunterworld/mods/8300) by 
 - Keyboard/mouse controls are not supported. **Gamepad (controller) is required.**
 
 ### Requirements
-- [SharpPluginLoader (SPL) for MHW](https://github.com/Fexty12573/SharpPluginLoader)  
+* [SharpPluginLoader (SPL) for MHW](https://github.com/Fexty12573/SharpPluginLoader)
+* [.NET 8.0 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0)
+* [Stracker's Loader](https://www.nexusmods.com/monsterhunterworld/mods/1982)
 
 ### Installation
 Place both **`NewCamera.dll`** (built) and **`NewCamera.json`** into the following folder:
@@ -46,7 +48,21 @@ Place both **`NewCamera.dll`** (built) and **`NewCamera.json`** into the followi
 * **[F9] (Hold 400ms)**: 10x Fast Forward *(Press F9 twice to reset back to normal speed: Fast -> 0.1x -> 1.0x).*
 
 > **Note on SharpPluginLoader GUI key:**  
-> The default GUI key for SharpPluginLoader (SPL) is **[F9]**, which conflicts with this mod's slow-motion key. Please open `nativePC/plugins/CSharp/loader-config.json` in a text editor and change the SPL menu key to **[F10]** or another preferred key.
+> The default GUI key for SharpPluginLoader (SPL) is **[F9]**, which conflicts with this mod's slow-motion key. Please open `loader-config.json` in your game root directory (e.g., `.../Monster Hunter World/loader-config.json`) and add the `"SPL"` section to change the menu key to **[F10]**:
+> ```json
+> {
+>   "logfile": false,
+>   "logcmd": true,
+>   "logLevel": "ERROR",
+>   "outputEveryPath": false,
+>   "enablePluginLoader": true,
+>   "SPL": {
+>     "ImGuiRenderingEnabled": true,
+>     "PrimitiveRenderingEnabled": true,
+>     "MenuKey": "F10"
+>   }
+> }
+> ```
 
 ### Camera Behavior & Specifications
 * **Head-Lock Anchor**: Camera is anchored to Face Joint 45 (Nose). Head rotation is reconstructed from 4 face basis points (Nose, Throat center, Right ear, Left ear) via `SimpleLock`.
@@ -106,8 +122,10 @@ If you enjoy this mod, you can support me here:
 - プロファイル（カメラ視点）の調整は**ランスのみ**完了しています。大剣、スラッシュアックス、弓は調整途中のため不完全です。その他の武器種は未着手です。必要に応じてご自身で `NewCamera.json` を編集して調整してください（下記プロファイル仕様を参照）。
 - キーボードでの操作は想定していません。**ゲームパッド（コントローラー）での操作を前提**としています。
 
-### 必須MOD
-- [SharpPluginLoader (SPL) for MHW](https://github.com/Fexty12573/SharpPluginLoader)  
+### 必須MOD・環境
+* [SharpPluginLoader (SPL) for MHW](https://github.com/Fexty12573/SharpPluginLoader)
+* [.NET 8.0 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0)
+* [Stracker's Loader](https://www.nexusmods.com/monsterhunterworld/mods/1982)
 
 ### 導入方法
 ビルドした **`NewCamera.dll`** と **`NewCamera.json`** を、以下のフォルダに一緒に配置してください：
@@ -135,7 +153,21 @@ If you enjoy this mod, you can support me here:
 * **[F9] (400ms長押し)**: 10倍速早送り *(※解除はF9を2回押す：倍速 → 0.1倍 → 通常)*
 
 > **SharpPluginLoaderのGUIキー変更のお願い:**  
-> SharpPluginLoader (SPL) のデフォルトメニューキーは **[F9]** です。本MODの機能と被ってしまうため、`nativePC/plugins/CSharp/loader-config.json` を開き、SPLのメニューキーを **[F10]** 等に変更してご使用ください。
+> SharpPluginLoader (SPL) のデフォルトメニューキーは **[F9]** です。本MODの機能と被ってしまうため、ゲームのルートフォルダ直下にある `loader-config.json` を開き、以下のように `"SPL"` の設定を追記してメニューキーを **[F10]** に変更してください：
+> ```json
+> {
+>   "logfile": false,
+>   "logcmd": true,
+>   "logLevel": "ERROR",
+>   "outputEveryPath": false,
+>   "enablePluginLoader": true,
+>   "SPL": {
+>     "ImGuiRenderingEnabled": true,
+>     "PrimitiveRenderingEnabled": true,
+>     "MenuKey": "F10"
+>   }
+> }
+> ```
 
 ### カメラの主な挙動・仕様
 * **頭部固定アンカー**: カメラ位置は顔ボーンの鼻（Face Joint 45）に固定。鼻・舌根・左右の耳の4点から頭部回転（Face Basis）を計算しています。
