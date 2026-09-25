@@ -546,6 +546,48 @@
       {
         "Mode": 2,
         "Keywords": [
+          "WP_06::RUSH_STEP_R",
+          "WP_06::RUSH_STEP_L"
+        ],
+        "YawRange": 70,
+        "YawBlend": 25,
+        "PitchRange": 55,
+        "PitchBlend": 25,
+        "RollRange": 25,
+        "RollBlend": 15,
+        "CorrectionYaw": 180,
+        "CorrectionPitch": 0,
+        "CorrectionRoll": 0,
+        "ClampBaseSmoothing": 0.5,
+        "ShakeSuppressSeconds": 0,
+        "LookSensitivityMultiplier": 1,
+        "UseNativeAimCamera": false,
+        "UseNativeAimCameraDelaySeconds": 0,
+        "DisableLookWhileAiming": false,
+        "EnableTransitionBlend": true,
+        "ProfileTransitionDuration": 1,
+        "TargetY": 7,
+        "TargetRight": 0,
+        "TargetForward": 0,
+        "UseGazeKeyframes": false,
+        "GazeKeyframes": [],
+        "Comment": "\u30E9\u30F3\u30B9\uFF1A\u7A81\u9032\u30B9\u30C6\u30C3\u30D7",
+        "WeaponGroup": "\u30E9\u30F3\u30B9",
+        "GazeUseRanges": false,
+        "GazeRanges": [],
+        "GazeUseSubStateTimer": false,
+        "GazeSubStateDuration": 1,
+        "UseGazePositionKeyframes": false,
+        "GazePositionKeyframes": [],
+        "PositionJointOverrideEnable": false,
+        "PositionJointOverrideUseFace": false,
+        "PositionJointOverrideJoint": 0,
+        "HideSlingerWhileActive": false,
+        "DisableFreeCameraWhileActive": false
+      },
+      {
+        "Mode": 2,
+        "Keywords": [
           "WP_06::CHARGE_COUNTER_M_STAB_UP",
           "WP_06::CHARGE_COUNTER_S_STAB_UP",
           "WP_06::STAB_UP3",
@@ -2905,6 +2947,47 @@
         "DisableFreeCameraWhileActive": false
       },
       {
+        "Mode": 3,
+        "Keywords": [
+          "LAND_HIGH_TO_RUN"
+        ],
+        "YawRange": 0,
+        "YawBlend": 25,
+        "PitchRange": 0,
+        "PitchBlend": 25,
+        "RollRange": 0,
+        "RollBlend": 15,
+        "CorrectionYaw": 180,
+        "CorrectionPitch": 0,
+        "CorrectionRoll": 0,
+        "ClampBaseSmoothing": 0.2,
+        "ShakeSuppressSeconds": 0,
+        "LookSensitivityMultiplier": 1,
+        "UseNativeAimCamera": false,
+        "UseNativeAimCameraDelaySeconds": 0,
+        "DisableLookWhileAiming": false,
+        "EnableTransitionBlend": true,
+        "ProfileTransitionDuration": 0.2,
+        "TargetY": 0,
+        "TargetRight": 0,
+        "TargetForward": 0,
+        "UseGazeKeyframes": false,
+        "GazeKeyframes": [],
+        "Comment": "\u7740\u5730\u30FB\u9AD8\uFF5E\u8D70\u308A",
+        "WeaponGroup": "\u57FA\u672C",
+        "GazeUseRanges": false,
+        "GazeRanges": [],
+        "GazeUseSubStateTimer": false,
+        "GazeSubStateDuration": 1,
+        "UseGazePositionKeyframes": false,
+        "GazePositionKeyframes": [],
+        "PositionJointOverrideEnable": false,
+        "PositionJointOverrideUseFace": false,
+        "PositionJointOverrideJoint": 0,
+        "HideSlingerWhileActive": false,
+        "DisableFreeCameraWhileActive": false
+      },
+      {
         "Mode": 2,
         "Keywords": [
           "WALL_DASH@0.162",
@@ -3351,6 +3434,60 @@
         "DisableFreeCameraWhileActive": false
       },
       {
+        "Mode": 3,
+        "Keywords": [
+          "WALL_JUMP"
+        ],
+        "YawRange": 0,
+        "YawBlend": 25,
+        "PitchRange": 0,
+        "PitchBlend": 25,
+        "RollRange": 0,
+        "RollBlend": 15,
+        "CorrectionYaw": 180,
+        "CorrectionPitch": 0,
+        "CorrectionRoll": 0,
+        "ClampBaseSmoothing": 0.5,
+        "ShakeSuppressSeconds": 0,
+        "LookSensitivityMultiplier": 1,
+        "UseNativeAimCamera": false,
+        "UseNativeAimCameraDelaySeconds": 0,
+        "DisableLookWhileAiming": false,
+        "EnableTransitionBlend": true,
+        "ProfileTransitionDuration": 0.2,
+        "TargetY": 0,
+        "TargetRight": 0,
+        "TargetForward": 0,
+        "UseGazeKeyframes": true,
+        "GazeKeyframes": [
+          {
+            "T": 0,
+            "Yaw": 0,
+            "Pitch": 0,
+            "Roll": 0
+          }
+        ],
+        "Comment": "\u30C4\u30BF\u30B8\u30E3\u30F3\u30D7",
+        "WeaponGroup": "\u57FA\u672C",
+        "GazeUseRanges": true,
+        "GazeRanges": [
+          {
+            "Start": 0.1,
+            "End": 1,
+            "Blend": 0.1
+          }
+        ],
+        "GazeUseSubStateTimer": false,
+        "GazeSubStateDuration": 1,
+        "UseGazePositionKeyframes": false,
+        "GazePositionKeyframes": [],
+        "PositionJointOverrideEnable": false,
+        "PositionJointOverrideUseFace": false,
+        "PositionJointOverrideJoint": 0,
+        "HideSlingerWhileActive": false,
+        "DisableFreeCameraWhileActive": false
+      },
+      {
         "Mode": 0,
         "Keywords": [
           "WALL_IDLE"
@@ -3371,7 +3508,7 @@
         "UseNativeAimCameraDelaySeconds": 0,
         "DisableLookWhileAiming": true,
         "EnableTransitionBlend": true,
-        "ProfileTransitionDuration": 0.2,
+        "ProfileTransitionDuration": 10,
         "TargetY": 2,
         "TargetRight": 0,
         "TargetForward": 0,
