@@ -108,7 +108,7 @@ These fields exist on every profile entry in `Profiles`. Fields marked **(Mode 3
 * **Yaw/Pitch/Roll Range & Blend** *(Mode 3 / Normal only)*: `Range` is how far (in degrees) the head can turn before the camera starts to clamp it; `Blend` is the width of the gradual transition zone just outside `Range`, where the camera gradually stops following further rotation instead of snapping.
 * **Correction Yaw/Pitch/Roll**: This profile's own baseline "forward" direction on top of the base joint's own direction. Use this to fix a fixed angular offset (e.g. a reticle sitting a few degrees off-center) that a position offset can't fix.
 * **Target Y/Right/Forward**: This profile's own eye-position offset (up/right/forward from the anchor joint), independent of every other profile's own offset.
-* **Position/Basis Joint Override** * *(Mode 3 / Normal only, experimental)*: Lets this profile anchor the camera to a different joint than the mod's global setting, for motions where the default anchor doesn't track correctly.
+* **Position/Basis Joint Override** *(Mode 3 / Normal only, experimental)*: Lets this profile anchor the camera to a different joint than the mod's global setting, for motions where the default anchor doesn't track correctly.
 * **Base Smoothing (Clamp Base Smoothing)**: Low-pass filter strength on the base direction used for clamping. 1.0 = instant/raw, lower = smoother.
 * **Enable Transition Blend / Profile Switch Blend Time**: Whether switching into/out of this profile triggers a smooth Slerp blend, and how long it takes for this profile specifically.
 * **Shake Suppress** *(Mode 3 / Normal only)*: Freezes the raw joint deviation for a set number of seconds starting the instant R2 is pressed/released. 0 = disabled.
