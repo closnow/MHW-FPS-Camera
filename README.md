@@ -23,7 +23,8 @@ Based on [NewCamera](https://www.nexusmods.com/monsterhunterworld/mods/8300) by 
 * [Stracker's Loader](https://www.nexusmods.com/monsterhunterworld/mods/1982)
 
 ### Installation
-Place both **`NewCamera.dll`** (built) and **`NewCamera.json`** into the following folder:
+1. Download the latest zip from **[Releases](https://github.com/closnow/MHW-FPS-Camera/releases)**.
+2. Place both **`NewCamera.dll`** and **`NewCamera.json`** into the following folder:  
 `nativePC/plugins/CSharp/NewCamera/`  
 *(In short, place `NewCamera.json` in the same directory as `NewCamera.dll`)*
 
@@ -156,7 +157,8 @@ If you enjoy this mod, you can support me here:
 * [Stracker's Loader](https://www.nexusmods.com/monsterhunterworld/mods/1982)
 
 ### 導入方法
-ビルドした **`NewCamera.dll`** と **`NewCamera.json`** を、以下のフォルダに一緒に配置してください：
+1. **[Releases](https://github.com/closnow/MHW-FPS-Camera/releases)** から最新の zip をダウンロードして解凍します。
+2. 中にある **`NewCamera.dll`** と **`NewCamera.json`** を、以下のフォルダに配置してください：  
 `nativePC/plugins/CSharp/NewCamera/`  
 *(※要するに、`NewCamera.dll` と全く同じ場所に `NewCamera.json` を置けばOKです)*
 
