@@ -26,7 +26,6 @@ Based on [NewCamera](https://www.nexusmods.com/monsterhunterworld/mods/8300) by 
 1. Download the latest zip from **[Releases](https://github.com/closnow/MHW-FPS-Camera/releases)**.
 2. Place both **`NewCamera.dll`** and **`NewCamera.json`** into the following folder:  
 `nativePC/plugins/CSharp/NewCamera/`  
-*(In short, place `NewCamera.json` in the same directory as `NewCamera.dll`)*
 
 ### Recommended In-Game Settings
 * **GAME SETTINGS**
@@ -160,7 +159,6 @@ If you enjoy this mod, you can support me here:
 1. **[Releases](https://github.com/closnow/MHW-FPS-Camera/releases)** から最新の zip をダウンロードして解凍します。
 2. 中にある **`NewCamera.dll`** と **`NewCamera.json`** を、以下のフォルダに配置してください：  
 `nativePC/plugins/CSharp/NewCamera/`  
-*(※要するに、`NewCamera.dll` と全く同じ場所に `NewCamera.json` を置けばOKです)*
 
 ### 推奨ゲーム内設定
 * **GAME SETTING**
