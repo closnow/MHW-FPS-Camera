@@ -101,6 +101,7 @@ Every field described in the Profile Parameter Reference below — Camera Mode, 
 3. Scroll down to find the **`Save All Settings`** and **`Reload Saved Settings`** buttons, which write the panel's current state to `NewCamera.json` / read it back.
 
 Editing the JSON file directly is only really needed for bulk changes, copying profiles between weapons, or version control.
+* **Reordering**: You can drag and drop profile headers (or weapon group headers) directly in the GUI to adjust their priority order.
 
 #### 4. Profile Parameter Reference
 These fields exist on every profile entry in `Profiles`. Fields marked **(Mode 3 / Normal only)** have no effect unless that profile's Camera Mode is set to Normal (Profile C).
@@ -234,6 +235,7 @@ If you enjoy this mod, you can support me here:
 3. 下部にある **`Save All Settings`** / **`Reload Saved Settings`** ボタンで、パネルの現在の状態を `NewCamera.json` に書き出す/読み込みます。
 
 JSONファイルを直接編集する必要があるのは、一括変更や、武器間でのプロファイルのコピー、バージョン管理を行う場合くらいです。
+* **並び替え**: プロファイル（または武器グループ）の見出しをマウスでドラッグ＆ドロップすることで、GUI上で直接優先順位を並び替えられます。
 
 #### 4. プロファイル パラメータ リファレンス
 以下は `Profiles` の各エントリに存在する項目です。**(Mode 3 / Normal 専用)** と記載した項目は、そのプロファイルの Camera Mode が Normal (Profile C) 以外の場合は効果を持ちません。
