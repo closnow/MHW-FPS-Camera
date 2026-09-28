@@ -14,7 +14,7 @@ Based on [NewCamera](https://www.nexusmods.com/monsterhunterworld/mods/8300) by 
 - **Warning**: Severe screen shake and rapid camera rotations may cause motion sickness. If you are prone to motion sickness or seizures, please use with caution and stop immediately if you feel unwell.
 - **This mod is provided "AS-IS". No technical support, bug fixes, or feature requests will be accepted.**
 - Most of the modifications in this code were created with the **assistance of AI**. As such, the author cannot address technical issues such as code optimization, unexpected bugs, or conflicts with other mods.
-- Camera profiles are **only fully tuned for Lance**. Great Sword, Switch Axe, and Bow are partially tuned (incomplete). All other weapon types are untouched. Please edit `NewCamera.json` yourself to adjust other weapons (see Profile System below).
+- Camera profiles are **only tuned for Lance**. However, depending on the weapon design, the shield may obstruct your view. In that case, please adjust the `Target Forward`, `Target Right`, or `Target Y` camera position offsets in the GUI. (Other weapon types are untouched/incomplete).
 - Keyboard/mouse controls are not supported. **Gamepad (controller) is required.**
 
 ### Requirements
@@ -148,7 +148,7 @@ If you enjoy this mod, you can support me here:
 - **画面揺れ・3D酔い注意**: アクション中に画面が激しく揺れたり急回転します。酔いやすい方や発作の恐れがある方はご注意ください。
 - **本MODは「現状渡し (As-is)」となります。個別の導入サポートや質問対応、要望受付、バグ修正などは一切行いません。**
 - 本コードの改修の大部分は**AIの支援を受けて作成**しています。そのため、コードの最適化や予期せぬ不具合、他MODとの競合などの技術的な問題への対応は一切できません。
-- プロファイル（カメラ視点）の調整は**ランスのみ**完了しています。大剣、スラッシュアックス、弓は調整途中のため不完全です。その他の武器種は未着手です。必要に応じてご自身で `NewCamera.json` を編集して調整してください（下記プロファイル仕様を参照）。
+- プロファイルは**ランスのみ調整**しています。ただし、ランスの種類（武器デザイン）によっては盾で前が見えなくなる場合があります。その際は、GUIから `Target Forward` や `Target Right`、`Target Y`（カメラ位置）を微調整してください。（※その他の武器種は未完成・未着手です）。
 - キーボードでの操作は想定していません。**ゲームパッド（コントローラー）での操作を前提**としています。
 
 ### 必須MOD・環境
