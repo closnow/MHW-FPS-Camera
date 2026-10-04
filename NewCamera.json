@@ -3805,7 +3805,7 @@
     "FinalRotationMaxSpeed": 1080,
     "FinalPositionMaxSpeed": 3000,
     "ForceLevelRoll": false,
-    "SpotDistance": 500,
+    "SpotDistance": 200,
     "SpotReanchorRate": 0.5,
     "ProfileTransitionDuration": 10,
     "DefaultEnableTransitionBlend": true,
