@@ -119,6 +119,8 @@ These fields exist on every profile entry in `Profiles`. Fields marked **(Mode 3
 * **Hide Slinger While Active** *(Mode 3 / Normal only)*: Per-profile toggle — hides the slinger model only while this specific profile is active, not a blanket setting for every profile.
 * **Disable Free Camera While Active** *(Mode 3 / Normal only)*: Per-profile toggle that temporarily forces the game's native third-person camera back on while this profile is active, then returns to FPS view once it's no longer matched. This is the mechanism behind the Clutch Claw/mounting auto-fallback described above — it can be applied to any other motion the same way.
 * **Comment / WeaponGroup**: Free-text fields for your own organization in the GUI's profile list. They are saved to `NewCamera.json` but never used for matching — safe to write anything here.
+* **Hold Spot / Hold Spot Threshold** *(Mode 3 / Normal only)*: ON keeps the aim point fixed in the world, e.g. to keep a target centered while attacking it. The aim point follows the body only after the body's facing turns more than the threshold (degrees), at the speed of Spot Re-anchor Rate (must be above 0). OFF follows the body's facing every frame.
+* **Body Anchor** *(Mode 3 / Normal only)*: Places the aim point ahead of the body instead of ahead of the nose.
 
 #### 5. Advanced: Gaze Keyframes *(Mode 3 / Normal only)*
 For attack motions where the raw per-frame joint deviation is too fast or noisy to track directly, a profile can instead use a scripted look curve:
@@ -253,6 +255,8 @@ JSONファイルを直接編集する必要があるのは、一括変更や、�
 * **Hide Slinger While Active** *(Mode 3 / Normal 専用)*：プロファイル単位のトグルです。そのプロファイルが有効な間だけスリンガーを非表示にするもので、全プロファイル共通の自動仕様ではありません。
 * **Disable Free Camera While Active** *(Mode 3 / Normal 専用)*：このプロファイルが有効な間だけ、一時的にゲーム本来の三人称視点に戻し、条件から外れたらFPS視点に復帰させるプロファイル単位のトグルです。上記のクラッチクロー・搭乗時の自動三人称化は、この仕組みを使って実現されています。同じ方法で他の好きなモーションにも適用できます。
 * **Comment / WeaponGroup**：GUIのプロファイル一覧を整理するための自由記述欄です。`NewCamera.json` には保存されますが、マッチング処理には一切使われません。自由に書き換えて問題ありません。
+* **Hold Spot / Hold Spot Threshold** *(Mode 3 / Normal 専用)*：ONにすると視点の基準点をワールドに固定します（ターゲットを攻撃しながら中央に捉え続けたい場合など）。体の向きがしきい値（度）を超えて変わったときだけ、Spot Re-anchor Rate（0より大きい値が必要）の速さで体に追従します。OFFなら毎フレーム体の正面に追従します。
+* **Body Anchor** *(Mode 3 / Normal 専用)*：視点の基準点を、鼻ではなく体の前方に置きます。
 
 #### 5. 応用：Gaze Keyframes *(Mode 3 / Normal 専用)*
 1フレームごとの生の関節変位を追うには速すぎたり、ノイズが多すぎたりする攻撃モーション向けに、プロファイルはスクリプト化された視点カーブを使うこともできます。
