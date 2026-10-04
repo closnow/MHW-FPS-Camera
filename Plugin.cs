@@ -1,4 +1,4 @@
-//#define ENABLE_ASSERTS
+ï»¿//#define ENABLE_ASSERTS
 //#define HOOK_ORDER_ASSERTS
 //#define LOG_DEBUG_MESSAGES
 #define MOUSE_AND_KEYBOARD_LAYER
@@ -21,7 +21,7 @@ using SharpPluginLoader.Core.Memory;
 using SharpPluginLoader.Core.Actions;
 using SharpPluginLoader.Core.Components;
 using SharpPluginLoader.Core.Configuration;
-using System.IO;//C‚ÌƒƒO
+using System.IO;//Cã®ãƒ­ã‚°
 
 // Tentative List of Actions:
 //  - Toggle Free Camera
@@ -444,11 +444,11 @@ namespace NewCamera
             public float Roll = 0.0f;
         }
 
-        // Gaze Keyframes ‚ğuƒ‚[ƒVƒ‡ƒ“‚Ì‚±‚Ì‹æŠÔ‚ÌŠÔ‚¾‚¯vŒø‚©‚¹‚é‚½‚ß‚Ì‘‹B
-        // Start/End ‚Íƒ‚[ƒVƒ‡ƒ“is“x T (0.0 = ŠJn, 1.0 = I—¹)B‚±‚Ì‘‹‚Ì’†‚Å‚Í
-        // Gaze Keyframes ‚ªg‚í‚êAŠO‚Å‚Í’Êí‚Ì Range/Blend ’Ç]‚É–ß‚éB
-        // Blend ‚Í‘‹‚Ì‘OŒã‚É‘«‚³‚ê‚éƒNƒƒXƒtƒF[ƒh• (T ’PˆÊ)B
-        // Mirrors Config.GazeRange (Config.cs)B
+        // Gaze Keyframes ã‚’ã€Œãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã®ã“ã®åŒºé–“ã®é–“ã ã‘ã€åŠ¹ã‹ã›ã‚‹ãŸã‚ã®çª“ã€‚
+        // Start/End ã¯ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³é€²è¡Œåº¦ T (0.0 = é–‹å§‹, 1.0 = çµ‚äº†)ã€‚ã“ã®çª“ã®ä¸­ã§ã¯
+        // Gaze Keyframes ãŒä½¿ã‚ã‚Œã€å¤–ã§ã¯é€šå¸¸ã® Range/Blend è¿½å¾“ã«æˆ»ã‚‹ã€‚
+        // Blend ã¯çª“ã®å‰å¾Œã«è¶³ã•ã‚Œã‚‹ã‚¯ãƒ­ã‚¹ãƒ•ã‚§ãƒ¼ãƒ‰å¹… (T å˜ä½)ã€‚
+        // Mirrors Config.GazeRange (Config.cs)ã€‚
         // See evaluateGazeRangeWeight() below.
         private class OrbitGazeRange
         {
@@ -457,9 +457,9 @@ namespace NewCamera
             public float Blend = 0.05f;
         }
 
-        // Use Gaze Keyframes ‚Ì XYZ ”Å‚ªg‚¤ƒL[ƒtƒŒ[ƒ€BYaw/Pitch/Roll ‚Å‚Í
-        // ‚È‚­AƒJƒƒ‰‚ÌˆÊ’uƒIƒtƒZƒbƒg (Target Y/Right/Forward) ‚ğ T ‚²‚Æ‚É
-        // w’è‚·‚éBMirrors Config.GazePositionKeyframe (Config.cs)B
+        // Use Gaze Keyframes ã® XYZ ç‰ˆãŒä½¿ã†ã‚­ãƒ¼ãƒ•ãƒ¬ãƒ¼ãƒ ã€‚Yaw/Pitch/Roll ã§ã¯
+        // ãªãã€ã‚«ãƒ¡ãƒ©ã®ä½ç½®ã‚ªãƒ•ã‚»ãƒƒãƒˆ (Target Y/Right/Forward) ã‚’ T ã”ã¨ã«
+        // æŒ‡å®šã™ã‚‹ã€‚Mirrors Config.GazePositionKeyframe (Config.cs)ã€‚
         private class OrbitGazePositionKeyframe
         {
             public float T = 0.0f;
@@ -467,7 +467,7 @@ namespace NewCamera
             public float Right = 0.0f;
             public float Forward = 0.0f;
         }
-        //ver11‚±‚±‚Ü‚Å
+        //ver11ã“ã“ã¾ã§
 
         // Which of the four previously-hardcoded behaviors a given
         // OrbitProfile represents. Any profile, in any mode, can now be
@@ -476,10 +476,10 @@ namespace NewCamera
         // another Mode a profile can declare.
         public enum OrbitProfileMode
         {
-            FullRotation,     // ‹Œ A: unclamped, follows raw face-basis rotation exactly.
-            BaseOnlyIgnoreX,  // ‹Œ B (Ignore-X): base-only, hip-projected (X-ignored) position.
-            BaseOnly,         // ‹Œ B: base-only, raw nose position.
-            Normal            // ‹Œ C: clamped/spotted head-tracking follow (attacks).
+            FullRotation,     // æ—§ A: unclamped, follows raw face-basis rotation exactly.
+            BaseOnlyIgnoreX,  // æ—§ B (Ignore-X): base-only, hip-projected (X-ignored) position.
+            BaseOnly,         // æ—§ B: base-only, raw nose position.
+            Normal            // æ—§ C: clamped/spotted head-tracking follow (attacks).
         }
 
         private class OrbitProfile
@@ -598,121 +598,138 @@ namespace NewCamera
             public bool UseGazeKeyframes = false;
             public List<OrbitGazeKeyframe> GazeKeyframes = new List<OrbitGazeKeyframe>();
 
-            // GUI ‚Ìƒvƒƒtƒ@ƒCƒ‹Œ©o‚µ‚É‚»‚Ì‚Ü‚Ü•\¦‚³‚ê‚é©—R‹L“ü‚Ìƒƒ‚B
-            // ƒ}ƒbƒ`ƒ“ƒO”»’è‚É‚ÍˆêØg‚í‚ê‚È‚¢BConfig.OrbitProfile.Comment ‚ğ
-            // Œo—R‚µ‚Ä NewCamera.json ‚É•Û‘¶‚³‚ê‚éB
+            // GUI ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«è¦‹å‡ºã—ã«ãã®ã¾ã¾è¡¨ç¤ºã•ã‚Œã‚‹è‡ªç”±è¨˜å…¥ã®ãƒ¡ãƒ¢ã€‚
+            // ãƒãƒƒãƒãƒ³ã‚°åˆ¤å®šã«ã¯ä¸€åˆ‡ä½¿ã‚ã‚Œãªã„ã€‚Config.OrbitProfile.Comment ã‚’
+            // çµŒç”±ã—ã¦ NewCamera.json ã«ä¿å­˜ã•ã‚Œã‚‹ã€‚
             public string Comment = "";
             //ver14
             public string WeaponGroup = "";
 
-            // Weapon Group “ü—Í—“‚Ìˆêƒoƒbƒtƒ@B“ü—Í’†‚Í‚±‚±‚¾‚¯‚ª•Ï‚í‚èA
-            // "Set Group" ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½uŠÔ‚¾‚¯ WeaponGroup ‚ÖŠm’è‚·‚éB
-            // ‚±‚ê‚É‚æ‚èA1•¶š“ü—Í‚·‚é‚½‚Ñ‚É•À‚Ñ‘Ö‚¦‚ª‘–‚é‚±‚Æ‚Í‚È‚­‚È‚éB
-            // •Û‘¶‘ÎÛ‚Å‚Í‚È‚¢ (NewCamera.json ‚É‚Í“ü‚ç‚È‚¢)B
+            // Weapon Group å…¥åŠ›æ¬„ã®ä¸€æ™‚ãƒãƒƒãƒ•ã‚¡ã€‚å…¥åŠ›ä¸­ã¯ã“ã“ã ã‘ãŒå¤‰ã‚ã‚Šã€
+            // "Set Group" ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸç¬é–“ã ã‘ WeaponGroup ã¸ç¢ºå®šã™ã‚‹ã€‚
+            // ã“ã‚Œã«ã‚ˆã‚Šã€1æ–‡å­—å…¥åŠ›ã™ã‚‹ãŸã³ã«ä¸¦ã³æ›¿ãˆãŒèµ°ã‚‹ã“ã¨ã¯ãªããªã‚‹ã€‚
+            // ä¿å­˜å¯¾è±¡ã§ã¯ãªã„ (NewCamera.json ã«ã¯å…¥ã‚‰ãªã„)ã€‚
             public string WeaponGroupInput = "";
 
-            // GUI ã‚Å‚±‚Ìƒvƒƒtƒ@ƒCƒ‹‚ğˆêˆÓ‚É¯•Ê‚·‚é‚½‚ß‚Ì”Ô†BImGui ‚Ì
-            // ƒEƒBƒWƒFƒbƒg ID ‚ğuƒŠƒXƒgã‚ÌˆÊ’uv‚Å‚Í‚È‚­ƒvƒƒtƒ@ƒCƒ‹©‘Ì‚É
-            // Œ‹‚Ñ•t‚¯‚é‚½‚ß‚Ég‚¤B•À‚Ñ‘Ö‚¦‚ÅƒEƒBƒWƒFƒbƒg‚Ì’†g‚ª•Ê‚Ì
-            // ƒvƒƒtƒ@ƒCƒ‹‚Ì‚à‚Ì‚É“ü‚ê‘Ö‚í‚éŒë”š‚ğ–h‚®‚½‚ß‚Ì‚à‚Ì‚ÅA
-            // •Û‘¶‘ÎÛ‚Å‚Í‚È‚¢B
+            // GUI ä¸Šã§ã“ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä¸€æ„ã«è­˜åˆ¥ã™ã‚‹ãŸã‚ã®ç•ªå·ã€‚ImGui ã®
+            // ã‚¦ã‚£ã‚¸ã‚§ãƒƒãƒˆ ID ã‚’ã€Œãƒªã‚¹ãƒˆä¸Šã®ä½ç½®ã€ã§ã¯ãªããƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«è‡ªä½“ã«
+            // çµã³ä»˜ã‘ã‚‹ãŸã‚ã«ä½¿ã†ã€‚ä¸¦ã³æ›¿ãˆã§ã‚¦ã‚£ã‚¸ã‚§ãƒƒãƒˆã®ä¸­èº«ãŒåˆ¥ã®
+            // ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚‚ã®ã«å…¥ã‚Œæ›¿ã‚ã‚‹èª¤çˆ†ã‚’é˜²ããŸã‚ã®ã‚‚ã®ã§ã€
+            // ä¿å­˜å¯¾è±¡ã§ã¯ãªã„ã€‚
             private static int nextUid = 1;
             public int Uid = 30000 + (nextUid++);
-            //ver14‚±‚±‚Ü‚Å
-            // UseGazeKeyframes ‚ğƒ‚[ƒVƒ‡ƒ“‘S‘Ì‚Å‚Í‚È‚­AGazeRanges ‚Åw’è‚µ‚½
-            // T ‹æŠÔ‚ÌŠÔ‚¾‚¯—LŒø‚É‚·‚éB‹æŠÔ‚ÌŠO‚Å‚Í]—ˆ‚Ç‚¨‚è Range/Blend ‚É‚æ‚é
-            // ’Ç]‚É–ß‚èAŠe‹æŠÔ‚Ì Blend •‚ÅƒNƒƒXƒtƒF[ƒh‚³‚ê‚é‚Ì‚Å‹«–Ú‚Å
-            // ”ò‚Î‚È‚¢BGazeRanges ‚ª‹ó‚Ì‚Æ‚«‚Í§ŒÀ‚È‚µ (‘S‘Ì‚Å—LŒø) ˆµ‚¢B
+            //ver14ã“ã“ã¾ã§
+            // UseGazeKeyframes ã‚’ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³å…¨ä½“ã§ã¯ãªãã€GazeRanges ã§æŒ‡å®šã—ãŸ
+            // T åŒºé–“ã®é–“ã ã‘æœ‰åŠ¹ã«ã™ã‚‹ã€‚åŒºé–“ã®å¤–ã§ã¯å¾“æ¥ã©ãŠã‚Š Range/Blend ã«ã‚ˆã‚‹
+            // è¿½å¾“ã«æˆ»ã‚Šã€å„åŒºé–“ã® Blend å¹…ã§ã‚¯ãƒ­ã‚¹ãƒ•ã‚§ãƒ¼ãƒ‰ã•ã‚Œã‚‹ã®ã§å¢ƒç›®ã§
+            // é£›ã°ãªã„ã€‚GazeRanges ãŒç©ºã®ã¨ãã¯åˆ¶é™ãªã— (å…¨ä½“ã§æœ‰åŠ¹) æ‰±ã„ã€‚
             public bool GazeUseRanges = false;
             public List<OrbitGazeRange> GazeRanges = new List<OrbitGazeRange>();
 
-            // ON ‚É‚·‚é‚ÆAGaze Keyframes / GazeRanges ‚ªg‚¤ T ‚ğAƒ‚[ƒVƒ‡ƒ“
-            // is“x (getMotionProgress) ‚Ì‘ã‚í‚è‚ÉuorbitActionSubState ‚ª
-            // •Ï‰»‚µ‚Ä‚©‚ç‚ÌŒo‰ßŠÔ € GazeSubStateDurationv‚Å‘ã—p‚·‚éB
-            // ActionName/motionKey ‚ª•Ï‚í‚ç‚È‚¢‚Ü‚Üã”¼g‘¤‚Ìó‘Ô‚¾‚¯‚ª•Ï‚í‚é
-            // ê–Ê (#<”’l> ƒL[ƒ[ƒh‚Åƒ}ƒbƒ`‚³‚¹‚é‚æ‚¤‚ÈƒP[ƒX) ê—pB
+            // ON ã«ã™ã‚‹ã¨ã€Gaze Keyframes / GazeRanges ãŒä½¿ã† T ã‚’ã€ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³
+            // é€²è¡Œåº¦ (getMotionProgress) ã®ä»£ã‚ã‚Šã«ã€ŒorbitActionSubState ãŒ
+            // å¤‰åŒ–ã—ã¦ã‹ã‚‰ã®çµŒéæ™‚é–“ Ã· GazeSubStateDurationã€ã§ä»£ç”¨ã™ã‚‹ã€‚
+            // ActionName/motionKey ãŒå¤‰ã‚ã‚‰ãªã„ã¾ã¾ä¸ŠåŠèº«å´ã®çŠ¶æ…‹ã ã‘ãŒå¤‰ã‚ã‚‹
+            // å ´é¢ (#<æ•°å€¤> ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã§ãƒãƒƒãƒã•ã›ã‚‹ã‚ˆã†ãªã‚±ãƒ¼ã‚¹) å°‚ç”¨ã€‚
             //ver11
             public bool GazeUseSubStateTimer = false;
-            // ª‚ğ ON ‚É‚µ‚½‚Æ‚«‚Ì³‹K‰»—p‚Ì‘z’èŠ—vŠÔ (•b)BÀ‘ª‚µ‚Ä’²®‚·‚éB
+            // â†‘ã‚’ ON ã«ã—ãŸã¨ãã®æ­£è¦åŒ–ç”¨ã®æƒ³å®šæ‰€è¦æ™‚é–“ (ç§’)ã€‚å®Ÿæ¸¬ã—ã¦èª¿æ•´ã™ã‚‹ã€‚
             public float GazeSubStateDuration = 1.0f;
 
-            // Use Gaze Keyframes ‚Ì XYZ ”ÅBON ‚É‚·‚é‚ÆATarget Y/Right/Forward ‚ğ
-            // GazePositionKeyframes ‚Ì T ‚²‚Æ‚Ì’l‚Åã‘‚«‚·‚éBT ‚Ìæ“¾Œ³
-            // (ƒ‚[ƒVƒ‡ƒ“ƒtƒŒ[ƒ€ / ƒTƒuƒXƒe[ƒgŒo‰ßŠÔ) ‚Æ Limit Gaze To
-            // Ranges (GazeUseRanges/GazeRanges) ‚Í Rotation ‘¤‚Æ‹¤’Ê‚Åg‚¤B
+            // Use Gaze Keyframes ã® XYZ ç‰ˆã€‚ON ã«ã™ã‚‹ã¨ã€Target Y/Right/Forward ã‚’
+            // GazePositionKeyframes ã® T ã”ã¨ã®å€¤ã§ä¸Šæ›¸ãã™ã‚‹ã€‚T ã®å–å¾—å…ƒ
+            // (ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ•ãƒ¬ãƒ¼ãƒ  / ã‚µãƒ–ã‚¹ãƒ†ãƒ¼ãƒˆçµŒéæ™‚é–“) ã¨ Limit Gaze To
+            // Ranges (GazeUseRanges/GazeRanges) ã¯ Rotation å´ã¨å…±é€šã§ä½¿ã†ã€‚
             public bool UseGazePositionKeyframes = false;
             public List<OrbitGazePositionKeyframe> GazePositionKeyframes = new List<OrbitGazePositionKeyframe>();
-            //ver12 Position/Basis Joint‚ğƒvƒƒtƒ@ƒCƒ‹’PˆÊ‚Åã‘‚«‚·‚éB
-            // ON‚ÍA‚±‚Ìƒvƒƒtƒ@ƒCƒ‹‚ªƒ}ƒbƒ`‚µ‚Ä‚¢‚éŠÔAeyeˆÊ’u
-            // (TargetY/Right/Forward‚ÌŠî€“_)‚ÆASimple Lock+Face Basis
-            // g—p‚ÌŠçŠî€("nosePos")‚Ì—¼•û‚ÉAƒOƒ[ƒoƒ‹‚ÌUse Face
-            // Joints/Target Joint‚Ì‘ã‚í‚è‚É‚±‚±‚Åw’è‚µ‚½ƒWƒ‡ƒCƒ“ƒg‚ğg‚¤B
-            // —á: ˆù‚İƒ‚[ƒVƒ‡ƒ“ê—pƒvƒƒtƒ@ƒCƒ‹‚ÅA•@‚Ì‘ã‚í‚è‚Éƒrƒ“‚ğ
-            // ‚Âè‚ÌƒWƒ‡ƒCƒ“ƒg‚ğw’è‚·‚é‚ÆA‹“_‚ª‚»‚ÌèŒ³‚ÉŠñ‚Á‚½
-            // uèŒ³ƒJƒƒ‰v‚É‚È‚èA•@Šî€‚Å‚Í–ˆ‰ñ•Ï‚í‚Á‚Ä‚¢‚½•r‚Æ‹“_‚Ì
-            // ƒYƒŒ‚ª–Ú—§‚½‚È‚­‚È‚éB
+            //ver12 Position/Basis Jointã‚’ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«å˜ä½ã§ä¸Šæ›¸ãã™ã‚‹ã€‚
+            // ONæ™‚ã¯ã€ã“ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒãƒƒãƒã—ã¦ã„ã‚‹é–“ã€eyeä½ç½®
+            // (TargetY/Right/Forwardã®åŸºæº–ç‚¹)ã¨ã€Simple Lock+Face Basis
+            // ä½¿ç”¨æ™‚ã®é¡”åŸºæº–("nosePos")ã®ä¸¡æ–¹ã«ã€ã‚°ãƒ­ãƒ¼ãƒãƒ«ã®Use Face
+            // Joints/Target Jointã®ä»£ã‚ã‚Šã«ã“ã“ã§æŒ‡å®šã—ãŸã‚¸ãƒ§ã‚¤ãƒ³ãƒˆã‚’ä½¿ã†ã€‚
+            // ä¾‹: é£²ã¿ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³å°‚ç”¨ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã§ã€é¼»ã®ä»£ã‚ã‚Šã«ãƒ“ãƒ³ã‚’
+            // æŒã¤æ‰‹ã®ã‚¸ãƒ§ã‚¤ãƒ³ãƒˆã‚’æŒ‡å®šã™ã‚‹ã¨ã€è¦–ç‚¹ãŒãã®æ‰‹å…ƒã«å¯„ã£ãŸ
+            // ã€Œæ‰‹å…ƒã‚«ãƒ¡ãƒ©ã€ã«ãªã‚Šã€é¼»åŸºæº–ã§ã¯æ¯å›å¤‰ã‚ã£ã¦ã„ãŸç“¶ã¨è¦–ç‚¹ã®
+            // ã‚ºãƒ¬ãŒç›®ç«‹ãŸãªããªã‚‹ã€‚
             public bool PositionJointOverrideEnable = false;
             public bool PositionJointOverrideUseFace = false;
             public int PositionJointOverrideJoint = 0;
-            //ver12‚±‚±‚Ü‚Å
+            //ver12ã“ã“ã¾ã§
 
-            // ver13: ‚±‚Ìƒvƒƒtƒ@ƒCƒ‹‚ªƒ}ƒbƒ`‚µ‚Ä‚¢‚éŠÔAƒXƒŠƒ“ƒK[‚ğ
-            // ‹­§”ñ•\¦‚É‚·‚é (Armor.Slinger, ‘Sƒp[ƒc”ñ•\¦)Bë—Â’†‚à
-            // uÅŒã‚ÌPart‚ğƒIƒt‚É‚·‚é‚ÆƒXƒŠƒ“ƒK[‘S‘Ì‚ªÁ‚¦‚évŒ»Û‚ğ
-            // —˜—p‚µ‚Ä hideArmorPartAllLods/showArmorPartAllLods ‚Å–ˆƒtƒŒ[ƒ€
-            // ‹­§‚·‚éBƒ}ƒbƒ`‚µ‚È‚­‚È‚Á‚½‚ç©“®‚ÅÄ•\¦‚·‚éB
+            // ver13: ã“ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒãƒƒãƒã—ã¦ã„ã‚‹é–“ã€ã‚¹ãƒªãƒ³ã‚¬ãƒ¼ã‚’
+            // å¼·åˆ¶éè¡¨ç¤ºã«ã™ã‚‹ (Armor.Slinger, å…¨ãƒ‘ãƒ¼ãƒ„éè¡¨ç¤º)ã€‚ç‹©çŒŸä¸­ã‚‚
+            // ã€Œæœ€å¾Œã®Partã‚’ã‚ªãƒ•ã«ã™ã‚‹ã¨ã‚¹ãƒªãƒ³ã‚¬ãƒ¼å…¨ä½“ãŒæ¶ˆãˆã‚‹ã€ç¾è±¡ã‚’
+            // åˆ©ç”¨ã—ã¦ hideArmorPartAllLods/showArmorPartAllLods ã§æ¯ãƒ•ãƒ¬ãƒ¼ãƒ 
+            // å¼·åˆ¶ã™ã‚‹ã€‚ãƒãƒƒãƒã—ãªããªã£ãŸã‚‰è‡ªå‹•ã§å†è¡¨ç¤ºã™ã‚‹ã€‚
             public bool HideSlingerWhileActive = false;
 
-            // ver15: ‚±‚Ìƒvƒƒtƒ@ƒCƒ‹‚ªƒ}ƒbƒ`‚µ‚Ä‚¢‚éŠÔAEnable Free Camera ‚ğ
-            // ‹­§“I‚ÉƒIƒt‚É‚·‚éBƒNƒ‰ƒbƒ`ƒNƒ[E‚µ‚ª‚İ‚Â‚«’†‚âæ‚èó‘Ô‚È‚ÇA
-            // ˆêlÌ‹“_‚¾‚Æ‰æ–Ê‚ª—h‚ê‰ß‚¬‚éê–ÊŒü‚¯Bƒ}ƒbƒ`‚µ‚È‚­‚È‚Á‚½‚çA
-            // ƒ†[ƒU[‚ªŒ³X‘I‚ñ‚Å‚¢‚½Enable Free Camera‚Ìó‘Ô‚É©“®‚Å–ß‚éB
+            // ver15: ã“ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒãƒƒãƒã—ã¦ã„ã‚‹é–“ã€Enable Free Camera ã‚’
+            // å¼·åˆ¶çš„ã«ã‚ªãƒ•ã«ã™ã‚‹ã€‚ã‚¯ãƒ©ãƒƒãƒã‚¯ãƒ­ãƒ¼ãƒ»ã—ãŒã¿ã¤ãä¸­ã‚„ä¹—ã‚ŠçŠ¶æ…‹ãªã©ã€
+            // ä¸€äººç§°è¦–ç‚¹ã ã¨ç”»é¢ãŒæºã‚Œéãã‚‹å ´é¢å‘ã‘ã€‚ãƒãƒƒãƒã—ãªããªã£ãŸã‚‰ã€
+            // ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒå…ƒã€…é¸ã‚“ã§ã„ãŸEnable Free Cameraã®çŠ¶æ…‹ã«è‡ªå‹•ã§æˆ»ã‚‹ã€‚
             public bool DisableFreeCameraWhileActive = false;
+
+            //ver16
+            // ON ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã ã‘ã€Spot ã‚’ãƒ¯ãƒ¼ãƒ«ãƒ‰ä¸Šã«å›ºå®šã™ã‚‹ã€‚
+            // OFF ã®å ´åˆã¯å¸¸ã«ç¾åœ¨ã®æ­£é¢ã¸è¿½å¾“ã™ã‚‹ã€‚
+            public bool HoldSpot = false;
+            //ver16ã“ã“ã¾ã§
+
+            //ver16.2
+            // ON ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€ã‚¹ãƒãƒƒãƒˆã‚’ã€Œé¼»ã€ã§ã¯ãªãã€Œä½“ã®ä½ç½®ã€ã‹ã‚‰
+            // SpotDistance å…ˆã«ç½®ã(ä½“ã«ä»˜ã„ã¦ãã‚‹ç‚¹ã‚’è¦‹ç¶šã‘ã‚‹)ã€‚
+            public bool SpotAnchorBody = false;
+
+            //ver16.3
+            // Hold Spot ON ã®ã¨ãã€ä½“ã®å‘ããŒã‚¹ãƒãƒƒãƒˆã‚’ä½œã£ãŸæ™‚ã®å‘ãã‹ã‚‰ã“ã®è§’åº¦(åº¦)ã‚’
+            // è¶…ãˆã¦å¤‰ã‚ã£ãŸã‚‰ã€è¶…ãˆãŸåˆ†ã ã‘ã‚¹ãƒãƒƒãƒˆã‚’ç¾åœ¨ã®æ­£é¢ã¸å¯„ã›å§‹ã‚ã‚‹ã€‚
+            public float HoldSpotThresholdDeg = 15.0f;
+            //ver16.3ã“ã“ã¾ã§
         }
         private List<OrbitProfile> orbitProfiles = new List<OrbitProfile>();
         //ver11
-        // ’¼‹ßƒtƒŒ[ƒ€‚Ì Gaze ƒuƒŒƒ“ƒh—¦ (0 = Range/Blend ’Ç]‚Ì‚İA
-        // 1 = Gaze Keyframes ‚Ì‚İ)BGUI ‚ÌŠm”F—pB
+        // ç›´è¿‘ãƒ•ãƒ¬ãƒ¼ãƒ ã® Gaze ãƒ–ãƒ¬ãƒ³ãƒ‰ç‡ (0 = Range/Blend è¿½å¾“ã®ã¿ã€
+        // 1 = Gaze Keyframes ã®ã¿)ã€‚GUI ã®ç¢ºèªç”¨ã€‚
         private float orbitLastGazeWeight = 0.0f;
-        //ver10.1‚±‚±‚Ü‚Å
+        //ver10.1ã“ã“ã¾ã§
 
-        //* ver2•ÏX
+        //* ver2å¤‰æ›´
         private int orbitLastProfileIndex = -1;
 
-        // ver13: Œ»İƒ}ƒbƒ`‚µ‚Ä‚¢‚éƒvƒƒtƒ@ƒCƒ‹‚ªƒXƒŠƒ“ƒK[‚Ì‹­§
-        // ”ñ•\¦‚ğ—v‹‚µ‚Ä‚¢‚é‚©B–ˆƒtƒŒ[ƒ€XV‚³‚êA
-        // collectArmorParts(Armor.Slinger) ‚ªQÆ‚·‚éB
+        // ver13: ç¾åœ¨ãƒãƒƒãƒã—ã¦ã„ã‚‹ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ãŒã‚¹ãƒªãƒ³ã‚¬ãƒ¼ã®å¼·åˆ¶
+        // éè¡¨ç¤ºã‚’è¦æ±‚ã—ã¦ã„ã‚‹ã‹ã€‚æ¯ãƒ•ãƒ¬ãƒ¼ãƒ æ›´æ–°ã•ã‚Œã€
+        // collectArmorParts(Armor.Slinger) ãŒå‚ç…§ã™ã‚‹ã€‚
         private bool orbitSlingerHiddenByProfile = false;
 
-        // ver15: Œ»İƒ}ƒbƒ`‚µ‚Ä‚¢‚éƒvƒƒtƒ@ƒCƒ‹‚É‚æ‚Á‚ÄEnable Free Camera‚ª
-        // ‹­§“I‚ÉƒIƒt‚É‚³‚ê‚Ä‚¢‚éÅ’†‚©‚Ç‚¤‚©Btrue‚ÌŠÔA
-        // orbitFreeCameraUserWanted ‚Éuƒ†[ƒU[–{—ˆ‚ÌŠó–]’lv‚ğ‘Ş”ğ‚µ‚Ä‚¨‚«A
-        // ƒvƒƒtƒ@ƒCƒ‹‚ªƒ}ƒbƒ`‚µ‚È‚­‚È‚Á‚½uŠÔ‚É‚»‚ê‚ğ•œŒ³‚·‚éB
-        // Free Camera ‚ª–³Œø‚ÌŠÔ‚Í‚±‚ÌMOD‚ÌƒJƒƒ‰ŒvZ(updateFreeCamera)
-        // ©‘Ì‚ªŒÄ‚Î‚ê‚¸ƒ‚[ƒVƒ‡ƒ“‚ğE‚¦‚È‚­‚È‚é‚½‚ßA‚±‚Ì”»’è‚Í
-        // updateFreeCamera() ‚Ì’†‚Å‚Í‚È‚­ OnUpdate() ‚Ì’†‚ÅAFree Camera ‚Ì
-        // —LŒø/–³Œø‚ÉŠÖ‚í‚ç‚¸–ˆƒtƒŒ[ƒ€“Æ—§‚µ‚Äs‚¤
-        // (updateForcedFreeCameraDisableByProfile() QÆ)B
+        // ver15: ç¾åœ¨ãƒãƒƒãƒã—ã¦ã„ã‚‹ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã«ã‚ˆã£ã¦Enable Free CameraãŒ
+        // å¼·åˆ¶çš„ã«ã‚ªãƒ•ã«ã•ã‚Œã¦ã„ã‚‹æœ€ä¸­ã‹ã©ã†ã‹ã€‚trueã®é–“ã€
+        // orbitFreeCameraUserWanted ã«ã€Œãƒ¦ãƒ¼ã‚¶ãƒ¼æœ¬æ¥ã®å¸Œæœ›å€¤ã€ã‚’é€€é¿ã—ã¦ãŠãã€
+        // ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒãƒƒãƒã—ãªããªã£ãŸç¬é–“ã«ãã‚Œã‚’å¾©å…ƒã™ã‚‹ã€‚
+        // Free Camera ãŒç„¡åŠ¹ã®é–“ã¯ã“ã®MODã®ã‚«ãƒ¡ãƒ©è¨ˆç®—(updateFreeCamera)
+        // è‡ªä½“ãŒå‘¼ã°ã‚Œãšãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã‚’æ‹¾ãˆãªããªã‚‹ãŸã‚ã€ã“ã®åˆ¤å®šã¯
+        // updateFreeCamera() ã®ä¸­ã§ã¯ãªã OnUpdate() ã®ä¸­ã§ã€Free Camera ã®
+        // æœ‰åŠ¹/ç„¡åŠ¹ã«é–¢ã‚ã‚‰ãšæ¯ãƒ•ãƒ¬ãƒ¼ãƒ ç‹¬ç«‹ã—ã¦è¡Œã†
+        // (updateForcedFreeCameraDisableByProfile() å‚ç…§)ã€‚
         private bool orbitFreeCameraForcedOffByProfile = false;
         private bool orbitFreeCameraUserWanted = false;
 
-        // ver15: enableFreeCamera ‚ğ false ‚É‚·‚é‚Æ disableFreeCamera() ‚ª
-        // ŒÄ‚Î‚êAUnlock InputEFOV‚Ü‚ÅƒŠƒZƒbƒg‚³‚ê‚Ä‚µ‚Ü‚¤(F7‚Ì— ‘¤‚Æ“¯‚¶)B
-        // ‚»‚Ì‚½‚ßAF7‚Ìè“®ƒgƒOƒ‹‚Æ‘S‚­“¯‚¶uƒIƒt‚É‚·‚é’¼‘O‚Ì’l‚ğ‘Ş”ğ‚µA
-        // Ä“xƒIƒ“‚É–ß‚·‚Æ‚«‚É•œŒ³‚·‚évˆ—‚ğA©“®‹­§ƒIƒt‚Ìê‡‚É‚à
-        // “¯—l‚És‚¤•K—v‚ª‚ ‚éB
+        // ver15: enableFreeCamera ã‚’ false ã«ã™ã‚‹ã¨ disableFreeCamera() ãŒ
+        // å‘¼ã°ã‚Œã€Unlock Inputãƒ»FOVã¾ã§ãƒªã‚»ãƒƒãƒˆã•ã‚Œã¦ã—ã¾ã†(F7ã®è£å´ã¨åŒã˜)ã€‚
+        // ãã®ãŸã‚ã€F7ã®æ‰‹å‹•ãƒˆã‚°ãƒ«ã¨å…¨ãåŒã˜ã€Œã‚ªãƒ•ã«ã™ã‚‹ç›´å‰ã®å€¤ã‚’é€€é¿ã—ã€
+        // å†åº¦ã‚ªãƒ³ã«æˆ»ã™ã¨ãã«å¾©å…ƒã™ã‚‹ã€å‡¦ç†ã‚’ã€è‡ªå‹•å¼·åˆ¶ã‚ªãƒ•ã®å ´åˆã«ã‚‚
+        // åŒæ§˜ã«è¡Œã†å¿…è¦ãŒã‚ã‚‹ã€‚
         private bool orbitFreeCameraSavedUnlockInput = false;
         private float orbitFreeCameraSavedFov = 90.0f;
         private bool orbitFreeCameraHasSavedFov = false;
 
-        // --- ‚±‚±‚©‚ç ’Ç‰ÁEC³‚·‚é•Ï”ŒQ ---
+        // --- ã“ã“ã‹ã‚‰ è¿½åŠ ãƒ»ä¿®æ­£ã™ã‚‹å¤‰æ•°ç¾¤ ---
         private int orbitPrevProfileId = -1;
         private bool orbitPrevProfileIdInit = false;
         private bool orbitProfileTransitionActive = false;
         private float orbitProfileTransitionTimer = 0.0f;
         private Quaternion orbitProfileTransitionStartRotation = Quaternion.Identity;
 
-        // PositionƒuƒŒƒ“ƒh—p
+        // Positionãƒ–ãƒ¬ãƒ³ãƒ‰ç”¨
         private float orbitPrevTargetY = 0.0f;
         private float orbitPrevTargetRight = 0.0f;
         private float orbitPrevTargetForward = 0.0f;
@@ -727,7 +744,7 @@ namespace NewCamera
         // (see OrbitProfile.EnableTransitionBlend above), selected each
         // frame by getActiveEnableTransitionBlend() whenever one matches.
         private bool orbitDefaultEnableTransitionBlend = true;
-        // --- ‚±‚±‚Ü‚Å ---
+        // --- ã“ã“ã¾ã§ ---
 
         // Fallback/default Profile Switch Blend Time, in seconds - used only
         // when no OrbitProfile matches the current motion at all (default
@@ -772,6 +789,15 @@ namespace NewCamera
         private Vector3 orbitSpotPoint = Vector3.Zero;
         private bool orbitSpotPointValid = false;
         private bool orbitWasInC = false;
+        private Vector3 orbitSpotCaptureLookDir = Vector3.UnitZ;//ver16 ã‚¹ãƒãƒƒãƒˆã‚’ä½œã£ãŸç¬é–“ã®ã‚«ãƒ¡ãƒ©è¦–ç·šæ–¹å‘ã€‚è¿½ã„è¶Šã—åˆ¤å®šã«ä½¿ã†ã€‚
+        //ver16.3 ã‚¹ãƒãƒƒãƒˆã‚’ä½œã£ãŸ(ã¾ãŸã¯æœ€å¾Œã«å¯„ã›ãŸ)æ™‚ã®ä½“ã®å‘ã(Yaw, åº¦)ã€‚ã—ãã„å€¤ã®åˆ¤å®šã«ä½¿ã†ã€‚
+        private float orbitSpotCaptureBodyYawDeg = 0.0f;
+        //ver16.3ã“ã“ã¾ã§
+        //ver16.2
+        // ON: ã‚¹ãƒãƒƒãƒˆã¯å·¦å³(Yaw)ã ã‘è¦‹ã¦ã€ä¸Šä¸‹è§’ã¯ä½“ã®æ­£é¢ã®ã‚‚ã®ã‚’ä½¿ã†ã€‚
+        // OFF: ã‚¹ãƒãƒƒãƒˆã¸ã®3æ¬¡å…ƒã®æ–¹å‘ã‚’ãã®ã¾ã¾ä½¿ã†(ä¸Šä¸‹ã‚‚è¿½å¾“)ã€‚
+        private bool orbitSpotIgnorePitch = true;
+        //ver16.2ã“ã“ã¾ã§
         // Final safety net: caps how fast the *rendered* camera rotation can
         // visibly change per frame, regardless of what produced the jump
         // (switching between A/B/C, pressing the recenter button, etc). Set
@@ -804,17 +830,17 @@ namespace NewCamera
         private string typedRecenterButton = "L1";
 
         //ver9.3
-        // -1 = ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‚¢‚È‚¢B0ˆÈã = ‰Ÿ‚µ‚Ä‚©‚ç‚ÌŒo‰ß•b”(Œ»ÀŠÔ)B
-        // ƒtƒŒ[ƒ€ƒJƒEƒ“ƒg•û®(‹ŒorbitRecenterPressFrame)‚¾‚ÆƒtƒŒ[ƒ€ƒŒ[ƒg‚ª
-        // •Ï‚í‚é‚½‚Ñ‚ÉTap Max Frames‚ğ’²®‚µ’¼‚·•K—v‚ª‚ ‚Á‚½‚½‚ßAŠÔƒx[ƒX‚É
-        // •ÏX‚µ‚½B
+        // -1 = ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ã„ãªã„ã€‚0ä»¥ä¸Š = æŠ¼ã—ã¦ã‹ã‚‰ã®çµŒéç§’æ•°(ç¾å®Ÿæ™‚é–“)ã€‚
+        // ãƒ•ãƒ¬ãƒ¼ãƒ ã‚«ã‚¦ãƒ³ãƒˆæ–¹å¼(æ—§orbitRecenterPressFrame)ã ã¨ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆãŒ
+        // å¤‰ã‚ã‚‹ãŸã³ã«Tap Max Framesã‚’èª¿æ•´ã—ç›´ã™å¿…è¦ãŒã‚ã£ãŸãŸã‚ã€æ™‚é–“ãƒ™ãƒ¼ã‚¹ã«
+        // å¤‰æ›´ã—ãŸã€‚
         private float orbitRecenterHeldSec = -1.0f;
         private float orbitRecenterTapMaxSeconds = 0.3f;
-        // ‚±‚ÌReturning‚ªL1ƒŠƒZƒbƒg—R—ˆ‚©‚Ç‚¤‚©BL1—R—ˆ‚È‚çPitch‚à0‚ÖƒC[ƒY
-        // ‚³‚¹AMax Yaw’´‰ß—R—ˆ(Keep‚©‚ç)‚È‚çPitch‚Í‚»‚Ì‚Ü‚Ü•Û‚·‚é
-        // (d—lƒhƒLƒ…ƒƒ“ƒg16€)B
+        // ã“ã®ReturningãŒL1ãƒªã‚»ãƒƒãƒˆç”±æ¥ã‹ã©ã†ã‹ã€‚L1ç”±æ¥ãªã‚‰Pitchã‚‚0ã¸ã‚¤ãƒ¼ã‚º
+        // ã•ã›ã€Max Yawè¶…éç”±æ¥(Keepã‹ã‚‰)ãªã‚‰Pitchã¯ãã®ã¾ã¾ä¿æŒã™ã‚‹
+        // (ä»•æ§˜ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ16é …)ã€‚
         private bool orbitReturningResetPitch = false;
-        //ver9.3‚±‚±‚Ü‚Å
+        //ver9.3ã“ã“ã¾ã§
         
         // Return-to-Center Look: while enabled, the right stick's tilt
         // (angle + magnitude) is mapped directly to a yaw/pitch offset from
@@ -829,7 +855,7 @@ namespace NewCamera
         private float orbitReturnToCenterPitchMax = 45.0f;
         // How fast (in effective "fraction per second") the view springs
         // back to center once the stick returns to neutral. Higher = snappier.
-        //ver8 angleƒXƒiƒbƒv‘Î‰ƒtƒB[ƒ‹ƒh’Ç‰Á
+        //ver8 angleã‚¹ãƒŠãƒƒãƒ—å¯¾å¿œãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰è¿½åŠ 
         private float orbitReturnToCenterSpeed = 0.3f;
         // Angle-snap applied to PadRx/PadRy in updateFreeCamera() (right
         // stick only). 12 = clock-hour granularity (30deg steps). 0 disables
@@ -837,48 +863,48 @@ namespace NewCamera
 
         private int orbitRightStickAngleSnapSteps = 100;
         private int orbitFrameCounter = 0;
-        //ver8‚±‚±‚Ü‚Å
-        //ver9 ‰EƒXƒeƒBƒbƒN‚ÌKeep/Catch-upƒXƒe[ƒgƒ}ƒVƒ“—p
-        // (Manual: è“®‘€ì’† / Keep: —£‚µ‚½uŠÔ‚Ìƒ[ƒ‹ƒh•ûŒü‚ğ•Û / Follow: ’Êí’Ç])
+        //ver8ã“ã“ã¾ã§
+        //ver9 å³ã‚¹ãƒ†ã‚£ãƒƒã‚¯ã®Keep/Catch-upã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³ç”¨
+        // (Manual: æ‰‹å‹•æ“ä½œä¸­ / Keep: é›¢ã—ãŸç¬é–“ã®ãƒ¯ãƒ¼ãƒ«ãƒ‰æ–¹å‘ã‚’ä¿æŒ / Follow: é€šå¸¸è¿½å¾“)
         private enum OrbitLookState { Follow, Manual, Keep, Returning }//ver9
         private OrbitLookState orbitLookState = OrbitLookState.Follow;
-        // Keep’†‚É•Û‚µ‘±‚¯‚éƒ[ƒ‹ƒhYaw‚Ì–Ú•W’l‚ÆA‚»‚Ì—LŒøƒtƒ‰ƒOB
+        // Keepä¸­ã«ä¿æŒã—ç¶šã‘ã‚‹ãƒ¯ãƒ¼ãƒ«ãƒ‰Yawã®ç›®æ¨™å€¤ã¨ã€ãã®æœ‰åŠ¹ãƒ•ãƒ©ã‚°ã€‚
         private float orbitKeepWorldYawDeg = 0.0f;
         private bool orbitKeepValid = false;
-        // ucameraYaw‚ğæZ‚·‚é’¼‘O‚Ìrotationv‚Ìƒ[ƒ‹ƒhYaw(=ƒvƒƒtƒ@ƒCƒ‹A/B/C
-        // ‚Ç‚ê‚Å‚àcameraYaw‚ªÀÛ‚É‘«‚µ‚Ü‚ê‚é’¼‘O‚ÌŠî€•ûŒü)BupdateFreeCamera()
-        // “àAcameraYawæZ‚Ì’¼‘O2‰ÓŠ(SimpleLock/ƒ^[ƒQƒbƒgƒWƒ‡ƒCƒ“ƒgŒo˜H‚ÆA
-        // ’Êí‚Ì‰ñ“]ƒWƒ‡ƒCƒ“ƒgŒo˜H)‚ÅƒLƒƒƒbƒVƒ…‚·‚éBorbitCachedStableForwardYawDeg
-        // (player.RotationŠî€‚Ì"‘ÌŠ²"‚ÌŒü‚«)‚Æ‚Í•Ê•¨‚ÅA‚±‚¿‚ç‚Íƒvƒƒtƒ@ƒCƒ‹
-        // ‚²‚Æ‚ÌÀÛ‚Ì‡¬‘ÎÛ‚»‚Ì‚à‚ÌB‘OƒtƒŒ[ƒ€‚Ì’l‚ğg‚¤(1ƒtƒŒ[ƒ€’x‚ê)‚Ì‚ÍA
-        // cameraYaw‚ğŒˆ‚ß‚é“_‚Å‚Í‚±‚ÌƒtƒŒ[ƒ€‚Ìrotation‚ª‚Ü‚¾ŒvZ‚³‚ê‚Ä‚¢‚È‚¢
-        // ‚½‚ßB‘O‰ñ‚ÌƒNƒ[ƒYƒhƒ‹[ƒv•â³(©•ª‚Ìo—Í‚ğ“Ç‚İ•Ô‚·)‚ª”­U‚µ‚½”½È‚ÅA
-        // ‚±‚ê‚ÍcameraYaw‚æ‚è"‘O"‚Ì’l‚È‚Ì‚ÅƒtƒB[ƒhƒoƒbƒNƒ‹[ƒv‚É‚È‚ç‚È‚¢B
+        // ã€ŒcameraYawã‚’ä¹—ç®—ã™ã‚‹ç›´å‰ã®rotationã€ã®ãƒ¯ãƒ¼ãƒ«ãƒ‰Yaw(=ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«A/B/C
+        // ã©ã‚Œã§ã‚‚cameraYawãŒå®Ÿéš›ã«è¶³ã—è¾¼ã¾ã‚Œã‚‹ç›´å‰ã®åŸºæº–æ–¹å‘)ã€‚updateFreeCamera()
+        // å†…ã€cameraYawä¹—ç®—ã®ç›´å‰2ç®‡æ‰€(SimpleLock/ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‚¸ãƒ§ã‚¤ãƒ³ãƒˆçµŒè·¯ã¨ã€
+        // é€šå¸¸ã®å›è»¢ã‚¸ãƒ§ã‚¤ãƒ³ãƒˆçµŒè·¯)ã§ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹ã€‚orbitCachedStableForwardYawDeg
+        // (player.RotationåŸºæº–ã®"ä½“å¹¹"ã®å‘ã)ã¨ã¯åˆ¥ç‰©ã§ã€ã“ã¡ã‚‰ã¯ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«
+        // ã”ã¨ã®å®Ÿéš›ã®åˆæˆå¯¾è±¡ãã®ã‚‚ã®ã€‚å‰ãƒ•ãƒ¬ãƒ¼ãƒ ã®å€¤ã‚’ä½¿ã†(1ãƒ•ãƒ¬ãƒ¼ãƒ é…ã‚Œ)ã®ã¯ã€
+        // cameraYawã‚’æ±ºã‚ã‚‹æ™‚ç‚¹ã§ã¯ã“ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã®rotationãŒã¾ã è¨ˆç®—ã•ã‚Œã¦ã„ãªã„
+        // ãŸã‚ã€‚å‰å›ã®ã‚¯ãƒ­ãƒ¼ã‚ºãƒ‰ãƒ«ãƒ¼ãƒ—è£œæ­£(è‡ªåˆ†ã®å‡ºåŠ›ã‚’èª­ã¿è¿”ã™)ãŒç™ºæŒ¯ã—ãŸåçœã§ã€
+        // ã“ã‚Œã¯cameraYawã‚ˆã‚Š"å‰"ã®å€¤ãªã®ã§ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ãƒ«ãƒ¼ãƒ—ã«ãªã‚‰ãªã„ã€‚
         private float orbitCachedBaseYawDeg = 0.0f;
         private bool orbitCachedBaseYawValid = false;
-        // true: ‚±‚Ìƒx[ƒX•ûŒü‚ÆcameraYaw‚ÌŠÔ‚ÉclampFlip(X²180“x)‚ª‹²‚Ü‚Á‚Ä‚¨‚èA
-        // cameraYaw‚ÌŒø‚«•û‚ª•„†”½“]‚·‚éŒo˜H(ƒvƒƒtƒ@ƒCƒ‹A/SimpleLock)B
-        // false: ’Êí‚Ì‘«‚µZ‚ÌŒo˜H(ƒvƒƒtƒ@ƒCƒ‹B/C)B
+        // true: ã“ã®ãƒ™ãƒ¼ã‚¹æ–¹å‘ã¨cameraYawã®é–“ã«clampFlip(Xè»¸180åº¦)ãŒæŒŸã¾ã£ã¦ãŠã‚Šã€
+        // cameraYawã®åŠ¹ãæ–¹ãŒç¬¦å·åè»¢ã™ã‚‹çµŒè·¯(ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«A/SimpleLock)ã€‚
+        // false: é€šå¸¸ã®è¶³ã—ç®—ã®çµŒè·¯(ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«B/C)ã€‚
         private bool orbitCachedBaseYawFlipped = false;
-        // orbitCachedStableForwardYawDeg(Decouple Movement From Look—p‚É•½ŠŠ‰»
-        // Ï‚İ)‚Æ‚Í•Ê‚ÉA•½ŠŠ‰»‘O‚Ì"¡‚Ü‚³‚ÉŒü‚¢‚Ä‚¢‚é"‘Ì‚Ì³–ÊYawBKeep‚Ì
-        // Catch-up”»’è‚ÍA‘f‘‚¢ù‰ñ’†‚Å‚à’x‰„‚È‚­ŒŸo‚µ‚½‚¢‚Ì‚Å‚±‚¿‚ç‚ğg‚¤B
+        // orbitCachedStableForwardYawDeg(Decouple Movement From Lookç”¨ã«å¹³æ»‘åŒ–
+        // æ¸ˆã¿)ã¨ã¯åˆ¥ã«ã€å¹³æ»‘åŒ–å‰ã®"ä»Šã¾ã•ã«å‘ã„ã¦ã„ã‚‹"ä½“ã®æ­£é¢Yawã€‚Keepã®
+        // Catch-upåˆ¤å®šã¯ã€ç´ æ—©ã„æ—‹å›ä¸­ã§ã‚‚é…å»¶ãªãæ¤œå‡ºã—ãŸã„ã®ã§ã“ã¡ã‚‰ã‚’ä½¿ã†ã€‚
         private float orbitCachedRawStableForwardYawDeg = 0.0f;
         private bool orbitCachedRawStableForwardYawValid = false;
-        // Catch-up”»’è‚Ì‚µ‚«‚¢’l(“x)BuƒLƒƒƒ‰ƒNƒ^[‚ÌŒ»İ‚ÌˆÀ’è‚µ‚½‘Ì‚Ì³–Êv
-        // ‚Æu•Û‚µ‚Ä‚¢‚éƒ[ƒ‹ƒh•ûŒüv‚Ì·‚ª‚±‚ê‚ğ‰º‰ñ‚Á‚½‚çFollow‚Ö•œ‹A‚·‚éB
+        // Catch-upåˆ¤å®šã®ã—ãã„å€¤(åº¦)ã€‚ã€Œã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ç¾åœ¨ã®å®‰å®šã—ãŸä½“ã®æ­£é¢ã€
+        // ã¨ã€Œä¿æŒã—ã¦ã„ã‚‹ãƒ¯ãƒ¼ãƒ«ãƒ‰æ–¹å‘ã€ã®å·®ãŒã“ã‚Œã‚’ä¸‹å›ã£ãŸã‚‰Followã¸å¾©å¸°ã™ã‚‹ã€‚
         private float orbitKeepCatchUpEpsilonDeg = 1.0f;
-        // Max Yaw’´‰ß”»’è‚Ég‚¤—]—T•ª(“x)BorbitReturnToCenterYawMax‚¿‚å‚¤‚Ç‚Å
-        // ”»’è‚·‚é‚ÆA‘–s‚©‚ç’â~‚µ‚½’¼Œã‚Ì”•b‚È‚Çˆê“I‚ÉMax Yaw•t‹ß‚ğ
-        // ’Ê‰ß‚µ‚½‚¾‚¯‚ÅˆÓ}‚¹‚¸Returning(ƒZƒ“ƒ^ƒŠƒ“ƒO)‚µ‚Ä‚µ‚Ü‚¤‚½‚ßA
-        // ÀÛ‚ÉMax Yaw‚ğ‘å‚«‚­’´‚¦‚½‚Æ‚«‚¾‚¯”­“®‚·‚é‚æ‚¤­‚µL‚­‚µ‚Ä‚ ‚éB
+        // Max Yawè¶…éåˆ¤å®šã«ä½¿ã†ä½™è£•åˆ†(åº¦)ã€‚orbitReturnToCenterYawMaxã¡ã‚‡ã†ã©ã§
+        // åˆ¤å®šã™ã‚‹ã¨ã€èµ°è¡Œã‹ã‚‰åœæ­¢ã—ãŸç›´å¾Œã®æ•°ç§’ãªã©ä¸€æ™‚çš„ã«Max Yawä»˜è¿‘ã‚’
+        // é€šéã—ãŸã ã‘ã§æ„å›³ã›ãšReturning(ã‚»ãƒ³ã‚¿ãƒªãƒ³ã‚°)ã—ã¦ã—ã¾ã†ãŸã‚ã€
+        // å®Ÿéš›ã«Max Yawã‚’å¤§ããè¶…ãˆãŸã¨ãã ã‘ç™ºå‹•ã™ã‚‹ã‚ˆã†å°‘ã—åºƒãã—ã¦ã‚ã‚‹ã€‚
         private float orbitReturnToCenterExceedMarginDeg = 5.0f;
-        // Catch-up”»’è‚Ìu‘f’Ê‚èv‘ÎôB‹·‚¢epsilon‘‹‚ğ1ƒtƒŒ[ƒ€‚Å‚Ü‚½‚¢‚Å
-        // ‚µ‚Ü‚¤‚±‚Æ‚ª‚ ‚é‚½‚ßA‘OƒtƒŒ[ƒ€‚ÌoffsetFromNeutral‚ğ•Û‚µ‚Ä‚¨‚«A
-        // •„†‚ª”½“]‚µ‚½(=‚¿‚å‚¤‚Ç0‚ğ‚Ü‚½‚¢‚Å’Ê‰ß‚µ‚½)‚±‚Æ‚à‡‚í‚¹‚ÄŒŸ’m‚·‚éB
+        // Catch-upåˆ¤å®šã®ã€Œç´ é€šã‚Šã€å¯¾ç­–ã€‚ç‹­ã„epsilonçª“ã‚’1ãƒ•ãƒ¬ãƒ¼ãƒ ã§ã¾ãŸã„ã§
+        // ã—ã¾ã†ã“ã¨ãŒã‚ã‚‹ãŸã‚ã€å‰ãƒ•ãƒ¬ãƒ¼ãƒ ã®offsetFromNeutralã‚’ä¿æŒã—ã¦ãŠãã€
+        // ç¬¦å·ãŒåè»¢ã—ãŸ(=ã¡ã‚‡ã†ã©0ã‚’ã¾ãŸã„ã§é€šéã—ãŸ)ã“ã¨ã‚‚åˆã‚ã›ã¦æ¤œçŸ¥ã™ã‚‹ã€‚
         private float orbitKeepPrevOffsetDeg = 0.0f;
         private bool orbitKeepPrevOffsetValid = false;
-        //ver9‚±‚±‚Ü‚Å
+        //ver9ã“ã“ã¾ã§
         private bool orbitStabilize = true;
 
         private bool orbitLevelRoll = true;
@@ -890,7 +916,7 @@ namespace NewCamera
         private Quaternion orbitPrevRawRotation = Quaternion.Identity;
         private bool orbitPrevRawInit = false;
         private float orbitLastAngularSpeed = 0.0f;
-        private bool blockRightStickLookDuringL1 = false;//L1‰Ÿ‰º’†ƒJƒƒ‰ƒƒbƒN
+        private bool blockRightStickLookDuringL1 = false;//L1æŠ¼ä¸‹ä¸­ã‚«ãƒ¡ãƒ©ãƒ­ãƒƒã‚¯
 
         private bool enableOffsetPerspective = false;
         private bool offsetPerspective = false;
@@ -912,12 +938,12 @@ namespace NewCamera
         private int PadLx, PadLy;
         private int PadRx, PadRy;
 
-        // ’Ç‰Á: Enable Free Camera ‚ÌƒIƒ“/ƒIƒt‚Å Unlock Input ‚Æ FOV ‚ğ•œŒ³‚·‚é‚½‚ß‚Ì•Û‘¶—Ìˆæ
+        // è¿½åŠ : Enable Free Camera ã®ã‚ªãƒ³/ã‚ªãƒ•ã§ Unlock Input ã¨ FOV ã‚’å¾©å…ƒã™ã‚‹ãŸã‚ã®ä¿å­˜é ˜åŸŸ
         private bool savedUnlockInputOnDisable = false;
         private float savedEnableFreeCameraCameraFov = 90.0f;//DEFAULT_FOV
         private bool savedEnableFreeCameraHasSavedFov = false;
 
-        // USLASH¨DOGE_RƒoƒO‚ÌƒƒOæ‚è
+        // USLASHâ†’DOGE_Rãƒã‚°ã®ãƒ­ã‚°å–ã‚Š
         private delegate nint ActionRequestDelegate(nint player, int requestId);
         private Hook<ActionRequestDelegate>? actionRequestHook;
 
@@ -973,12 +999,12 @@ namespace NewCamera
         private bool slowMotionActive = false;
         private float slowMotionSpeed = 0.1f;
 
-        // --- ‚±‚±‚©‚ç’Ç‰Á ---ver7
+        // --- ã“ã“ã‹ã‚‰è¿½åŠ  ---ver7
         private long f9PressStartTime = 0;
         private bool f9IsFastSpeed = false;
         private bool f9HoldTriggered = false;
-        private const long F9_LONG_PRESS_MS = 400; // 0.4•bi400ƒ~ƒŠ•bj
-        // --- ‚±‚±‚Ü‚Å ---
+        private const long F9_LONG_PRESS_MS = 400; // 0.4ç§’ï¼ˆ400ãƒŸãƒªç§’ï¼‰
+        // --- ã“ã“ã¾ã§ ---
 
         private float plusRight = 0.0f;
         private float plusForward = 0.0f;
@@ -1392,14 +1418,14 @@ namespace NewCamera
         {
             Config config = ConfigManager.GetConfig<Config>(this);
 
-            // --- ’Ç‰Á‚±‚±‚©‚ç: ƒtƒ@ƒCƒ‹‚©‚ç’¼ÚJSON‚ğ“Ç‚İ‚ñ‚ÅƒLƒƒƒbƒVƒ…‚ğ‹­§ã‘‚«‚·‚é ---
+            // --- è¿½åŠ ã“ã“ã‹ã‚‰: ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ç›´æ¥JSONã‚’èª­ã¿è¾¼ã‚“ã§ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’å¼·åˆ¶ä¸Šæ›¸ãã™ã‚‹ ---
             try
             {
-                // DLL‚Æ“¯‚¶ƒfƒBƒŒƒNƒgƒŠ‚É‚ ‚é NewCamera.json ‚ğ’T‚·
+                // DLLã¨åŒã˜ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ã‚ã‚‹ NewCamera.json ã‚’æ¢ã™
                 string pluginDir = Path.GetDirectoryName(this.GetType().Assembly.Location) ?? "";
                 string jsonPath = Path.Combine(pluginDir, "NewCamera.json");
 
-                // ƒvƒ‰ƒOƒCƒ“ƒtƒHƒ‹ƒ_\¬‚Ìˆá‚¢‚É”õ‚¦‚½ƒtƒH[ƒ‹ƒoƒbƒNi”O‚Ì‚½‚ßj
+                // ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ãƒ•ã‚©ãƒ«ãƒ€æ§‹æˆã®é•ã„ã«å‚™ãˆãŸãƒ•ã‚©ãƒ¼ãƒ«ãƒãƒƒã‚¯ï¼ˆå¿µã®ãŸã‚ï¼‰
                 if (!File.Exists(jsonPath))
                 {
                     jsonPath = Path.Combine(AppContext.BaseDirectory, "nativePC", "plugins", "CSharp", "NewCamera", "NewCamera.json");
@@ -1409,7 +1435,7 @@ namespace NewCamera
                     jsonPath = Path.Combine(AppContext.BaseDirectory, "nativePC", "plugins", "CSharp", "NewCamera.json");
                 }
 
-                // ƒtƒ@ƒCƒ‹‚ª‘¶İ‚·‚ê‚Î‹­§“I‚É“Ç‚İ‚Ş
+                // ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã™ã‚Œã°å¼·åˆ¶çš„ã«èª­ã¿è¾¼ã‚€
                 if (File.Exists(jsonPath))
                 {
                     string jsonString = File.ReadAllText(jsonPath);
@@ -1418,7 +1444,7 @@ namespace NewCamera
 
                     if (fileConfig != null)
                     {
-                        // æ“¾‚µ‚½ÅV‚Ìƒtƒ@ƒCƒ‹“à—e‚ÅASPL‚ªˆ¬‚Á‚Ä‚¢‚éƒLƒƒƒbƒVƒ…(config)‚ğã‘‚«XV‚·‚é
+                        // å–å¾—ã—ãŸæœ€æ–°ã®ãƒ•ã‚¡ã‚¤ãƒ«å†…å®¹ã§ã€SPLãŒæ¡ã£ã¦ã„ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥(config)ã‚’ä¸Šæ›¸ãæ›´æ–°ã™ã‚‹
                         config.DisableMod = fileConfig.DisableMod;
                         config.TuningToolInterop = fileConfig.TuningToolInterop;
                         config.OverrideViewMode = fileConfig.OverrideViewMode;
@@ -1437,7 +1463,7 @@ namespace NewCamera
             {
                 debugLog($"Config reload failed: {ex.Message}");
             }
-            // --- ’Ç‰Á‚±‚±‚Ü‚Å ---
+            // --- è¿½åŠ ã“ã“ã¾ã§ ---
 
             disableMod = config.DisableMod;
 
@@ -1470,7 +1496,7 @@ namespace NewCamera
 
             enableOffsetPerspective = config.PerspectiveCameraEnabled;
 
-            // İ’è‚ğ“Ç‚İ‚ñ‚¾’¼Œã‚Éƒƒ‚ƒŠã‚ÌŒÃ‚¢İ’è‚Åã‘‚«•Û‘¶‚µ‚Ä‚¢‚éBíœ‚Ü‚½‚ÍƒRƒƒ“ƒgƒAƒEƒg
+            // è¨­å®šã‚’èª­ã¿è¾¼ã‚“ã ç›´å¾Œã«ãƒ¡ãƒ¢ãƒªä¸Šã®å¤ã„è¨­å®šã§ä¸Šæ›¸ãä¿å­˜ã—ã¦ã„ã‚‹ã€‚å‰Šé™¤ã¾ãŸã¯ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆ
             //ConfigManager.SaveConfig<Config>(this);
 
             return config;
@@ -1583,7 +1609,7 @@ namespace NewCamera
             Assert(addr == 0x142107CB0); // int, float
             checkMovementHook = Hook.Create<CheckMovementDelegate>(addr, CheckMovementHook);
 
-            // DODGE_RƒoƒO‚ÌƒƒOæ‚è
+            // DODGE_Rãƒã‚°ã®ãƒ­ã‚°å–ã‚Š
             addr = PatternScanner.FindFirst(Pattern.FromString("48 8B C4 48 89 48 08 41 55 41 56 48 81 EC 18 01 00 00 48 83 B9 80 00 00 00 00"));
             Assert(addr == 0x142254AA0);
             actionRequestHook = Hook.Create<ActionRequestDelegate>(addr, ActionRequestHook);
@@ -1678,11 +1704,11 @@ namespace NewCamera
             return data;
         }
 
-        // ƒƒ\ƒbƒh–¼‚ğ Dispose ‚©‚ç OnUnload ‚É•ÏX‚µ‚Ü‚·
+        // ãƒ¡ã‚½ãƒƒãƒ‰åã‚’ Dispose ã‹ã‚‰ OnUnload ã«å¤‰æ›´ã—ã¾ã™
         public void OnUnload()
         {
-            // --- Hook‚Ì‰ğœ ---
-            // Hook<T> ‚ÍƒNƒ‰ƒX(QÆŒ^)‚È‚Ì‚Å ?.Dispose() ‚ÅOK‚Å‚·
+            // --- Hookã®è§£é™¤ ---
+            // Hook<T> ã¯ã‚¯ãƒ©ã‚¹(å‚ç…§å‹)ãªã®ã§ ?.Dispose() ã§OKã§ã™
             setZoneStateHook?.Dispose();
             setCameraHook?.Dispose();
             calculateCameraHook?.Dispose();
@@ -1699,9 +1725,9 @@ namespace NewCamera
             updateJointsHook?.Dispose();
             refreshEntityParamsHook?.Dispose();
 
-            // --- Patch‚Ì–³Œø‰» ---
-            // Patch ‚Í\‘¢‘Ì(struct)‚È‚Ì‚Å null ‚É‚È‚ç‚¸A?. ‚Íg‚¦‚Ü‚¹‚ñB
-            // ? ‚ğŠO‚µA‚»‚Ì‚Ü‚Ü .Disable() ‚ğŒÄ‚Ô‚¾‚¯‚ÅŒ³‚ÌƒoƒCƒg—ñ‚É•œŒ³‚³‚ê‚Ü‚·B
+            // --- Patchã®ç„¡åŠ¹åŒ– ---
+            // Patch ã¯æ§‹é€ ä½“(struct)ãªã®ã§ null ã«ãªã‚‰ãšã€?. ã¯ä½¿ãˆã¾ã›ã‚“ã€‚
+            // ? ã‚’å¤–ã—ã€ãã®ã¾ã¾ .Disable() ã‚’å‘¼ã¶ã ã‘ã§å…ƒã®ãƒã‚¤ãƒˆåˆ—ã«å¾©å…ƒã•ã‚Œã¾ã™ã€‚
             forceMinimapFollowsCamera.Disable();
             noopCharacterFade.Disable();
             jmpOverUi.Disable();
@@ -1730,7 +1756,7 @@ namespace NewCamera
             jmpOverChangeEquipmentWetnessUpdate_1.Disable();
             jmpOverChangeEquipmentWetnessUpdate_2.Disable();
 
-            // --- Šm•Û‚µ‚½ƒlƒCƒeƒBƒuƒƒ‚ƒŠ‚Ì‰ğ•ú ---
+            // --- ç¢ºä¿ã—ãŸãƒã‚¤ãƒ†ã‚£ãƒ–ãƒ¡ãƒ¢ãƒªã®è§£æ”¾ ---
             if (psuedoObject1 != 0)
             {
                 NativeMemory.Free((void*)psuedoObject1);
@@ -1962,9 +1988,9 @@ namespace NewCamera
                     debugNearClipApplied = true;
                 }
 
-                // --- NearClip ‚ğí‚É 1.0f ‚ÉŒÅ’è‚·‚é ---
-                // ‚±‚±‚ÅŠmÀ‚É 1.0f ‚É‚·‚éiƒQ[ƒ€‚Ì‚Ç‚±‚©‚ªã‘‚«‚µ‚Ä‚à
-                // ƒtƒŒ[ƒ€“à‚Ì‘‚¢’iŠK‚Å‹­§‚·‚éj
+                // --- NearClip ã‚’å¸¸ã« 1.0f ã«å›ºå®šã™ã‚‹ ---
+                // ã“ã“ã§ç¢ºå®Ÿã« 1.0f ã«ã™ã‚‹ï¼ˆã‚²ãƒ¼ãƒ ã®ã©ã“ã‹ãŒä¸Šæ›¸ãã—ã¦ã‚‚
+                // ãƒ•ãƒ¬ãƒ¼ãƒ å†…ã®æ—©ã„æ®µéšã§å¼·åˆ¶ã™ã‚‹ï¼‰
                 vCamera.NearClip = 1.0f;
                 debugNearClipApplied = true;
                 // ----------------------------------------
@@ -2123,7 +2149,7 @@ namespace NewCamera
             stickyHideArmor[Armor.Face] = session.HideFace;
             stickyHideArmor[Armor.EyeLens] = session.HideEyeLens;
             //debugNearClip = session.DebugNearClip;
-            debugNearClip = 1.0f;// Saved ƒZƒbƒVƒ‡ƒ“’l‚ÉŠÖŒW‚È‚­ NearClip ‚ğí‚É 1.0f ‚ÉŒÅ’è‚·‚é
+            debugNearClip = 1.0f;// Saved ã‚»ãƒƒã‚·ãƒ§ãƒ³å€¤ã«é–¢ä¿‚ãªã NearClip ã‚’å¸¸ã« 1.0f ã«å›ºå®šã™ã‚‹
             orbitAltNearClipToggled = session.AltNearClipToggled;
             orbitAltNearClipApplied = false;
             debugNearClipApplied = false;
@@ -2152,7 +2178,7 @@ namespace NewCamera
             orbitReturnToCenterPitchMax = o.ReturnToCenterPitchMax;
             orbitReturnToCenterSpeed = o.ReturnToCenterSpeed;
             orbitRightStickAngleSnapSteps = o.RightStickAngleSnapSteps;
-            //ver8‚±‚±‚Ü‚Å
+            //ver8ã“ã“ã¾ã§
             orbitProfiles = new List<OrbitProfile>();
             if (o.Profiles != null)
             {
@@ -2174,8 +2200,8 @@ namespace NewCamera
                         }
                     }
                     //ver11
-                    // ‹Œƒo[ƒWƒ‡ƒ“‚Ì NewCamera.json ‚É‚Í GazeRanges ‚ª‘¶İ‚µ‚È‚¢
-                    // ‚Ì‚ÅAnull ‚Ì‚Æ‚«‚Í‹óƒŠƒXƒg‚Ì‚Ü‚Ü (= §ŒÀ‚È‚µ) ‚É‚µ‚Ä‚¨‚­B
+                    // æ—§ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã® NewCamera.json ã«ã¯ GazeRanges ãŒå­˜åœ¨ã—ãªã„
+                    // ã®ã§ã€null ã®ã¨ãã¯ç©ºãƒªã‚¹ãƒˆã®ã¾ã¾ (= åˆ¶é™ãªã—) ã«ã—ã¦ãŠãã€‚
                     List<OrbitGazeRange> gazeRanges = new List<OrbitGazeRange>();
                     if (savedProfile.GazeRanges != null)
                     {
@@ -2189,8 +2215,8 @@ namespace NewCamera
                             });
                         }
                     }
-                    // Use Gaze Keyframes ‚Ì XYZ ”ÅB‹Œƒo[ƒWƒ‡ƒ“‚Ì NewCamera.json
-                    // ‚É‚Í‘¶İ‚µ‚È‚¢‚Ì‚ÅAnull ‚Ì‚Æ‚«‚Í‹óƒŠƒXƒg‚Ì‚Ü‚Ü‚É‚µ‚Ä‚¨‚­B
+                    // Use Gaze Keyframes ã® XYZ ç‰ˆã€‚æ—§ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã® NewCamera.json
+                    // ã«ã¯å­˜åœ¨ã—ãªã„ã®ã§ã€null ã®ã¨ãã¯ç©ºãƒªã‚¹ãƒˆã®ã¾ã¾ã«ã—ã¦ãŠãã€‚
                     List<OrbitGazePositionKeyframe> gazePositionKeyframes = new List<OrbitGazePositionKeyframe>();
                     if (savedProfile.GazePositionKeyframes != null)
                     {
@@ -2213,16 +2239,16 @@ namespace NewCamera
                         //ver14
                         WeaponGroup = savedProfile.WeaponGroup ?? "",
                         WeaponGroupInput = savedProfile.WeaponGroup ?? "",
-                        //ver14‚±‚±‚Ü‚Å
+                        //ver14ã“ã“ã¾ã§
                         GazeUseRanges = savedProfile.GazeUseRanges,
                         GazeRanges = gazeRanges,
-                        // ‹Œƒo[ƒWƒ‡ƒ“‚Ì NewCamera.json ‚É‚Í‘¶İ‚µ‚È‚¢ƒtƒB[ƒ‹ƒh‚È‚Ì‚ÅA
-                        // 0 (–¢İ’è) ‚¾‚Á‚½ê‡‚ÍŠù’è‚Ì 1.0 •b‚ÉƒtƒH[ƒ‹ƒoƒbƒN‚·‚éB
+                        // æ—§ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã® NewCamera.json ã«ã¯å­˜åœ¨ã—ãªã„ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ãªã®ã§ã€
+                        // 0 (æœªè¨­å®š) ã ã£ãŸå ´åˆã¯æ—¢å®šã® 1.0 ç§’ã«ãƒ•ã‚©ãƒ¼ãƒ«ãƒãƒƒã‚¯ã™ã‚‹ã€‚
                         GazeUseSubStateTimer = savedProfile.GazeUseSubStateTimer,
                         GazeSubStateDuration = savedProfile.GazeSubStateDuration > 0.0f ? savedProfile.GazeSubStateDuration : 1.0f,
                         UseGazePositionKeyframes = savedProfile.UseGazePositionKeyframes,
                         GazePositionKeyframes = gazePositionKeyframes,
-                        //ver11‚±‚±‚Ü‚Å
+                        //ver11ã“ã“ã¾ã§
 
                         YawRange = savedProfile.YawRange,
                         YawBlend = savedProfile.YawBlend,
@@ -2250,9 +2276,15 @@ namespace NewCamera
                         PositionJointOverrideEnable = savedProfile.PositionJointOverrideEnable,
                         PositionJointOverrideUseFace = savedProfile.PositionJointOverrideUseFace,
                         PositionJointOverrideJoint = savedProfile.PositionJointOverrideJoint,
-                        //ver12‚±‚±‚Ü‚Å
+                        //ver12ã“ã“ã¾ã§
                         HideSlingerWhileActive = savedProfile.HideSlingerWhileActive,//ver13
                         DisableFreeCameraWhileActive = savedProfile.DisableFreeCameraWhileActive,//ver15
+                        HoldSpot = savedProfile.HoldSpot,//ver16
+                        SpotAnchorBody = savedProfile.SpotAnchorBody,//ver16.2
+
+                        //ver16.3 å¤ã„ NewCamera.json ã«ã¯ç„¡ã„é …ç›®ãªã®ã§ã€0 ä»¥ä¸‹ãªã‚‰æ—¢å®šã® 15 åº¦ã«ã™ã‚‹ã€‚
+                        HoldSpotThresholdDeg = savedProfile.HoldSpotThresholdDeg > 0.0f ? savedProfile.HoldSpotThresholdDeg : 15.0f,
+
                     });
                 }
             }
@@ -2322,7 +2354,7 @@ namespace NewCamera
                 ReturnToCenterPitchMax = orbitReturnToCenterPitchMax,
                 ReturnToCenterSpeed = orbitReturnToCenterSpeed,
                 RightStickAngleSnapSteps = orbitRightStickAngleSnapSteps,
-                //ver8‚±‚±‚Ü‚Å
+                //ver8ã“ã“ã¾ã§
 
                 //ver10.1
                 Profiles = orbitProfiles.ConvertAll(p => new Config.OrbitProfile
@@ -2350,7 +2382,7 @@ namespace NewCamera
                         Forward = k.Forward,
                     }),
                     YawRange = p.YawRange,
-                    //ver11‚±‚±‚Ü‚Å
+                    //ver11ã“ã“ã¾ã§
 
                     YawBlend = p.YawBlend,
                     PitchRange = p.PitchRange,
@@ -2383,9 +2415,12 @@ namespace NewCamera
                     PositionJointOverrideEnable = p.PositionJointOverrideEnable,
                     PositionJointOverrideUseFace = p.PositionJointOverrideUseFace,
                     PositionJointOverrideJoint = p.PositionJointOverrideJoint,
-                    //ver12‚±‚±‚Ü‚Å
+                    //ver12ã“ã“ã¾ã§
                     HideSlingerWhileActive = p.HideSlingerWhileActive,//ver13
                     DisableFreeCameraWhileActive = p.DisableFreeCameraWhileActive,//ver15
+                    HoldSpot = p.HoldSpot,//ver16
+                    SpotAnchorBody = p.SpotAnchorBody,//ver16.2
+                    HoldSpotThresholdDeg = p.HoldSpotThresholdDeg,//ver16.3
                 }),
                 FaceClampEnable = orbitFaceClampEnable,
                 BaseRotationJoint = orbitBaseRotationJoint,
@@ -2441,19 +2476,19 @@ namespace NewCamera
         }
 
         //10.1
-        // ActionController + 0x760 (4 bytes) ‚ÌŒ»İ’lB
-        // ƒ‚[ƒVƒ‡ƒ“–¼ (ActionName) ‚à motionKey ‚à•Ï‚í‚ç‚È‚¢‚Ü‚ÜAã”¼g‘¤‚Ì
-        // ×‚©‚¢ó‘Ô (‰ñ•œ–ò‚ğˆù‚Ş=8 / ‚µ‚Ü‚¤=9A‹|‚Ìƒrƒ“‘•“U=14 / ‰ğœ=15 ‚È‚Ç)
-        // ‚¾‚¯‚ª•Ï‰»‚·‚éƒP[ƒX‚ğAƒL[ƒ[ƒh‘¤‚Å "#8" ‚Ì‚æ‚¤‚Éw’è‚µ‚Ä
-        // ‹æ•Ê‚Å‚«‚é‚æ‚¤‚É‚·‚é‚½‚ß‚Ì‚à‚ÌB
-        // –ˆƒtƒŒ[ƒ€Aƒvƒƒtƒ@ƒCƒ‹”»’è‚Ì’¼‘O‚ÉXV‚³‚ê‚é (‰º‚Ì
-        // orbitFaceClampEnable ƒuƒƒbƒNQÆ)B“Ç‚ß‚È‚©‚Á‚½ê‡‚Í -1B
+        // ActionController + 0x760 (4 bytes) ã®ç¾åœ¨å€¤ã€‚
+        // ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³å (ActionName) ã‚‚ motionKey ã‚‚å¤‰ã‚ã‚‰ãªã„ã¾ã¾ã€ä¸ŠåŠèº«å´ã®
+        // ç´°ã‹ã„çŠ¶æ…‹ (å›å¾©è–¬ã‚’é£²ã‚€=8 / ã—ã¾ã†=9ã€å¼“ã®ãƒ“ãƒ³è£…å¡«=14 / è§£é™¤=15 ãªã©)
+        // ã ã‘ãŒå¤‰åŒ–ã™ã‚‹ã‚±ãƒ¼ã‚¹ã‚’ã€ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰å´ã§ "#8" ã®ã‚ˆã†ã«æŒ‡å®šã—ã¦
+        // åŒºåˆ¥ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹ãŸã‚ã®ã‚‚ã®ã€‚
+        // æ¯ãƒ•ãƒ¬ãƒ¼ãƒ ã€ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«åˆ¤å®šã®ç›´å‰ã«æ›´æ–°ã•ã‚Œã‚‹ (ä¸‹ã®
+        // orbitFaceClampEnable ãƒ–ãƒ­ãƒƒã‚¯å‚ç…§)ã€‚èª­ã‚ãªã‹ã£ãŸå ´åˆã¯ -1ã€‚
         private static int orbitActionSubState = -1;
 
-        // orbitActionSubState ‚ª’¼‘OƒtƒŒ[ƒ€‚©‚ç•Ï‰»‚µ‚Ä‚©‚ç‚ÌŒo‰ß•b”B
-        // ’l‚ª•Ï‰»‚µ‚½uŠÔ‚É 0 ‚ÉƒŠƒZƒbƒg‚³‚êAˆÈŒã‚Í deltaTime ‚ğ‰ÁZ‚µ‘±‚¯‚éB
-        // GazeUseSubStateTimer ‚ª ON ‚Ìƒvƒƒtƒ@ƒCƒ‹‚ÅAGaze Keyframes /
-        // GazeRanges ‚Ì T ‚Ì‘ã‚í‚è‚Ég‚í‚ê‚é (getSubStateProgress() QÆ)B
+        // orbitActionSubState ãŒç›´å‰ãƒ•ãƒ¬ãƒ¼ãƒ ã‹ã‚‰å¤‰åŒ–ã—ã¦ã‹ã‚‰ã®çµŒéç§’æ•°ã€‚
+        // å€¤ãŒå¤‰åŒ–ã—ãŸç¬é–“ã« 0 ã«ãƒªã‚»ãƒƒãƒˆã•ã‚Œã€ä»¥å¾Œã¯ deltaTime ã‚’åŠ ç®—ã—ç¶šã‘ã‚‹ã€‚
+        // GazeUseSubStateTimer ãŒ ON ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã§ã€Gaze Keyframes /
+        // GazeRanges ã® T ã®ä»£ã‚ã‚Šã«ä½¿ã‚ã‚Œã‚‹ (getSubStateProgress() å‚ç…§)ã€‚
         private static float orbitSubStateElapsedSec = 0.0f;
 
         private static int getCurrentActionSubState(Player player)
@@ -2465,7 +2500,7 @@ namespace NewCamera
             }
             return MemoryUtil.Read<int>(actionControllerInstance + 0x760);
         }
-        //ver10.1‚±‚±‚Ü‚Å
+        //ver10.1ã“ã“ã¾ã§
 
         // Exact match only (not substring) against either the full action
         // name or just the part after the last "::" - so a short keyword
@@ -2484,7 +2519,7 @@ namespace NewCamera
             string? suffix = string.IsNullOrEmpty(actionName) ? null : actionNameSuffix(actionName);
             foreach (string rawKeyword in keywords)
             {
-                /* ˆÙ‚È‚é•¶š—ñ‚Å‚à”š‚ª“¯‚¶ê‡‚ª‚ ‚é
+                /* ç•°ãªã‚‹æ–‡å­—åˆ—ã§ã‚‚æ•°å­—ãŒåŒã˜å ´åˆãŒã‚ã‚‹
                 if (keyword.Length == 0)
                 {
                     continue;
@@ -2502,21 +2537,21 @@ namespace NewCamera
                     continue;
                 }
 
-                // ’Ç‰ÁƒtƒH[ƒ}ƒbƒg: ––”ö‚Ì "#<”’l>" = ActionController + 0x760 ‚Ì’lB
-                //   "#8"                     c ƒTƒuƒXƒe[ƒg‚ª 8 ‚Ì‚Æ‚«‚¾‚¯ˆê’v (ƒ‚[ƒVƒ‡ƒ“–¼‚Í•s–â)
-                //   "Common::IDLE#8"         c ƒAƒNƒVƒ‡ƒ“–¼‚ªˆê’v‚µA‚©‚ÂƒTƒuƒXƒe[ƒg‚ª 8
-                //   "IDLE#8"                 c suffix ˆê’v + ƒTƒuƒXƒe[ƒg 8
-                //   "WP_11::IDLE@12.156#14"  c ƒAƒNƒVƒ‡ƒ“–¼ + motionKey + ƒTƒuƒXƒe[ƒg
-                // ‚±‚ê‚É‚æ‚èAƒ‚[ƒVƒ‡ƒ“–¼‚à motionKey ‚à“¯‚¶‚Ü‚Ü’l‚¾‚¯•Ï‚í‚é
-                // u‰ñ•œ–ò‚ğˆù‚Ş(8)vuæ‚èo‚µ‚Ä‚µ‚Ü‚¤(9)vuƒrƒ“‘•“U(14)v
-                // uƒrƒ“‰ğœ(15)v‚È‚Ç‚ğƒvƒƒtƒ@ƒCƒ‹‘¤‚ÅŠ®‘S‚É•ª—£‚Å‚«‚éB
+                // è¿½åŠ ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ: æœ«å°¾ã® "#<æ•°å€¤>" = ActionController + 0x760 ã®å€¤ã€‚
+                //   "#8"                     â€¦ ã‚µãƒ–ã‚¹ãƒ†ãƒ¼ãƒˆãŒ 8 ã®ã¨ãã ã‘ä¸€è‡´ (ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³åã¯ä¸å•)
+                //   "Common::IDLE#8"         â€¦ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³åãŒä¸€è‡´ã—ã€ã‹ã¤ã‚µãƒ–ã‚¹ãƒ†ãƒ¼ãƒˆãŒ 8
+                //   "IDLE#8"                 â€¦ suffix ä¸€è‡´ + ã‚µãƒ–ã‚¹ãƒ†ãƒ¼ãƒˆ 8
+                //   "WP_11::IDLE@12.156#14"  â€¦ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å + motionKey + ã‚µãƒ–ã‚¹ãƒ†ãƒ¼ãƒˆ
+                // ã“ã‚Œã«ã‚ˆã‚Šã€ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³åã‚‚ motionKey ã‚‚åŒã˜ã¾ã¾å€¤ã ã‘å¤‰ã‚ã‚‹
+                // ã€Œå›å¾©è–¬ã‚’é£²ã‚€(8)ã€ã€Œå–ã‚Šå‡ºã—ã¦ã—ã¾ã†(9)ã€ã€Œãƒ“ãƒ³è£…å¡«(14)ã€
+                // ã€Œãƒ“ãƒ³è§£é™¤(15)ã€ãªã©ã‚’ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«å´ã§å®Œå…¨ã«åˆ†é›¢ã§ãã‚‹ã€‚
                 int hashIndex = keyword.LastIndexOf('#');
                 if (hashIndex >= 0)
                 {
                     string subStateText = keyword[(hashIndex + 1)..].Trim();
                     if (!int.TryParse(subStateText, out int requiredSubState))
                     {
-                        // "#" ‚ÌŒã‚ë‚ª”’l‚Å‚È‚¢ƒL[ƒ[ƒh‚Í–³Œø‚Æ‚µ‚Ä–³‹‚·‚é
+                        // "#" ã®å¾Œã‚ãŒæ•°å€¤ã§ãªã„ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã¯ç„¡åŠ¹ã¨ã—ã¦ç„¡è¦–ã™ã‚‹
                         continue;
                     }
                     if (requiredSubState != orbitActionSubState)
@@ -2526,13 +2561,13 @@ namespace NewCamera
                     keyword = keyword[..hashIndex].Trim();
                     if (keyword.Length == 0)
                     {
-                        // "#8" ‚Ì‚æ‚¤‚É”’l‚¾‚¯w’è‚³‚ê‚½ê‡‚Í‚±‚±‚Åˆê’vŠm’è
+                        // "#8" ã®ã‚ˆã†ã«æ•°å€¤ã ã‘æŒ‡å®šã•ã‚ŒãŸå ´åˆã¯ã“ã“ã§ä¸€è‡´ç¢ºå®š
                         return true;
                     }
                 }
 
-                // ƒtƒH[ƒ}ƒbƒg: "ActionName@Lmt.Id" ‚Ü‚½‚Í "Suffix@Lmt.Id"
-                // —á: "WP_00::VSLASH@12.156" ‚Ü‚½‚Í "VSLASH@12.156"
+                // ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ: "ActionName@Lmt.Id" ã¾ãŸã¯ "Suffix@Lmt.Id"
+                // ä¾‹: "WP_00::VSLASH@12.156" ã¾ãŸã¯ "VSLASH@12.156"
                 if (keyword.Contains('@'))
                 {
                     string[] parts = keyword.Split(new char[] { '@' }, 2);
@@ -2551,13 +2586,13 @@ namespace NewCamera
                     continue;
                 }
 
-                // Šù‘¶‚Ìƒ}ƒbƒ`: motionKey ‚ÆŠ®‘Sˆê’v
+                // æ—¢å­˜ã®ãƒãƒƒãƒ: motionKey ã¨å®Œå…¨ä¸€è‡´
                 if (string.Equals(keyword, motionKey, StringComparison.OrdinalIgnoreCase))
                 {
                     return true;
                 }
 
-                // Šù‘¶‚Ìƒ}ƒbƒ`: actionName ‚Ü‚½‚Í‚»‚Ì suffix ‚Æˆê’v
+                // æ—¢å­˜ã®ãƒãƒƒãƒ: actionName ã¾ãŸã¯ãã® suffix ã¨ä¸€è‡´
                 if (actionName != null &&
                     (string.Equals(keyword, actionName, StringComparison.OrdinalIgnoreCase) ||
                      string.Equals(keyword, suffix, StringComparison.OrdinalIgnoreCase)))
@@ -2567,7 +2602,7 @@ namespace NewCamera
             }
             return false;
         }
-        //ver10‚±‚±‚Ü‚Å
+        //ver10ã“ã“ã¾ã§
 
         // Lerps between two angles (degrees) taking the shortest path, so e.g.
         // lerping from 179 to -179 moves through +-180 (a 2-degree step)
@@ -2578,9 +2613,9 @@ namespace NewCamera
             delta -= 360.0f * MathF.Floor((delta + 180.0f) / 360.0f);
             return a + delta * t;
         }
-        // (b - a)‚Ì•„†•t‚«Å’ZŠp“x·(“x)A[-180, 180]‚Éƒ‰ƒbƒvBver9‚Ì
-        // Keep/Catch-upƒXƒe[ƒgƒ}ƒVƒ“‚ÅAƒLƒƒƒ‰ƒNƒ^[‚ª1ƒtƒŒ[ƒ€‚Å‚Ç‚ê‚¾‚¯
-        // ‰ñ“]‚µ‚½‚©A‚¨‚æ‚Ñ•Û’†‚ÌƒIƒtƒZƒbƒg‚ª‚Ç‚ê‚¾‚¯c‚Á‚Ä‚¢‚é‚©‚ğ‘ª‚é‚Ì‚Ég‚¤B
+        // (b - a)ã®ç¬¦å·ä»˜ãæœ€çŸ­è§’åº¦å·®(åº¦)ã€[-180, 180]ã«ãƒ©ãƒƒãƒ—ã€‚ver9ã®
+        // Keep/Catch-upã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³ã§ã€ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒ1ãƒ•ãƒ¬ãƒ¼ãƒ ã§ã©ã‚Œã ã‘
+        // å›è»¢ã—ãŸã‹ã€ãŠã‚ˆã³ä¿æŒä¸­ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆãŒã©ã‚Œã ã‘æ®‹ã£ã¦ã„ã‚‹ã‹ã‚’æ¸¬ã‚‹ã®ã«ä½¿ã†ã€‚
         private static float deltaAngleDeg(float a, float b)
         {
             float delta = b - a;
@@ -2588,19 +2623,19 @@ namespace NewCamera
             return delta;
         }
 
-        // orbitClampSmoothing / orbitClampBaseSmoothing ‚Íu1ƒtƒŒ[ƒ€‚É‚Â‚«
-        // ‚±‚ÌŠ„‡‚¾‚¯Šñ‚¹‚év‚Æ‚¢‚¤‘O’ñ‚ÅQuaternion.Slerp/lerpAngleDeg‚É
-        // ’¼Ú“n‚³‚ê‚Ä‚¨‚èAdeltaTime‚ªˆêØl—¶‚³‚ê‚Ä‚¢‚È‚©‚Á‚½B‚»‚Ì‚½‚ß
-        // 120FPS‚Å‚Í30FPS‚Ì4”{‚Ì•p“x‚Å‚±‚Ì•âŠÔ‚ª‘–‚èAÀŠÔ‚Å‚Í–Ú•W‚É
-        // ’Ç‚¢‚Â‚­‚Ì‚ª‘å•‚É‘¬‚­‚È‚éB‚±‚ê‚ªWritePadInputHook‚Ì
-        // Decouple Movement From Look•â³‚ÌQÆæ(orbitCachedStableForwardYawDeg)
-        // ‚ğŒo—R‚µ‚ÄAuƒtƒŒ[ƒ€ƒŒ[ƒg‚ª‚‚¢‚Ù‚Ç­‚È‚¢ƒXƒeƒBƒbƒNŒX‚«‚Å
-        // Å‘åù‰ñ‚É’B‚·‚év‚Æ‚¢‚¤‘ÌŠ´·‚Æ‚µ‚ÄŒ»‚ê‚Ä‚¢‚½B
-        // deltaTimeSeconds == 1 / orbitClampReferenceFps ‚Ì‚Æ‚«‚Í alpha ‚ğ
-        // ‚»‚Ì‚Ü‚Ü•Ô‚·‚Ì‚ÅAŒ»İ‚Ì0.3/0.5‚ª‚µ‚Á‚­‚è—ˆ‚Ä‚¢‚éƒtƒŒ[ƒ€ƒŒ[ƒg‚Ì
-        // ‹““®‚Í‚»‚Ì‚Ü‚ÜˆÛ‚³‚êA‚»‚êˆÈŠO‚ÌƒtƒŒ[ƒ€ƒŒ[ƒg‚ª‚»‚±‚É‡‚í‚¹‚Ä
-        // ƒXƒP[ƒ‹‚³‚ê‚éB
-        private float orbitClampReferenceFps = 0.4f;// ¶ƒXƒeƒBƒbƒN‚Ìù‰ñŠ´“x
+        // orbitClampSmoothing / orbitClampBaseSmoothing ã¯ã€Œ1ãƒ•ãƒ¬ãƒ¼ãƒ ã«ã¤ã
+        // ã“ã®å‰²åˆã ã‘å¯„ã›ã‚‹ã€ã¨ã„ã†å‰æã§Quaternion.Slerp/lerpAngleDegã«
+        // ç›´æ¥æ¸¡ã•ã‚Œã¦ãŠã‚Šã€deltaTimeãŒä¸€åˆ‡è€ƒæ…®ã•ã‚Œã¦ã„ãªã‹ã£ãŸã€‚ãã®ãŸã‚
+        // 120FPSã§ã¯30FPSã®4å€ã®é »åº¦ã§ã“ã®è£œé–“ãŒèµ°ã‚Šã€å®Ÿæ™‚é–“ã§ã¯ç›®æ¨™ã«
+        // è¿½ã„ã¤ãã®ãŒå¤§å¹…ã«é€Ÿããªã‚‹ã€‚ã“ã‚ŒãŒWritePadInputHookã®
+        // Decouple Movement From Lookè£œæ­£ã®å‚ç…§å…ˆ(orbitCachedStableForwardYawDeg)
+        // ã‚’çµŒç”±ã—ã¦ã€ã€Œãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆãŒé«˜ã„ã»ã©å°‘ãªã„ã‚¹ãƒ†ã‚£ãƒƒã‚¯å‚¾ãã§
+        // æœ€å¤§æ—‹å›ã«é”ã™ã‚‹ã€ã¨ã„ã†ä½“æ„Ÿå·®ã¨ã—ã¦ç¾ã‚Œã¦ã„ãŸã€‚
+        // deltaTimeSeconds == 1 / orbitClampReferenceFps ã®ã¨ãã¯ alpha ã‚’
+        // ãã®ã¾ã¾è¿”ã™ã®ã§ã€ç¾åœ¨ã®0.3/0.5ãŒã—ã£ãã‚Šæ¥ã¦ã„ã‚‹ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆã®
+        // æŒ™å‹•ã¯ãã®ã¾ã¾ç¶­æŒã•ã‚Œã€ãã‚Œä»¥å¤–ã®ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆãŒãã“ã«åˆã‚ã›ã¦
+        // ã‚¹ã‚±ãƒ¼ãƒ«ã•ã‚Œã‚‹ã€‚
+        private float orbitClampReferenceFps = 0.4f;// å·¦ã‚¹ãƒ†ã‚£ãƒƒã‚¯ã®æ—‹å›æ„Ÿåº¦
         private float frameRateIndependentAlpha(float alpha, float deltaTimeSeconds)
         {
             alpha = Math.Clamp(alpha, 0.0f, 1.0f);
@@ -2664,27 +2699,27 @@ namespace NewCamera
             return -1;
         }
 
-        // ver15: Œ»İƒ}ƒbƒ`‚µ‚Ä‚¢‚éƒvƒƒtƒ@ƒCƒ‹‚Ì DisableFreeCameraWhileActive
-        // ‚É‰‚¶‚Ä Enable Free Camera ‚ğ‹­§ƒIƒt/•œŒ³‚·‚éB
-        // updateFreeCamera() “à‚Ì’Êí‚Ìƒvƒƒtƒ@ƒCƒ‹”»’è (orbitLastProfileIndex
-        // ‚Ü‚í‚è) ‚Í Free Camera ‚ª—LŒø‚ÈŠÔ‚µ‚©ŒÄ‚Î‚ê‚È‚¢
-        // (OnUpdate() “à‚Ì "if (freeCamera) { updateFreeCamera(...); }" QÆ)
-        // ‚½‚ßA‚»‚¿‚ç‚É’u‚­‚Æu‹­§ƒIƒt‚É‚µ‚½uŠÔAˆÈŒãƒ‚[ƒVƒ‡ƒ“‚Ì•Ï‰»‚ğ
-        // ˆêØE‚¦‚È‚­‚È‚èA“ñ“x‚ÆŒ³‚É–ß‚ç‚È‚¢v‚Æ‚¢‚¤•s‹ï‡‚É‚È‚éB
-        // ‚»‚Ì‚½‚ßA‚±‚Ì”»’è‚¾‚¯‚Í OnUpdate() ‚©‚ç Free Camera ‚Ì—LŒø/–³Œø‚É
-        // ŠÖ‚í‚ç‚¸–ˆƒtƒŒ[ƒ€ŒÄ‚Ño‚·B
+        // ver15: ç¾åœ¨ãƒãƒƒãƒã—ã¦ã„ã‚‹ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã® DisableFreeCameraWhileActive
+        // ã«å¿œã˜ã¦ Enable Free Camera ã‚’å¼·åˆ¶ã‚ªãƒ•/å¾©å…ƒã™ã‚‹ã€‚
+        // updateFreeCamera() å†…ã®é€šå¸¸ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«åˆ¤å®š (orbitLastProfileIndex
+        // ã¾ã‚ã‚Š) ã¯ Free Camera ãŒæœ‰åŠ¹ãªé–“ã—ã‹å‘¼ã°ã‚Œãªã„
+        // (OnUpdate() å†…ã® "if (freeCamera) { updateFreeCamera(...); }" å‚ç…§)
+        // ãŸã‚ã€ãã¡ã‚‰ã«ç½®ãã¨ã€Œå¼·åˆ¶ã‚ªãƒ•ã«ã—ãŸç¬é–“ã€ä»¥å¾Œãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã®å¤‰åŒ–ã‚’
+        // ä¸€åˆ‡æ‹¾ãˆãªããªã‚Šã€äºŒåº¦ã¨å…ƒã«æˆ»ã‚‰ãªã„ã€ã¨ã„ã†ä¸å…·åˆã«ãªã‚‹ã€‚
+        // ãã®ãŸã‚ã€ã“ã®åˆ¤å®šã ã‘ã¯ OnUpdate() ã‹ã‚‰ Free Camera ã®æœ‰åŠ¹/ç„¡åŠ¹ã«
+        // é–¢ã‚ã‚‰ãšæ¯ãƒ•ãƒ¬ãƒ¼ãƒ å‘¼ã³å‡ºã™ã€‚
         private void updateForcedFreeCameraDisableByProfile(Player? player)
         {
             bool wantsFreeCameraForcedOff = false;
             if (orbitFaceClampEnable && player != null)
             {
-                // "#<”’l>" ƒL[ƒ[ƒh(—á: "#8")‚Íƒ‚[ƒVƒ‡ƒ“–¼‚ğˆêØŒ©‚¸A
-                // orbitActionSubState ‚Ì’l‚¾‚¯‚Å‘¦ƒ}ƒbƒ`‚·‚éd—lB‚±‚Ì’l‚Í
-                // –{—ˆ updateFreeCamera() “à‚Å‚Ì‚İ–ˆƒtƒŒ[ƒ€XV‚³‚ê‚é‚ªA
-                // ‚»‚ê‚Í Free Camera ‚ª—LŒø‚ÈŠÔ‚µ‚©ŒÄ‚Î‚ê‚È‚¢‚½‚ßA–³Œø‰»’†‚Í
-                // XV‚³‚ê‚È‚¢‚Ü‚ÜŒÃ‚¢’l‚ÉŒÅ’è‚³‚ê‚Ä‚µ‚Ü‚¤B•ú’u‚·‚é‚ÆA
-                // –³Œø‰»’†‚É–³ŠÖŒW‚È "#8"(ˆù—¿) “™‚Ìƒvƒƒtƒ@ƒCƒ‹‚ÖŒë‚Á‚Äƒ}ƒbƒ`
-                // ‚µ‘±‚¯‚é‰Â”\«‚ª‚ ‚é‚½‚ßA‚±‚±‚Å‚à–ˆƒtƒŒ[ƒ€ÅV’l‚ÉXV‚·‚éB
+                // "#<æ•°å€¤>" ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰(ä¾‹: "#8")ã¯ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³åã‚’ä¸€åˆ‡è¦‹ãšã€
+                // orbitActionSubState ã®å€¤ã ã‘ã§å³ãƒãƒƒãƒã™ã‚‹ä»•æ§˜ã€‚ã“ã®å€¤ã¯
+                // æœ¬æ¥ updateFreeCamera() å†…ã§ã®ã¿æ¯ãƒ•ãƒ¬ãƒ¼ãƒ æ›´æ–°ã•ã‚Œã‚‹ãŒã€
+                // ãã‚Œã¯ Free Camera ãŒæœ‰åŠ¹ãªé–“ã—ã‹å‘¼ã°ã‚Œãªã„ãŸã‚ã€ç„¡åŠ¹åŒ–ä¸­ã¯
+                // æ›´æ–°ã•ã‚Œãªã„ã¾ã¾å¤ã„å€¤ã«å›ºå®šã•ã‚Œã¦ã—ã¾ã†ã€‚æ”¾ç½®ã™ã‚‹ã¨ã€
+                // ç„¡åŠ¹åŒ–ä¸­ã«ç„¡é–¢ä¿‚ãª "#8"(é£²æ–™) ç­‰ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã¸èª¤ã£ã¦ãƒãƒƒãƒ
+                // ã—ç¶šã‘ã‚‹å¯èƒ½æ€§ãŒã‚ã‚‹ãŸã‚ã€ã“ã“ã§ã‚‚æ¯ãƒ•ãƒ¬ãƒ¼ãƒ æœ€æ–°å€¤ã«æ›´æ–°ã™ã‚‹ã€‚
                 orbitActionSubState = getCurrentActionSubState(player);
 
                 string? currentActionName = getCurrentActionName(player);
@@ -2697,17 +2732,17 @@ namespace NewCamera
 
             if (wantsFreeCameraForcedOff && !orbitFreeCameraForcedOffByProfile)
             {
-                // ‹­§ƒIƒt‚ğŠJn‚·‚éuŠÔ: Œ»İ‚ÌEnable Free Camera’l‚ğ
-                // uƒ†[ƒU[–{—ˆ‚ÌŠó–]’lv‚Æ‚µ‚Ä‘Ş”ğ‚µ‚Ä‚©‚çƒIƒt‚É‚·‚éB
+                // å¼·åˆ¶ã‚ªãƒ•ã‚’é–‹å§‹ã™ã‚‹ç¬é–“: ç¾åœ¨ã®Enable Free Cameraå€¤ã‚’
+                // ã€Œãƒ¦ãƒ¼ã‚¶ãƒ¼æœ¬æ¥ã®å¸Œæœ›å€¤ã€ã¨ã—ã¦é€€é¿ã—ã¦ã‹ã‚‰ã‚ªãƒ•ã«ã™ã‚‹ã€‚
                 orbitFreeCameraUserWanted = enableFreeCamera;
                 orbitFreeCameraForcedOffByProfile = true;
 
                 if (enableFreeCamera)
                 {
-                    // enableFreeCamera ‚ğ false ‚É‚·‚é‚Æ disableFreeCamera() ‚ª
-                    // ŒÄ‚Î‚êAUnlock InputEFOV ‚Ü‚ÅƒŠƒZƒbƒg‚³‚ê‚é(F7‚Ì— ‘¤‚Æ
-                    // “¯‚¶ˆ—)BF7‚Ìè“®ƒgƒOƒ‹‚Æ“¯—l‚ÉAƒIƒt‚É‚·‚é’¼‘O‚Ì
-                    // Unlock Input / FOV ‚ğ‚±‚±‚Å‘Ş”ğ‚µ‚Ä‚¨‚­B
+                    // enableFreeCamera ã‚’ false ã«ã™ã‚‹ã¨ disableFreeCamera() ãŒ
+                    // å‘¼ã°ã‚Œã€Unlock Inputãƒ»FOV ã¾ã§ãƒªã‚»ãƒƒãƒˆã•ã‚Œã‚‹(F7ã®è£å´ã¨
+                    // åŒã˜å‡¦ç†)ã€‚F7ã®æ‰‹å‹•ãƒˆã‚°ãƒ«ã¨åŒæ§˜ã«ã€ã‚ªãƒ•ã«ã™ã‚‹ç›´å‰ã®
+                    // Unlock Input / FOV ã‚’ã“ã“ã§é€€é¿ã—ã¦ãŠãã€‚
                     orbitFreeCameraSavedUnlockInput = unlockInputToggled;
                     orbitFreeCameraSavedFov = 90.0f;//cameraFov
                     orbitFreeCameraHasSavedFov = true;
@@ -2717,17 +2752,17 @@ namespace NewCamera
             }
             else if (!wantsFreeCameraForcedOff && orbitFreeCameraForcedOffByProfile)
             {
-                // ‹­§ƒIƒt‚ªI‚í‚Á‚½uŠÔ: ‘Ş”ğ‚µ‚Ä‚¨‚¢‚½ƒ†[ƒU[–{—ˆ‚Ì
-                // Šó–]’l‚É•œŒ³‚·‚éB
+                // å¼·åˆ¶ã‚ªãƒ•ãŒçµ‚ã‚ã£ãŸç¬é–“: é€€é¿ã—ã¦ãŠã„ãŸãƒ¦ãƒ¼ã‚¶ãƒ¼æœ¬æ¥ã®
+                // å¸Œæœ›å€¤ã«å¾©å…ƒã™ã‚‹ã€‚
                 orbitFreeCameraForcedOffByProfile = false;
                 enableFreeCamera = orbitFreeCameraUserWanted;
 
                 if (enableFreeCamera)
                 {
-                    // F7‚Ìè“®ƒgƒOƒ‹‚Æ“¯—l‚ÉA‘Ş”ğ‚µ‚Ä‚¨‚¢‚½Unlock Input / FOV
-                    // ‚ğ•œŒ³‚·‚éB‚±‚ê‚ğs‚í‚È‚¢‚ÆA‹­§ƒIƒt’†‚É
-                    // disableFreeCamera() ‚ªƒŠƒZƒbƒg‚µ‚½Unlock Input‚ª
-                    // ƒIƒt‚Ì‚Ü‚Ü–ß‚Á‚Ä‚µ‚Ü‚¤B
+                    // F7ã®æ‰‹å‹•ãƒˆã‚°ãƒ«ã¨åŒæ§˜ã«ã€é€€é¿ã—ã¦ãŠã„ãŸUnlock Input / FOV
+                    // ã‚’å¾©å…ƒã™ã‚‹ã€‚ã“ã‚Œã‚’è¡Œã‚ãªã„ã¨ã€å¼·åˆ¶ã‚ªãƒ•ä¸­ã«
+                    // disableFreeCamera() ãŒãƒªã‚»ãƒƒãƒˆã—ãŸUnlock InputãŒ
+                    // ã‚ªãƒ•ã®ã¾ã¾æˆ»ã£ã¦ã—ã¾ã†ã€‚
                     if (orbitFreeCameraHasSavedFov)
                     {
                         unlockInputToggled = orbitFreeCameraSavedUnlockInput;
@@ -2924,18 +2959,18 @@ namespace NewCamera
             return Math.Clamp(layer.CurrentFrame / layer.MaxFrame, 0.0f, 1.0f);
         }
 
-        // getMotionProgress() ‚Ì‘ã‘ÖBƒx[ƒXƒ‚[ƒVƒ‡ƒ“‚ÌƒtƒŒ[ƒ€is‚Å‚Í‚È‚­A
-        // orbitActionSubState (ActionController+0x760) ‚ªÅŒã‚É•Ï‰»‚µ‚Ä‚©‚ç‚Ì
-        // Œo‰ß•b”‚ğ assumedDurationSec ‚Å³‹K‰»‚µ‚Ä 0.0-1.0 ‚Ì T ‚Æ‚µ‚Ä•Ô‚·B
-        // ActionName/motionKey ‚ª•Ï‚í‚ç‚È‚¢‚Ü‚Üã”¼g‘¤‚Ìó‘Ô‚¾‚¯‚ª•Ï‚í‚é
-        // ê–Ê (#<”’l> ‚Åƒ}ƒbƒ`‚³‚¹‚éƒvƒƒtƒ@ƒCƒ‹) ‚ÅAGaze Keyframes /
-        // GazeRanges ‚Ì T ‚ğ‚»‚ÌƒTƒuƒXƒe[ƒg©‘Ì‚ÌŒo‰ß‚É“¯Šú‚³‚¹‚½‚¢‚Æ‚«‚Ég‚¤B
+        // getMotionProgress() ã®ä»£æ›¿ã€‚ãƒ™ãƒ¼ã‚¹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒ•ãƒ¬ãƒ¼ãƒ é€²è¡Œã§ã¯ãªãã€
+        // orbitActionSubState (ActionController+0x760) ãŒæœ€å¾Œã«å¤‰åŒ–ã—ã¦ã‹ã‚‰ã®
+        // çµŒéç§’æ•°ã‚’ assumedDurationSec ã§æ­£è¦åŒ–ã—ã¦ 0.0-1.0 ã® T ã¨ã—ã¦è¿”ã™ã€‚
+        // ActionName/motionKey ãŒå¤‰ã‚ã‚‰ãªã„ã¾ã¾ä¸ŠåŠèº«å´ã®çŠ¶æ…‹ã ã‘ãŒå¤‰ã‚ã‚‹
+        // å ´é¢ (#<æ•°å€¤> ã§ãƒãƒƒãƒã•ã›ã‚‹ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«) ã§ã€Gaze Keyframes /
+        // GazeRanges ã® T ã‚’ãã®ã‚µãƒ–ã‚¹ãƒ†ãƒ¼ãƒˆè‡ªä½“ã®çµŒéã«åŒæœŸã•ã›ãŸã„ã¨ãã«ä½¿ã†ã€‚
         private static float getSubStateProgress(float assumedDurationSec)
         {
             float duration = MathF.Max(assumedDurationSec, 0.01f);
             return Math.Clamp(orbitSubStateElapsedSec / duration, 0.0f, 1.0f);
         }
-        //10.1‚±‚±‚Ü‚Å
+        //10.1ã“ã“ã¾ã§
 
         // Ballet-choreography-style alternative to spotAxisDeg(): instead of
         // following the live (and possibly noisy/violent) joint deviation,
@@ -2990,13 +3025,13 @@ namespace NewCamera
                 Single.DegreesToRadians(last.Roll));
         }
 
-        // Œ»İ‚Ìƒ‚[ƒVƒ‡ƒ“is“x t ‚É‚¨‚¢‚ÄAGaze Keyframes ‚ğ‚Ç‚ê‚¾‚¯‚ÌŠ„‡‚Å
-        // g‚¤‚©‚ğ 0..1 ‚Å•Ô‚·B‘‹‚Ì’†‚È‚ç 1 (Gaze ‚Ì‚İ)A‘‹‚©‚ç Blend ˆÈã
-        // —£‚ê‚Ä‚¢‚ê‚Î 0 (’Êí‚Ì Range/Blend ’Ç]‚Ì‚İ)A‚»‚ÌŠÔ‚Í smoothstep ‚Å
-        // ‚È‚ß‚ç‚©‚É‹´“n‚µ‚·‚éB‘‹‚ª•¡”‚ ‚éê‡‚Í‚¢‚¿‚Î‚ñ‹­‚¢‚à‚Ì‚ğÌ—p‚·‚éB
-        // ‘‹‚ª‚Ğ‚Æ‚Â‚à“o˜^‚³‚ê‚Ä‚¢‚È‚¢‚Æ‚«‚Í 1 (§ŒÀ‚È‚µ]—ˆ‚Ç‚¨‚è
-        // ƒ‚[ƒVƒ‡ƒ“‘S‘Ì‚Å Gaze ‚ğg‚¤) ‚ğ•Ô‚·‚Ì‚ÅAƒ`ƒFƒbƒN‚ğ“ü‚ê‚½‚¾‚¯‚Å
-        // ‰½‚àİ’è‚µ‚Ä‚¢‚È‚¢ó‘Ô‚Å‚à‹““®‚ª‰ó‚ê‚È‚¢B
+        // ç¾åœ¨ã®ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³é€²è¡Œåº¦ t ã«ãŠã„ã¦ã€Gaze Keyframes ã‚’ã©ã‚Œã ã‘ã®å‰²åˆã§
+        // ä½¿ã†ã‹ã‚’ 0..1 ã§è¿”ã™ã€‚çª“ã®ä¸­ãªã‚‰ 1 (Gaze ã®ã¿)ã€çª“ã‹ã‚‰ Blend ä»¥ä¸Š
+        // é›¢ã‚Œã¦ã„ã‚Œã° 0 (é€šå¸¸ã® Range/Blend è¿½å¾“ã®ã¿)ã€ãã®é–“ã¯ smoothstep ã§
+        // ãªã‚ã‚‰ã‹ã«æ©‹æ¸¡ã—ã™ã‚‹ã€‚çª“ãŒè¤‡æ•°ã‚ã‚‹å ´åˆã¯ã„ã¡ã°ã‚“å¼·ã„ã‚‚ã®ã‚’æ¡ç”¨ã™ã‚‹ã€‚
+        // çª“ãŒã²ã¨ã¤ã‚‚ç™»éŒ²ã•ã‚Œã¦ã„ãªã„ã¨ãã¯ 1 (ï¼åˆ¶é™ãªã—ï¼å¾“æ¥ã©ãŠã‚Š
+        // ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³å…¨ä½“ã§ Gaze ã‚’ä½¿ã†) ã‚’è¿”ã™ã®ã§ã€ãƒã‚§ãƒƒã‚¯ã‚’å…¥ã‚ŒãŸã ã‘ã§
+        // ä½•ã‚‚è¨­å®šã—ã¦ã„ãªã„çŠ¶æ…‹ã§ã‚‚æŒ™å‹•ãŒå£Šã‚Œãªã„ã€‚
         private static float evaluateGazeRangeWeight(List<OrbitGazeRange> ranges, float t)
         {
             if (ranges == null || ranges.Count == 0)
@@ -3037,9 +3072,9 @@ namespace NewCamera
             return bestWeight;
         }
 
-        // evaluateGazeKeyframes() ‚ÌXYZ”ÅBQuaternion Slerp‚Ì‘ã‚í‚è‚ÉA
-        // Y/Right/Forward ‚ğ‚»‚ê‚¼‚ê“Æ—§‚ÉüŒ`•âŠÔ‚·‚é (‰ñ“]‚Æˆá‚Á‚Ä²‚²‚Æ‚Ì
-        // •âŠÔ‚Å–â‘è‚È‚¢)BƒC[ƒWƒ“ƒO‚Í“¯‚¶ smoothstepB
+        // evaluateGazeKeyframes() ã®XYZç‰ˆã€‚Quaternion Slerpã®ä»£ã‚ã‚Šã«ã€
+        // Y/Right/Forward ã‚’ãã‚Œãã‚Œç‹¬ç«‹ã«ç·šå½¢è£œé–“ã™ã‚‹ (å›è»¢ã¨é•ã£ã¦è»¸ã”ã¨ã®
+        // è£œé–“ã§å•é¡Œãªã„)ã€‚ã‚¤ãƒ¼ã‚¸ãƒ³ã‚°ã¯åŒã˜ smoothstepã€‚
         private static (float y, float right, float forward) evaluateGazePositionKeyframes(List<OrbitGazePositionKeyframe> keyframes, float t)
         {
             if (keyframes == null || keyframes.Count == 0)
@@ -3069,7 +3104,7 @@ namespace NewCamera
             OrbitGazePositionKeyframe last = keyframes[^1];
             return (last.Y, last.Right, last.Forward);
         }
-        //ver11‚±‚±‚Ü‚Å
+        //ver11ã“ã“ã¾ã§
 
         private void checkCameraAnimState()
         {
@@ -3110,19 +3145,19 @@ namespace NewCamera
             cameraOffset = Vector3.Zero;
         }
 
-        // C‚Ìƒ‚[ƒVƒ‡ƒ“’†‚ÌƒJƒƒ‰‹““®‚ğƒƒO‚Éo—Í‚·‚é‚½‚ß‚Ìİ’è
-        private bool enableCMotionLogging = false; // •K—v‚É‰‚¶‚Ä false ‚É‚µ‚Ä–³Œø‰»
+        // Cã®ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ä¸­ã®ã‚«ãƒ¡ãƒ©æŒ™å‹•ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ãŸã‚ã®è¨­å®š
+        private bool enableCMotionLogging = false; // å¿…è¦ã«å¿œã˜ã¦ false ã«ã—ã¦ç„¡åŠ¹åŒ–
         private string cMotionLogPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NewCamera", "C_motion_log.csv");
 
-        // ‚±‚±‚ÉƒƒO‚µ‚½‚¢u“Á’è‚Ìƒ‚[ƒVƒ‡ƒ“v‚ğ“ü‚ê‚éB
-        // Œ`®:
-        //  - Š®‘S‚È ActionNamei—á: "WP_00::VSLASH"j
-        //  - suffixi—á: "VSLASH"j
-        //  - motionKeyi—á: "12.156" ‚Ü‚½‚Í "12.156" ‚Æˆê’v‚·‚é‚æ‚¤‚É "12.156" ‚ğ“ü‚ê‚éj
-        //  - ‚Ü‚½‚ÍƒAƒNƒVƒ‡ƒ“‚Æ motionKey ‚ğ‘g‡‚¹‚½ "WP_00::VSLASH@12.156"igetCurrentMotionKey ‚Æ•¹—p‚µ‚ÄŒµ–§ƒ}ƒbƒ`‰Â”\j
+        // ã“ã“ã«ãƒ­ã‚°ã—ãŸã„ã€Œç‰¹å®šã®ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã€ã‚’å…¥ã‚Œã‚‹ã€‚
+        // å½¢å¼:
+        //  - å®Œå…¨ãª ActionNameï¼ˆä¾‹: "WP_00::VSLASH"ï¼‰
+        //  - suffixï¼ˆä¾‹: "VSLASH"ï¼‰
+        //  - motionKeyï¼ˆä¾‹: "12.156" ã¾ãŸã¯ "12.156" ã¨ä¸€è‡´ã™ã‚‹ã‚ˆã†ã« "12.156" ã‚’å…¥ã‚Œã‚‹ï¼‰
+        //  - ã¾ãŸã¯ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã¨ motionKey ã‚’çµ„åˆã›ãŸ "WP_00::VSLASH@12.156"ï¼ˆgetCurrentMotionKey ã¨ä½µç”¨ã—ã¦å³å¯†ãƒãƒƒãƒå¯èƒ½ï¼‰
         private List<string> cMotionLogKeywords = new List<string>
         {
-            // —áFˆÈ‰º‚ğÀÛ‚ÉƒƒO‚µ‚½‚¢ƒ‚[ƒVƒ‡ƒ“‚É’u‚«Š·‚¦‚Ä‚­‚¾‚³‚¢
+            // ä¾‹ï¼šä»¥ä¸‹ã‚’å®Ÿéš›ã«ãƒ­ã‚°ã—ãŸã„ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã«ç½®ãæ›ãˆã¦ãã ã•ã„
             // "VSLASH",
             // "WP_00::VSLASH@12.156",
             // "SPIN_ATTACK3"
@@ -3152,13 +3187,13 @@ namespace NewCamera
                 }
             }
 
-            // 1) Deviation (Y/P/R) ‚Ìæ“¾
-            // ‚±‚ê‚ª GUI ‚Ì DEBUG ‚Ì Deviation ‚É‘Î‰‚·‚é’l‚Å‚·
+            // 1) Deviation (Y/P/R) ã®å–å¾—
+            // ã“ã‚ŒãŒ GUI ã® DEBUG ã® Deviation ã«å¯¾å¿œã™ã‚‹å€¤ã§ã™
             float devYaw = orbitClampSmoothedYaw;
             float devPitch = orbitClampSmoothedPitch;
             float devRoll = orbitClampSmoothedRoll;
 
-            // 2) ƒJƒƒ‰—R—ˆ‚Ì‰ñ“]‚©‚ç‚Ì YPRiGUI ‚Æˆê’v‚³‚¹‚½‚¢’lj
+            // 2) ã‚«ãƒ¡ãƒ©ç”±æ¥ã®å›è»¢ã‹ã‚‰ã® YPRï¼ˆGUI ã¨ä¸€è‡´ã•ã›ãŸã„å€¤ï¼‰
             float camYaw = 0f, camPitch = 0f, camRoll = 0f;
             if (vCamera != null)
             {
@@ -3171,8 +3206,8 @@ namespace NewCamera
                 }
             }
 
-            // CSV‚Ì1s‚ğì¬i––”ö‚É \n ‚ğ–Y‚ê‚È‚¢‚æ‚¤‚É’Ç‰Áj
-            // Œ`®: “ú, ƒAƒNƒVƒ‡ƒ“–¼, ƒ‚[ƒVƒ‡ƒ“ƒL[, ƒvƒƒtƒ@ƒCƒ‹ƒCƒ“ƒfƒbƒNƒX, devYaw, devPitch, devRoll, camYaw, camPitch, camRoll
+            // CSVã®1è¡Œã‚’ä½œæˆï¼ˆæœ«å°¾ã« \n ã‚’å¿˜ã‚Œãªã„ã‚ˆã†ã«è¿½åŠ ï¼‰
+            // å½¢å¼: æ—¥æ™‚, ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å, ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã‚­ãƒ¼, ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹, devYaw, devPitch, devRoll, camYaw, camPitch, camRoll
             string line = $"{DateTime.Now:O},{actionName ?? ""},{motionKey},{profileIndex}," +
                           $"{devYaw:F3},{devPitch:F3},{devRoll:F3}," +
                           $"{camYaw:F3},{camPitch:F3},{camRoll:F3}\n";
@@ -3212,13 +3247,13 @@ namespace NewCamera
                     enableFreeCamera = !enableFreeCamera;
                 }
 
-                // ’Ç‰Á: F7 ‚Å Enable Free Camera ‚ğØ‚è‘Ö‚¦A
-                // ƒIƒt‚É‚·‚é‚Í Unlock Input ‚Æ FOV ‚ğ•Û‘¶AÄ‚ÑƒIƒ“‚É‚·‚é‚Í•œŒ³‚·‚é
+                // è¿½åŠ : F7 ã§ Enable Free Camera ã‚’åˆ‡ã‚Šæ›¿ãˆã€
+                // ã‚ªãƒ•ã«ã™ã‚‹æ™‚ã¯ Unlock Input ã¨ FOV ã‚’ä¿å­˜ã€å†ã³ã‚ªãƒ³ã«ã™ã‚‹æ™‚ã¯å¾©å…ƒã™ã‚‹
                 if (Input.IsPressed(Key.F7))
                 {
                     if (enableFreeCamera)
                     {
-                        // ƒIƒt‚É‚·‚é’¼‘O‚Ìó‘Ô‚ğ•Û‘¶
+                        // ã‚ªãƒ•ã«ã™ã‚‹ç›´å‰ã®çŠ¶æ…‹ã‚’ä¿å­˜
                         savedUnlockInputOnDisable = unlockInputToggled;
                         savedEnableFreeCameraCameraFov = 90.0f;//cameraFov
                         savedEnableFreeCameraHasSavedFov = true;
@@ -3226,7 +3261,7 @@ namespace NewCamera
                     }
                     else
                     {
-                        // Ä“xƒIƒ“‚É‚·‚é -> •Û‘¶’l‚ª‚ ‚ê‚Î•œŒ³A‚È‚¯‚ê‚Î Unlock Input ‚ğƒIƒ“‚É‚·‚é
+                        // å†åº¦ã‚ªãƒ³ã«ã™ã‚‹ -> ä¿å­˜å€¤ãŒã‚ã‚Œã°å¾©å…ƒã€ãªã‘ã‚Œã° Unlock Input ã‚’ã‚ªãƒ³ã«ã™ã‚‹
                         enableFreeCamera = true;
                         if (savedEnableFreeCameraHasSavedFov)
                         {
@@ -3240,7 +3275,7 @@ namespace NewCamera
                         }
                     }
                 }
-                //‚±‚±‚Ü‚Å
+                //ã“ã“ã¾ã§
 
                 if (Input.IsPressed(Key.NumPadPeriod))
                 {
@@ -3266,7 +3301,7 @@ namespace NewCamera
                 }
                 if (Input.IsDown(Key.F9))
                 {
-                    // Œ»ÀŠÔ‚Å400ƒ~ƒŠ•bˆÈã’·‰Ÿ‚µ‚³‚ê‚½‚ç‘¦À‚É10”{‘¬‚Ö
+                    // ç¾å®Ÿæ™‚é–“ã§400ãƒŸãƒªç§’ä»¥ä¸Šé•·æŠ¼ã—ã•ã‚ŒãŸã‚‰å³åº§ã«10å€é€Ÿã¸
                     if (!f9HoldTriggered && f9PressStartTime > 0 && (Environment.TickCount64 - f9PressStartTime >= F9_LONG_PRESS_MS))
                     {
                         f9IsFastSpeed = true;
@@ -3277,19 +3312,19 @@ namespace NewCamera
                 }
                 if (Input.IsReleased(Key.F9))
                 {
-                    // ’·‰Ÿ‚µƒgƒŠƒK[‚ªˆø‚©‚ê‚¸‚É—£‚³‚ê‚½ê‡i’Z‰Ÿ‚µj
+                    // é•·æŠ¼ã—ãƒˆãƒªã‚¬ãƒ¼ãŒå¼•ã‹ã‚Œãšã«é›¢ã•ã‚ŒãŸå ´åˆï¼ˆï¼çŸ­æŠ¼ã—ï¼‰
                     if (!f9HoldTriggered)
                     {
                         if (f9IsFastSpeed)
                         {
-                            // 10”{‘¬‚Ì‚Æ‚«’Z‰Ÿ‚µ -> 0.1”{(ƒXƒ[)‚Ö
+                            // 10å€é€Ÿã®ã¨ãçŸ­æŠ¼ã— -> 0.1å€(ã‚¹ãƒ­ãƒ¼)ã¸
                             f9IsFastSpeed = false;
                             slowMotionActive = true;
                             gameSpeedRef = slowMotionSpeed;
                         }
                         else
                         {
-                            // ’Êí‚ÌƒgƒOƒ‹i0.1”{ Ì 1.0”{j
+                            // é€šå¸¸ã®ãƒˆã‚°ãƒ«ï¼ˆ0.1å€ â‡” 1.0å€ï¼‰
                             slowMotionActive = !slowMotionActive;
                             gameSpeedRef = slowMotionActive ? slowMotionSpeed : 1.0f;
                         }
@@ -3345,12 +3380,12 @@ namespace NewCamera
 
             player = getPlayerWithFallback();
 
-            logCMotionIfMatched(player);// OnUpdate “à‚Å player = getPlayerWithFallback(); ‚Ì’¼Œã‚ÉŒÄ‚Ño‚·BC‚Ìƒ‚[ƒVƒ‡ƒ“’†‚ÌƒJƒƒ‰‹““®‚ğƒƒO‚Éo—Í‚·‚é‚½‚ß‚Ìİ’è
+            logCMotionIfMatched(player);// OnUpdate å†…ã§ player = getPlayerWithFallback(); ã®ç›´å¾Œã«å‘¼ã³å‡ºã™ã€‚Cã®ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ä¸­ã®ã‚«ãƒ¡ãƒ©æŒ™å‹•ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ãŸã‚ã®è¨­å®š
 
-            // ver15: Free Camera ‚ª–³Œø(=updateFreeCamera()‚ªŒÄ‚Î‚ê‚È‚¢)ŠÔ‚à
-            // ƒ‚[ƒVƒ‡ƒ“‚Ì•Ï‰»‚ğŒŸ’m‚Å‚«‚é‚æ‚¤A‚±‚±‚Å–ˆƒtƒŒ[ƒ€“Æ—§‚µ‚Ä
-            // ŒÄ‚Ño‚·B——R‚Í updateForcedFreeCameraDisableByProfile() ‘¤‚Ì
-            // ƒRƒƒ“ƒgQÆB
+            // ver15: Free Camera ãŒç„¡åŠ¹(=updateFreeCamera()ãŒå‘¼ã°ã‚Œãªã„)é–“ã‚‚
+            // ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã®å¤‰åŒ–ã‚’æ¤œçŸ¥ã§ãã‚‹ã‚ˆã†ã€ã“ã“ã§æ¯ãƒ•ãƒ¬ãƒ¼ãƒ ç‹¬ç«‹ã—ã¦
+            // å‘¼ã³å‡ºã™ã€‚ç†ç”±ã¯ updateForcedFreeCameraDisableByProfile() å´ã®
+            // ã‚³ãƒ¡ãƒ³ãƒˆå‚ç…§ã€‚
             updateForcedFreeCameraDisableByProfile(player);
 
             if (player != null)
@@ -3515,8 +3550,8 @@ namespace NewCamera
                 cameraFov = camera.FieldOfView;
             }
 
-            // --- ‹­§ FOV ‚ğ 90 ‚É‚·‚é ---
-            // FreeCamera ‚ğ—LŒø‚É‚µ‚½‚Æ‚«Aí‚É 90.0f ‚ğg‚¤
+            // --- å¼·åˆ¶ FOV ã‚’ 90 ã«ã™ã‚‹ ---
+            // FreeCamera ã‚’æœ‰åŠ¹ã«ã—ãŸã¨ãã€å¸¸ã« 90.0f ã‚’ä½¿ã†
             cameraFov = 90.0f;
             camera.FieldOfView = 90.0f;
             // ---------------------------------
@@ -3599,7 +3634,7 @@ namespace NewCamera
             bool lockVerticalAndModifySpeed = false;
             float adjustedSpeed = cameraSpeed * deltaTime * (lockVerticalAndModifySpeed ? cameraSpeedModifier : 1.0f);
             bool lockCameraLook = false;
-            //ver8 WritePadInputHook() “àA12•ûŒüangle‚ÅƒXƒiƒbƒv‚Æ“¯‚¶l‚¦•û‚ğŠp“x‘Sü‚Éˆê”Ê‰»‚µ‚Ä’Ç‰Á‚µ‚Ü‚·B
+            //ver8 WritePadInputHook() å†…ã€12æ™‚æ–¹å‘angleã§ã‚¹ãƒŠãƒƒãƒ—ã¨åŒã˜è€ƒãˆæ–¹ã‚’è§’åº¦å…¨å‘¨ã«ä¸€èˆ¬åŒ–ã—ã¦è¿½åŠ ã—ã¾ã™ã€‚
             if (Math.Abs(PadLy) < stickDeadzone) PadLy = 0;
             if (Math.Abs(PadLx) < stickDeadzone) PadLx = 0;
             if (Math.Abs(PadRx) < stickDeadzone) PadRx = 0;
@@ -3623,7 +3658,7 @@ namespace NewCamera
                 PadRx = (int)Math.Clamp(magnitude * MathF.Sin(snappedAngleRad), -32768.0f, 32767.0f);
                 PadRy = (int)Math.Clamp(magnitude * MathF.Cos(snappedAngleRad), -32768.0f, 32767.0f);
             }
-            //ver8‚±‚±‚Ü‚Å
+            //ver8ã“ã“ã¾ã§
 
             cameraFrame = Vector3.Zero;
 
@@ -3847,7 +3882,7 @@ namespace NewCamera
 #endif
 
             // Camera look. PadRx/y is read in WritePadInputHook().
-            // •ÏX‘O: if (!lockCameraLook), L1‰Ÿ‰º’†ƒJƒƒ‰ƒƒbƒN
+            // å¤‰æ›´å‰: if (!lockCameraLook), L1æŠ¼ä¸‹ä¸­ã‚«ãƒ¡ãƒ©ãƒ­ãƒƒã‚¯
             // L2 aiming (slinger/bow, reticle up): reset the view straight
             // back to forward exactly once, on the frame L2 is first
             // pressed, so aiming always starts dead-centered instead of
@@ -3958,41 +3993,41 @@ namespace NewCamera
                     }
                 }
 #endif
-                //ver9 ‰EƒXƒeƒBƒbƒNYaw‚ÌManual -> Keep -> Returning -> FollowƒXƒe[ƒgƒ}ƒVƒ“
-                // (‹Œver8‚ÌuƒXƒeƒBƒbƒNˆÊ’u=–Ú•WŠp“xAí‚ÉƒC[ƒY‚Å’Ç]v•û®‚ğ’u‚«Š·‚¦)
+                //ver9 å³ã‚¹ãƒ†ã‚£ãƒƒã‚¯Yawã®Manual -> Keep -> Returning -> Followã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³
+                // (æ—§ver8ã®ã€Œã‚¹ãƒ†ã‚£ãƒƒã‚¯ä½ç½®=ç›®æ¨™è§’åº¦ã€å¸¸ã«ã‚¤ãƒ¼ã‚ºã§è¿½å¾“ã€æ–¹å¼ã‚’ç½®ãæ›ãˆ)
                 //
-                // Follow: è“®ƒIƒtƒZƒbƒg‚È‚µBcameraYaw‚ğ–ˆƒtƒŒ[ƒ€180‚ÉŒÅ’è‚·‚éB
+                // Follow: æ‰‹å‹•ã‚ªãƒ•ã‚»ãƒƒãƒˆãªã—ã€‚cameraYawã‚’æ¯ãƒ•ãƒ¬ãƒ¼ãƒ 180ã«å›ºå®šã™ã‚‹ã€‚
                 //
-                // Manual: ‰EƒXƒeƒBƒbƒN‘€ì’†BƒIƒtƒZƒbƒg‚Í‘¬“xƒx[ƒX‚Å‰ÁZ‚µA
-                // }orbitReturnToCenterYawMax(Max Yaw)‚Åƒn[ƒhƒNƒ‰ƒ“ƒv‚·‚éB
+                // Manual: å³ã‚¹ãƒ†ã‚£ãƒƒã‚¯æ“ä½œä¸­ã€‚ã‚ªãƒ•ã‚»ãƒƒãƒˆã¯é€Ÿåº¦ãƒ™ãƒ¼ã‚¹ã§åŠ ç®—ã—ã€
+                // Â±orbitReturnToCenterYawMax(Max Yaw)ã§ãƒãƒ¼ãƒ‰ã‚¯ãƒ©ãƒ³ãƒ—ã™ã‚‹ã€‚
                 //
-                // Keep: —£‚µ‚½uŠÔ‚ÌÀÛ‚ÌƒJƒƒ‰ƒ[ƒ‹ƒhYaw
-                // (orbitCachedCameraForwardYawDeg)‚ğ•Û–Ú•W‚É‚·‚éBˆÈŒã‚Í–ˆƒtƒŒ[ƒ€A
-                // ƒtƒB[ƒhƒtƒHƒ[ƒh‚ÅcameraYaw‚ğ’¼ÚŒvZ‚·‚éBƒLƒƒƒ‰ƒNƒ^[‚ÌŒ»İ‚Ì
-                // ³–Ê(orbitCachedRawStableForwardYawDeg)‚ª•Û•ûŒü‚É‹ß‚Ã‚¢‚½‚ç
-                // Follow‚Ö(Catch-up & Lock)A‹t‚ÉMax Yaw‚ğ’´‚¦‚Ä—£‚ê‚½‚ç
-                // Returning‚ÖˆÚs‚·‚éB
+                // Keep: é›¢ã—ãŸç¬é–“ã®å®Ÿéš›ã®ã‚«ãƒ¡ãƒ©ãƒ¯ãƒ¼ãƒ«ãƒ‰Yaw
+                // (orbitCachedCameraForwardYawDeg)ã‚’ä¿æŒç›®æ¨™ã«ã™ã‚‹ã€‚ä»¥å¾Œã¯æ¯ãƒ•ãƒ¬ãƒ¼ãƒ ã€
+                // ãƒ•ã‚£ãƒ¼ãƒ‰ãƒ•ã‚©ãƒ¯ãƒ¼ãƒ‰ã§cameraYawã‚’ç›´æ¥è¨ˆç®—ã™ã‚‹ã€‚ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ç¾åœ¨ã®
+                // æ­£é¢(orbitCachedRawStableForwardYawDeg)ãŒä¿æŒæ–¹å‘ã«è¿‘ã¥ã„ãŸã‚‰
+                // Followã¸(Catch-up & Lock)ã€é€†ã«Max Yawã‚’è¶…ãˆã¦é›¢ã‚ŒãŸã‚‰
+                // Returningã¸ç§»è¡Œã™ã‚‹ã€‚
                 //
-                // Returning: cameraYaw‚ğ–ˆƒtƒŒ[ƒ€180(=‚»‚Ì“_‚Å‚ÌƒLƒƒƒ‰ƒNƒ^[‚Ì
-                // Œ»İ‚Ì³–ÊB180©‘Ì‚ª“®‚­ƒx[ƒX‚ğw‚·‚Ì‚Å–ˆƒtƒŒ[ƒ€æ‚è’¼‚·
-                // •K—v‚ª‚È‚¢)‚ÖorbitReturnToCenterSpeed‚ÅƒC[ƒY‚³‚¹‚éB‚±‚ÌŠÔ‚Í
-                // ‰EƒXƒeƒBƒbƒN“ü—Í‚ğ–³‹‚·‚é(d—lƒhƒLƒ…ƒƒ“ƒg10€)B
+                // Returning: cameraYawã‚’æ¯ãƒ•ãƒ¬ãƒ¼ãƒ 180(=ãã®æ™‚ç‚¹ã§ã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®
+                // ç¾åœ¨ã®æ­£é¢ã€‚180è‡ªä½“ãŒå‹•ããƒ™ãƒ¼ã‚¹ã‚’æŒ‡ã™ã®ã§æ¯ãƒ•ãƒ¬ãƒ¼ãƒ å–ã‚Šç›´ã™
+                // å¿…è¦ãŒãªã„)ã¸orbitReturnToCenterSpeedã§ã‚¤ãƒ¼ã‚ºã•ã›ã‚‹ã€‚ã“ã®é–“ã¯
+                // å³ã‚¹ãƒ†ã‚£ãƒƒã‚¯å…¥åŠ›ã‚’ç„¡è¦–ã™ã‚‹(ä»•æ§˜ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ10é …)ã€‚
                 //
-                // –¢À‘•(Ÿ‚ÌƒXƒeƒbƒv‚Å‘Î‰—\’è): L1ƒŠƒZƒbƒg‚Æ‚Ì“‡
-                // (d—lƒhƒLƒ…ƒƒ“ƒg14€)BL1‚Íˆø‚«‘±‚«•ÊƒƒWƒbƒN(‘¦À‚É180/0‚Ö
-                // ƒXƒiƒbƒv)‚Ì‚Ü‚Ü‚ÅA‚±‚ÌReturning‚Æ‚Í•ÊŒo˜HB
+                // æœªå®Ÿè£…(æ¬¡ã®ã‚¹ãƒ†ãƒƒãƒ—ã§å¯¾å¿œäºˆå®š): L1ãƒªã‚»ãƒƒãƒˆã¨ã®çµ±åˆ
+                // (ä»•æ§˜ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ14é …)ã€‚L1ã¯å¼•ãç¶šãåˆ¥ãƒ­ã‚¸ãƒƒã‚¯(å³åº§ã«180/0ã¸
+                // ã‚¹ãƒŠãƒƒãƒ—)ã®ã¾ã¾ã§ã€ã“ã®Returningã¨ã¯åˆ¥çµŒè·¯ã€‚
                 if (orbitPlayer && orbitReturnToCenterLook)
                 {
                     bool rightStickActive = (PadRx != 0 || PadRy != 0);
 
-                    // Returning’†‚Í‰EƒXƒeƒBƒbƒN“ü—Í‚ğ–³‹‚·‚éB
+                    // Returningä¸­ã¯å³ã‚¹ãƒ†ã‚£ãƒƒã‚¯å…¥åŠ›ã‚’ç„¡è¦–ã™ã‚‹ã€‚
                     if (rightStickActive && orbitLookState != OrbitLookState.Returning)
                     {
                         orbitLookState = OrbitLookState.Manual;
                     }
                     else if (!rightStickActive && orbitLookState == OrbitLookState.Manual)
                     {
-                        // ¡ƒtƒŒ[ƒ€‚ÅƒXƒeƒBƒbƒN‚ªƒjƒ…[ƒgƒ‰ƒ‹‚É–ß‚Á‚½=—£‚µ‚½uŠÔB
+                        // ä»Šãƒ•ãƒ¬ãƒ¼ãƒ ã§ã‚¹ãƒ†ã‚£ãƒƒã‚¯ãŒãƒ‹ãƒ¥ãƒ¼ãƒˆãƒ©ãƒ«ã«æˆ»ã£ãŸ=é›¢ã—ãŸç¬é–“ã€‚
                         orbitLookState = OrbitLookState.Keep;
                         orbitKeepWorldYawDeg = orbitCachedCameraForwardYawDeg;
                         orbitKeepValid = orbitCachedForwardYawValid;
@@ -4010,27 +4045,27 @@ namespace NewCamera
                     {
                         if (orbitKeepValid && orbitCachedBaseYawValid)
                         {
-                            // ƒtƒB[ƒhƒtƒHƒ[ƒh: ‘OƒtƒŒ[ƒ€‚Ìƒx[ƒX•ûŒü‚©‚çŒ©‚Ä
-                            // •Û–Ú•W‚É“’B‚·‚écameraYaw‚ğ’¼ÚŒvZ‚·‚éB
+                            // ãƒ•ã‚£ãƒ¼ãƒ‰ãƒ•ã‚©ãƒ¯ãƒ¼ãƒ‰: å‰ãƒ•ãƒ¬ãƒ¼ãƒ ã®ãƒ™ãƒ¼ã‚¹æ–¹å‘ã‹ã‚‰è¦‹ã¦
+                            // ä¿æŒç›®æ¨™ã«åˆ°é”ã™ã‚‹cameraYawã‚’ç›´æ¥è¨ˆç®—ã™ã‚‹ã€‚
                             cameraYaw = orbitCachedBaseYawFlipped
                                 ? deltaAngleDeg(orbitKeepWorldYawDeg, orbitCachedBaseYawDeg)
                                 : deltaAngleDeg(orbitCachedBaseYawDeg, orbitKeepWorldYawDeg);
 
-                            // ã‚Å¡‚Ü‚³‚ÉŒvZ‚µ‚½cameraYaw©g‚ª180(ƒIƒtƒZƒbƒg
-                            // ƒ[ƒ)‚©‚ç‚Ç‚ê‚¾‚¯ƒYƒŒ‚Ä‚¢‚é‚©‚Å”»’è‚·‚éB
-                            // orbitCachedRawStableForwardYawDeg(‘ÌŠ²Šî€)‚Ì‚æ‚¤‚È
-                            // "•Ê‚ÌM†"‚Æ“Ë‚«‡‚í‚¹‚é‚ÆAƒvƒƒtƒ@ƒCƒ‹A‚ÌŠçŠî€
-                            // ƒx[ƒX‚Æ‚ÌŠÔ‚É‚í‚¸‚©‚ÈƒYƒŒ‚ª¶‚¶‚é‚±‚Æ‚ª‚ ‚èA
-                            // Catch-up¬—§‚ÌuŠÔ‚ÉcameraYaw‚Öc·‚ªæ‚Á‚½‚Ü‚Ü
-                            // ˆ—‚µ‚Ä‚µ‚Ü‚¢Auù‰ñ•ûŒü‚Æ‹t‚Éˆêu–ß‚Á‚Ä‚©‚ç’Ç‚¢‚Â‚­v
-                            // ˆá˜aŠ´‚ÌŒ´ˆö‚É‚È‚Á‚Ä‚¢‚½B”»’è‚ÆÀÛ‚Ì’l‚ğ“¯‚¶M†‚É
-                            // ‚·‚é‚±‚Æ‚Å‚±‚Ìc·‚ğŒ´—“I‚É‚È‚­‚·B
+                            // ä¸Šã§ä»Šã¾ã•ã«è¨ˆç®—ã—ãŸcameraYawè‡ªèº«ãŒ180(ã‚ªãƒ•ã‚»ãƒƒãƒˆ
+                            // ã‚¼ãƒ­)ã‹ã‚‰ã©ã‚Œã ã‘ã‚ºãƒ¬ã¦ã„ã‚‹ã‹ã§åˆ¤å®šã™ã‚‹ã€‚
+                            // orbitCachedRawStableForwardYawDeg(ä½“å¹¹åŸºæº–)ã®ã‚ˆã†ãª
+                            // "åˆ¥ã®ä¿¡å·"ã¨çªãåˆã‚ã›ã‚‹ã¨ã€ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«Aã®é¡”åŸºæº–
+                            // ãƒ™ãƒ¼ã‚¹ã¨ã®é–“ã«ã‚ãšã‹ãªã‚ºãƒ¬ãŒç”Ÿã˜ã‚‹ã“ã¨ãŒã‚ã‚Šã€
+                            // Catch-upæˆç«‹ã®ç¬é–“ã«cameraYawã¸æ®‹å·®ãŒä¹—ã£ãŸã¾ã¾
+                            // å‡¦ç†ã—ã¦ã—ã¾ã„ã€ã€Œæ—‹å›æ–¹å‘ã¨é€†ã«ä¸€ç¬æˆ»ã£ã¦ã‹ã‚‰è¿½ã„ã¤ãã€
+                            // é•å’Œæ„Ÿã®åŸå› ã«ãªã£ã¦ã„ãŸã€‚åˆ¤å®šã¨å®Ÿéš›ã®å€¤ã‚’åŒã˜ä¿¡å·ã«
+                            // ã™ã‚‹ã“ã¨ã§ã“ã®æ®‹å·®ã‚’åŸç†çš„ã«ãªãã™ã€‚
                             float offsetFromNeutral = deltaAngleDeg(180.0f, cameraYaw);
 
-                            // ‘f’Ê‚è‘Îô: ‹·‚¢epsilon‘‹‚ğ1ƒtƒŒ[ƒ€‚Å‚Ü‚½‚¢‚Å
-                            // ’Ê‰ß‚µ‚Ä‚µ‚Ü‚¤‚±‚Æ‚ª‚ ‚é‚½‚ßA‘OƒtƒŒ[ƒ€‚Æ‚ÌŠÔ‚Å
-                            // •„†‚ª”½“]‚µ‚½(=‚¿‚å‚¤‚Ç0‚ğ‚Ü‚½‚¢‚Å’Ê‰ß‚µ‚½)‚±‚Æ‚à
-                            // Catch-up‚Æ‚İ‚È‚·B
+                            // ç´ é€šã‚Šå¯¾ç­–: ç‹­ã„epsilonçª“ã‚’1ãƒ•ãƒ¬ãƒ¼ãƒ ã§ã¾ãŸã„ã§
+                            // é€šéã—ã¦ã—ã¾ã†ã“ã¨ãŒã‚ã‚‹ãŸã‚ã€å‰ãƒ•ãƒ¬ãƒ¼ãƒ ã¨ã®é–“ã§
+                            // ç¬¦å·ãŒåè»¢ã—ãŸ(=ã¡ã‚‡ã†ã©0ã‚’ã¾ãŸã„ã§é€šéã—ãŸ)ã“ã¨ã‚‚
+                            // Catch-upã¨ã¿ãªã™ã€‚
                             bool crossedZero = orbitKeepPrevOffsetValid
                                 && Math.Sign(offsetFromNeutral) != 0
                                 && Math.Sign(orbitKeepPrevOffsetDeg) != 0
@@ -4038,24 +4073,24 @@ namespace NewCamera
 
                             if (MathF.Abs(offsetFromNeutral) < orbitKeepCatchUpEpsilonDeg || crossedZero)
                             {
-                                // Catch-up & Lock: ‚¿‚å‚¤‚Ç•Û•ûŒü‚É‚¢‚éA‚Ü‚½‚Í
-                                // ‚Ü‚½‚¢‚Å’Ê‰ß‚µ‚½B‚·‚Å‚É180‹ß–T‚È‚Ì‚ÅReturning‚ğ
-                                // Œo—R‚¹‚¸‚»‚Ì‚Ü‚ÜFollow‚ÖØ‚è‘Ö‚¦‚é(Œ©‚½–Úã‚Ì
-                                // “®‚«‚Í”­¶‚µ‚È‚¢)B
+                                // Catch-up & Lock: ã¡ã‚‡ã†ã©ä¿æŒæ–¹å‘ã«ã„ã‚‹ã€ã¾ãŸã¯
+                                // ã¾ãŸã„ã§é€šéã—ãŸã€‚ã™ã§ã«180è¿‘å‚ãªã®ã§Returningã‚’
+                                // çµŒç”±ã›ãšãã®ã¾ã¾Followã¸åˆ‡ã‚Šæ›¿ãˆã‚‹(è¦‹ãŸç›®ä¸Šã®
+                                // å‹•ãã¯ç™ºç”Ÿã—ãªã„)ã€‚
                                 orbitLookState = OrbitLookState.Follow;
                                 cameraYaw = 180.0f;
                             }
                             //ver9.3
                             else if (MathF.Abs(offsetFromNeutral) > orbitReturnToCenterYawMax + orbitReturnToCenterExceedMarginDeg)
                             {
-                                // Max Yaw’´‰ß(ƒ}[ƒWƒ“‚İ): •Û‚ğ‰ğœ‚µ‚Ä
-                                // ƒLƒƒƒ‰ƒNƒ^[³–Ê‚ÖƒXƒ€[ƒY‚É–ß‚·BPitch‚Í‚»‚Ì‚Ü‚Ü
-                                // •Û‚·‚é‚Ì‚Å(d—lƒhƒLƒ…ƒƒ“ƒg16€)resetPitch‚Í
-                                // false‚Ì‚Ü‚Ü(L1—R—ˆ‚Ìtrue‚ªc‚Á‚Ä‚¢‚È‚¢‚æ‚¤–¾¦)B
+                                // Max Yawè¶…é(ãƒãƒ¼ã‚¸ãƒ³è¾¼ã¿): ä¿æŒã‚’è§£é™¤ã—ã¦
+                                // ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼æ­£é¢ã¸ã‚¹ãƒ ãƒ¼ã‚ºã«æˆ»ã™ã€‚Pitchã¯ãã®ã¾ã¾
+                                // ä¿æŒã™ã‚‹ã®ã§(ä»•æ§˜ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ16é …)resetPitchã¯
+                                // falseã®ã¾ã¾(L1ç”±æ¥ã®trueãŒæ®‹ã£ã¦ã„ãªã„ã‚ˆã†æ˜ç¤º)ã€‚
                                 orbitLookState = OrbitLookState.Returning;
                                 orbitReturningResetPitch = false;
                             }
-                            //ver9.3‚±‚±‚Ü‚Å
+                            //ver9.3ã“ã“ã¾ã§
                             orbitKeepPrevOffsetDeg = offsetFromNeutral;
                             orbitKeepPrevOffsetValid = true;
                         }
@@ -4068,9 +4103,9 @@ namespace NewCamera
                         float remainingYaw = deltaAngleDeg(180.0f, cameraYaw);
                         bool yawSettled = MathF.Abs(remainingYaw) < orbitKeepCatchUpEpsilonDeg;
 
-                        // L1ƒŠƒZƒbƒg—R—ˆ‚ÌReturning‚Ì‚Æ‚«‚¾‚¯APitch‚à“¯‚¶‘¬“x‚Å
-                        // 0(…•½)‚ÖƒC[ƒY‚³‚¹‚é(d—lƒhƒLƒ…ƒƒ“ƒg14€)BMax Yaw
-                        // ’´‰ß—R—ˆ‚ÌReturning‚Å‚ÍPitch‚Í‚»‚Ì‚Ü‚Ü•Û‚·‚é(16€)B
+                        // L1ãƒªã‚»ãƒƒãƒˆç”±æ¥ã®Returningã®ã¨ãã ã‘ã€Pitchã‚‚åŒã˜é€Ÿåº¦ã§
+                        // 0(æ°´å¹³)ã¸ã‚¤ãƒ¼ã‚ºã•ã›ã‚‹(ä»•æ§˜ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ14é …)ã€‚Max Yaw
+                        // è¶…éç”±æ¥ã®Returningã§ã¯Pitchã¯ãã®ã¾ã¾ä¿æŒã™ã‚‹(16é …)ã€‚
                         bool pitchSettled = true;
                         if (orbitReturningResetPitch)
                         {
@@ -4089,7 +4124,7 @@ namespace NewCamera
                             orbitReturningResetPitch = false;
                         }
                     }
-                    //ver9.3‚±‚±‚Ü‚Å
+                    //ver9.3ã“ã“ã¾ã§
                     else // Follow
                     {
                         cameraYaw = 180.0f;
@@ -4097,8 +4132,8 @@ namespace NewCamera
 
                     cameraYaw += mouseRx;
 
-                    // Pitch: Manual’†‚Í]—ˆ’Ê‚è‘¬“xƒx[ƒX‚Å‰ÁZBReturning’†‚à
-                    // ‰EƒXƒeƒBƒbƒN“ü—Í©‘Ì‚ğ–³‹‚·‚é‚Ì‚Å‚±‚±‚à‘ÎÛŠO‚É‚·‚éB
+                    // Pitch: Manualä¸­ã¯å¾“æ¥é€šã‚Šé€Ÿåº¦ãƒ™ãƒ¼ã‚¹ã§åŠ ç®—ã€‚Returningä¸­ã‚‚
+                    // å³ã‚¹ãƒ†ã‚£ãƒƒã‚¯å…¥åŠ›è‡ªä½“ã‚’ç„¡è¦–ã™ã‚‹ã®ã§ã“ã“ã‚‚å¯¾è±¡å¤–ã«ã™ã‚‹ã€‚
                     if (rightStickActive && orbitLookState != OrbitLookState.Returning)
                     {
                         cameraPitch += Ry;
@@ -4106,7 +4141,7 @@ namespace NewCamera
                     cameraPitch += mouseRy;
                     cameraPitch = Math.Clamp(cameraPitch, -orbitReturnToCenterPitchMax, orbitReturnToCenterPitchMax);
                 }
-                //ver9‚±‚±‚Ü‚Å
+                //ver9ã“ã“ã¾ã§
                 else
                 {
                     cameraYaw += Rx;
@@ -4175,10 +4210,10 @@ namespace NewCamera
             // *release*, and only if it was held for less than
             // orbitRecenterTapMaxSeconds - a long hold is left alone so it doesn't
             // interfere with the item wheel.
-            //ver9 ƒtƒŒ[ƒ€”‚Å‚Í‚È‚­Œ»ÀŠÔ(•b)‚Åƒ^ƒbƒv”»’è‚·‚éBƒtƒŒ[ƒ€”
-            // ‚¾‚ÆƒtƒŒ[ƒ€ƒŒ[ƒg‚ª•Ï‚í‚é‚Æ“¯‚¶’·‚³‚ÌŠÔ‚ğ•\‚³‚È‚­‚È‚é‚½‚ß
-            // (120FPS‚Í60FPS‚Ì”¼•ª‚ÌŠÔ‚µ‚©Œo‚½‚È‚¢)AdeltaTime‚ğÏZ‚µ‚½
-            // Œo‰ß•b”‚Å”»’è‚·‚é‚æ‚¤‚É•ÏX‚µ‚½B
+            //ver9 ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã§ã¯ãªãç¾å®Ÿæ™‚é–“(ç§’)ã§ã‚¿ãƒƒãƒ—åˆ¤å®šã™ã‚‹ã€‚ãƒ•ãƒ¬ãƒ¼ãƒ æ•°
+            // ã ã¨ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆãŒå¤‰ã‚ã‚‹ã¨åŒã˜é•·ã•ã®æ™‚é–“ã‚’è¡¨ã•ãªããªã‚‹ãŸã‚
+            // (120FPSã¯60FPSã®åŠåˆ†ã®æ™‚é–“ã—ã‹çµŒãŸãªã„)ã€deltaTimeã‚’ç©ç®—ã—ãŸ
+            // çµŒéç§’æ•°ã§åˆ¤å®šã™ã‚‹ã‚ˆã†ã«å¤‰æ›´ã—ãŸã€‚
             if (orbitPlayer && orbitRecenterButton != null)
             {
                 if (buttonWasPressed(orbitRecenterButton.Value))
@@ -4187,12 +4222,12 @@ namespace NewCamera
                 }
                 else if (orbitRecenterHeldSec >= 0.0f)
                 {
-                    // ‚±‚ÌƒR[ƒhƒx[ƒX‚ÌdeltaTime‚ÍÀ•b‚Å‚Í‚È‚­60FPSŠî€‚Ì
-                    // ƒtƒŒ[ƒ€Š·Z’l(60FPS‚Å–ñ1.0A120FPS‚Å–ñ0.5)BÀ•b‚É
-                    // •ÏŠ·‚µ‚Ä‚©‚çÏZ‚·‚é(elapsedSeconds = deltaTime / 60.0f
-                    // ‚Æ‚¢‚¤‘¼‰ÓŠ‚Æ“¯‚¶•ÏŠ·)B‚±‚ê‚ğ–Y‚ê‚Ä‚¢‚½‚½‚ßA1•b‚ ‚½‚è
-                    // ƒtƒŒ[ƒ€ƒŒ[ƒg•ª(—á:70FPS‚È‚ç–ñ70)‚ªÏ‚İã‚ª‚Á‚Ä‚µ‚Ü‚¢A
-                    // ‚µ‚«‚¢’l0.3‚ğ‚Ç‚ñ‚È‚É’Z‚¢ƒ^ƒbƒv‚Å‚àˆêu‚Å’´‚¦‚Ä‚¢‚½B
+                    // ã“ã®ã‚³ãƒ¼ãƒ‰ãƒ™ãƒ¼ã‚¹ã®deltaTimeã¯å®Ÿç§’ã§ã¯ãªã60FPSåŸºæº–ã®
+                    // ãƒ•ãƒ¬ãƒ¼ãƒ æ›ç®—å€¤(60FPSã§ç´„1.0ã€120FPSã§ç´„0.5)ã€‚å®Ÿç§’ã«
+                    // å¤‰æ›ã—ã¦ã‹ã‚‰ç©ç®—ã™ã‚‹(elapsedSeconds = deltaTime / 60.0f
+                    // ã¨ã„ã†ä»–ç®‡æ‰€ã¨åŒã˜å¤‰æ›)ã€‚ã“ã‚Œã‚’å¿˜ã‚Œã¦ã„ãŸãŸã‚ã€1ç§’ã‚ãŸã‚Š
+                    // ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆåˆ†(ä¾‹:70FPSãªã‚‰ç´„70)ãŒç©ã¿ä¸ŠãŒã£ã¦ã—ã¾ã„ã€
+                    // ã—ãã„å€¤0.3ã‚’ã©ã‚“ãªã«çŸ­ã„ã‚¿ãƒƒãƒ—ã§ã‚‚ä¸€ç¬ã§è¶…ãˆã¦ã„ãŸã€‚
                     orbitRecenterHeldSec += deltaTime / 60.0f;
                 }
 
@@ -4200,10 +4235,10 @@ namespace NewCamera
                 {
                     if (orbitRecenterHeldSec >= 0.0f && orbitRecenterHeldSec <= orbitRecenterTapMaxSeconds)
                     {
-                        // ‘¦À‚É180/0‚ÖƒXƒiƒbƒv‚·‚é‚Ì‚Å‚Í‚È‚­AReturning‚Ö“n‚µ‚Ä
-                        // orbitReturnToCenterSpeed‚ÅcameraYaw(Œ»İ‚ÌƒLƒƒƒ‰ƒNƒ^[
-                        // ³–Ê‚Ö)‚ÆcameraPitch(…•½0“x‚Ö)‚ğƒC[ƒY‚³‚¹‚é
-                        // (d—lƒhƒLƒ…ƒƒ“ƒg14€)B
+                        // å³åº§ã«180/0ã¸ã‚¹ãƒŠãƒƒãƒ—ã™ã‚‹ã®ã§ã¯ãªãã€Returningã¸æ¸¡ã—ã¦
+                        // orbitReturnToCenterSpeedã§cameraYaw(ç¾åœ¨ã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼
+                        // æ­£é¢ã¸)ã¨cameraPitch(æ°´å¹³0åº¦ã¸)ã‚’ã‚¤ãƒ¼ã‚ºã•ã›ã‚‹
+                        // (ä»•æ§˜ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ14é …)ã€‚
                         orbitLookState = OrbitLookState.Returning;
                         orbitReturningResetPitch = true;
                         cameraWrapState = 0;
@@ -4220,19 +4255,19 @@ namespace NewCamera
                     orbitRecenterHeldSec = -1.0f;
                 }
             }
-            //ver9.3‚±‚±‚Ü‚Å
+            //ver9.3ã“ã“ã¾ã§
             if (orbitPlayer && player != null)
             {
                 Quaternion rotation;
                 Vector3 target;
                 Quaternion offsetBasis = Quaternion.Identity;
-                //ver12 ƒvƒƒtƒ@ƒCƒ‹’PˆÊ‚ÅPosition/Basis Joint‚ğã‘‚«‚·‚é
-                // (•r‚ğŒû‚É‰^‚ÔÛ‚É•@‚Å‚Í‚È‚­è‚ğŠî€‚É‚·‚éA“™)B
-                // orbitLastProfileIndex‚Í‚±‚Ì“_‚Å‚Íu‘OƒtƒŒ[ƒ€‚Ì•ª—Şv
-                // (‚±‚ÌtargetŒvZ©‘Ì‚ªƒvƒƒtƒ@ƒCƒ‹”»’è‚æ‚è‘O‚És‚í‚ê‚é‚½‚ß)B
-                // Ø‚è‘Ö‚í‚éuŠÔ‚Ì1ƒtƒŒ[ƒ€‚¾‚¯‹Œİ’è‚ªc‚é‚¾‚¯‚È‚Ì‚ÅA”•b
-                // ‘±‚­ƒ‚[ƒVƒ‡ƒ“‚Å‚Í‘ÌŠ´‚Å‚«‚È‚¢(orbitNativeCameraPosition/
-                // Target‚È‚ÇA‚±‚Ìƒtƒ@ƒCƒ‹‚Ì‘¼‰ÓŠ‚Å‚à“¯‚¶‹–—e‚ğ‚µ‚Ä‚¢‚é)B
+                //ver12 ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«å˜ä½ã§Position/Basis Jointã‚’ä¸Šæ›¸ãã™ã‚‹
+                // (ç“¶ã‚’å£ã«é‹ã¶éš›ã«é¼»ã§ã¯ãªãæ‰‹ã‚’åŸºæº–ã«ã™ã‚‹ã€ç­‰)ã€‚
+                // orbitLastProfileIndexã¯ã“ã®æ™‚ç‚¹ã§ã¯ã€Œå‰ãƒ•ãƒ¬ãƒ¼ãƒ ã®åˆ†é¡ã€
+                // (ã“ã®targetè¨ˆç®—è‡ªä½“ãŒãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«åˆ¤å®šã‚ˆã‚Šå‰ã«è¡Œã‚ã‚Œã‚‹ãŸã‚)ã€‚
+                // åˆ‡ã‚Šæ›¿ã‚ã‚‹ç¬é–“ã®1ãƒ•ãƒ¬ãƒ¼ãƒ ã ã‘æ—§è¨­å®šãŒæ®‹ã‚‹ã ã‘ãªã®ã§ã€æ•°ç§’
+                // ç¶šããƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã§ã¯ä½“æ„Ÿã§ããªã„(orbitNativeCameraPosition/
+                // Targetãªã©ã€ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®ä»–ç®‡æ‰€ã§ã‚‚åŒã˜è¨±å®¹ã‚’ã—ã¦ã„ã‚‹)ã€‚
                 OrbitProfile? orbitPositionOverrideProfile = (orbitLastProfileIndex >= 0 && orbitLastProfileIndex < orbitProfiles.Count
                     && orbitProfiles[orbitLastProfileIndex].PositionJointOverrideEnable)
                     ? orbitProfiles[orbitLastProfileIndex]
@@ -4242,7 +4277,7 @@ namespace NewCamera
                     : (orbitTargetFaceJoint ? faceJoints : bodyJoints);
                 int orbitActiveJoint = orbitPositionOverrideProfile?.PositionJointOverrideJoint ?? orbitJoint;
                 bool targetJoint = orbitActiveJoint >= 0 && orbitActiveJoint < orbitJointList.Count;
-                //ver12‚±‚±‚Ü‚Å
+                //ver12ã“ã“ã¾ã§
                 if (targetJoint)
                 {
                     nint jointAddr = orbitJointList[orbitActiveJoint];
@@ -4377,24 +4412,24 @@ namespace NewCamera
                             //ver10.1
                             string? currentActionName = getCurrentActionName(player);
                             string currentMotionKey = getCurrentMotionKey(player);
-                            // findMatchingProfileIndex() -> matchesKeywordList() ‚ª
-                            // "#<”’l>" ƒL[ƒ[ƒh‚Ì”»’è‚Ég‚¤‚Ì‚ÅA•K‚¸‚»‚Ìè‘O‚ÅXV‚·‚éB
+                            // findMatchingProfileIndex() -> matchesKeywordList() ãŒ
+                            // "#<æ•°å€¤>" ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®åˆ¤å®šã«ä½¿ã†ã®ã§ã€å¿…ãšãã®æ‰‹å‰ã§æ›´æ–°ã™ã‚‹ã€‚
                             int previousActionSubState = orbitActionSubState;
                             orbitActionSubState = getCurrentActionSubState(player);
                             if (orbitActionSubState != previousActionSubState)
                             {
-                                // ƒTƒuƒXƒe[ƒg‚ªØ‚è‘Ö‚í‚Á‚½uŠÔB‚±‚±‚ğ 0 ‚ÌŠî€“_‚Æ‚µ‚ÄA
-                                // Œo‰ßŠÔ‚ÌŒv‘ª‚ğ‚â‚è’¼‚·B
+                                // ã‚µãƒ–ã‚¹ãƒ†ãƒ¼ãƒˆãŒåˆ‡ã‚Šæ›¿ã‚ã£ãŸç¬é–“ã€‚ã“ã“ã‚’ 0 ã®åŸºæº–ç‚¹ã¨ã—ã¦ã€
+                                // çµŒéæ™‚é–“ã®è¨ˆæ¸¬ã‚’ã‚„ã‚Šç›´ã™ã€‚
                                 orbitSubStateElapsedSec = 0.0f;
                             }
                             else
                             {
-                                // deltaTime ‚Íu60fps‚Å‚Ì‰½ƒtƒŒ[ƒ€•ª‚©v‚Å“n‚Á‚Ä‚­‚é‚Ì‚ÅA
-                                // ‘¼‚Ì•bŠî€ƒ^ƒCƒ}[‚Æ“¯‚¶‚­ /60 ‚µ‚Ä•b‚É•ÏŠ·‚·‚éB
+                                // deltaTime ã¯ã€Œ60fpsã§ã®ä½•ãƒ•ãƒ¬ãƒ¼ãƒ åˆ†ã‹ã€ã§æ¸¡ã£ã¦ãã‚‹ã®ã§ã€
+                                // ä»–ã®ç§’åŸºæº–ã‚¿ã‚¤ãƒãƒ¼ã¨åŒã˜ã /60 ã—ã¦ç§’ã«å¤‰æ›ã™ã‚‹ã€‚
                                 orbitSubStateElapsedSec += deltaTime / 60.0f;
                             }
                             orbitLastActionName = $"{currentActionName} [{currentMotionKey}]";
-                            //ver10.1‚±‚±‚Ü‚Å
+                            //ver10.1ã“ã“ã¾ã§
 
                             // Single unified lookup, top-to-bottom, first
                             // match wins, across every profile regardless of
@@ -4408,11 +4443,11 @@ namespace NewCamera
                                 ? orbitProfiles[orbitLastProfileIndex].Mode
                                 : OrbitProfileMode.FullRotation;
 
-                            // ver13: ƒ}ƒbƒ`‚µ‚½ƒvƒƒtƒ@ƒCƒ‹‚ªƒXƒŠƒ“ƒK[‚Ì‹­§”ñ•\¦‚ğ
-                            // —v‹‚µ‚Ä‚¢‚é‚©‚ğ–ˆƒtƒŒ[ƒ€XV‚·‚éBÀÛ‚Ì“K—p‚Í
-                            // collectArmorParts (Armor.Slinger) ‘¤‚Ås‚¤ - Ÿ‚É
-                            // refreshArmorState() ‚ªŒÄ‚Î‚ê‚½‚Æ‚«‚É”½‰f‚³‚ê‚é‚Ì‚ÅA
-                            // Å‘å1ƒtƒŒ[ƒ€‚Ì’x‰„‚Í‚ ‚é‚ª‘ÌŠ´‚Å‚«‚È‚¢B
+                            // ver13: ãƒãƒƒãƒã—ãŸãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ãŒã‚¹ãƒªãƒ³ã‚¬ãƒ¼ã®å¼·åˆ¶éè¡¨ç¤ºã‚’
+                            // è¦æ±‚ã—ã¦ã„ã‚‹ã‹ã‚’æ¯ãƒ•ãƒ¬ãƒ¼ãƒ æ›´æ–°ã™ã‚‹ã€‚å®Ÿéš›ã®é©ç”¨ã¯
+                            // collectArmorParts (Armor.Slinger) å´ã§è¡Œã† - æ¬¡ã«
+                            // refreshArmorState() ãŒå‘¼ã°ã‚ŒãŸã¨ãã«åæ˜ ã•ã‚Œã‚‹ã®ã§ã€
+                            // æœ€å¤§1ãƒ•ãƒ¬ãƒ¼ãƒ ã®é…å»¶ã¯ã‚ã‚‹ãŒä½“æ„Ÿã§ããªã„ã€‚
                             orbitSlingerHiddenByProfile = orbitLastProfileIndex >= 0
                                 && orbitLastProfileIndex < orbitProfiles.Count
                                 && orbitProfiles[orbitLastProfileIndex].HideSlingerWhileActive;
@@ -4420,7 +4455,13 @@ namespace NewCamera
                             orbitLastBaseOnlyIgnoreX = currentMode == OrbitProfileMode.BaseOnlyIgnoreX;
                             orbitLastIsBaseOnly = orbitLastBaseOnlyIgnoreX || currentMode == OrbitProfileMode.BaseOnly;
                             orbitLastIsFullRotation = currentMode == OrbitProfileMode.FullRotation;
-
+                            // Full Rotation (A) ä¸­ã¯ã‚¹ãƒãƒƒãƒˆåˆ¤å®šãƒ–ãƒ­ãƒƒã‚¯ãŒä¸¸ã”ã¨ã‚¹ã‚­ãƒƒãƒ—ã•ã‚Œã‚‹ãŸã‚ã€
+                            // ã“ã“ã§ç ´æ£„ã—ã¦ãŠã‹ãªã„ã¨ Câ†’Aâ†’C ã§å¤ã„ã‚¹ãƒãƒƒãƒˆãŒæ®‹ã‚‹
+                            if (orbitLastIsFullRotation)
+                            {
+                                orbitWasInC = false;
+                                orbitSpotPointValid = false;
+                            }
                             // orbitLastProfileIndex itself is already a
                             // stable per-motion identity (-1 = "no profile
                             // matched" is its own single shared state, same
@@ -4444,14 +4485,14 @@ namespace NewCamera
                                     // orbitCurrentTransitionDuration above).
                                     orbitCurrentTransitionDuration = getActiveProfileTransitionDuration();
                                     orbitProfileTransitionStartRotation = orbitFinalRotationPrevInit ? orbitFinalRotationPrev : rotation;
-                                    // PositionƒuƒŒƒ“ƒh‚Ì‰Šú’l‚ğ‘O‚ÌƒtƒŒ[ƒ€‚ÅÀÛ‚É“K—p‚³‚ê‚½ˆÊ’uƒIƒtƒZƒbƒg‚Éİ’è
+                                    // Positionãƒ–ãƒ¬ãƒ³ãƒ‰ã®åˆæœŸå€¤ã‚’å‰ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã§å®Ÿéš›ã«é©ç”¨ã•ã‚ŒãŸä½ç½®ã‚ªãƒ•ã‚»ãƒƒãƒˆã«è¨­å®š
                                     orbitProfileTransitionStartTargetY = orbitPrevTargetY;
                                     orbitProfileTransitionStartTargetRight = orbitPrevTargetRight;
                                     orbitProfileTransitionStartTargetForward = orbitPrevTargetForward;
                                 }
                                 else
                                 {
-                                    // ƒuƒŒƒ“ƒhOFF‚Ìê‡‚Í‹­§“I‚É‘JˆÚƒtƒ‰ƒO‚ğ—‚Æ‚µA‘¦Ø‚è‘Ö‚¦‚ğ“K—p‚·‚é
+                                    // ãƒ–ãƒ¬ãƒ³ãƒ‰OFFã®å ´åˆã¯å¼·åˆ¶çš„ã«é·ç§»ãƒ•ãƒ©ã‚°ã‚’è½ã¨ã—ã€å³æ™‚åˆ‡ã‚Šæ›¿ãˆã‚’é©ç”¨ã™ã‚‹
                                     orbitProfileTransitionActive = false;
                                 }
 
@@ -4509,7 +4550,7 @@ namespace NewCamera
                             // and "A" never used this value anyway (skips
                             // this whole block), so it's unaffected either
                             // way. The known remaining limitation: this still
-                            // self-cancels for any full-tracking (Rangeâ‰E)
+                            // self-cancels for any full-tracking (Rangeç«•ãƒ»)
                             // "C" profile - use
                             // OrbitProfile.UseNativeAimCamera for those
                             // instead (bypasses this entire reconstruction).
@@ -4519,12 +4560,12 @@ namespace NewCamera
                                 Single.DegreesToRadians(activeCorrectionPitch),
                                 Single.DegreesToRadians(activeCorrectionRoll));
 
-                            //ver9 Keep‚Ìcatch-up”»’è—p‚ÉA•½ŠŠ‰»(Slerp)‚³‚ê‚é‘O‚Ì
-                            // "¡‚Ü‚³‚ÉŒü‚¢‚Ä‚¢‚é"³–ÊYaw‚ğƒLƒƒƒbƒVƒ…‚µ‚Ä‚¨‚­B
-                            // ‘f‘‚¢ù‰ñ(‘–s‚Å‚Ì‹}ù‰ñ“™)‚ª‘±‚­‚ÆA‰º‚ÌSlerp•½ŠŠ‰»
-                            // ‚Í–{“–‚ÌŒ»İŒü‚«‚æ‚è’x‚ê‘±‚¯‚Ä‚µ‚Ü‚¢A‚»‚Ì’x‚ê‚½’l‚ğ
-                            // catch-up”»’è‚Ég‚¤‚Æu‰½ü‚©‚µ‚È‚¢‚Æ’Ç‚¢‚Â‚¢‚½”»’è‚É
-                            // ‚È‚ç‚È‚¢vŒ´ˆö‚É‚È‚é‚½‚ßA”»’è‚É‚Í‚±‚¿‚ç‚ğg‚¤B
+                            //ver9 Keepã®catch-upåˆ¤å®šç”¨ã«ã€å¹³æ»‘åŒ–(Slerp)ã•ã‚Œã‚‹å‰ã®
+                            // "ä»Šã¾ã•ã«å‘ã„ã¦ã„ã‚‹"æ­£é¢Yawã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ã¦ãŠãã€‚
+                            // ç´ æ—©ã„æ—‹å›(èµ°è¡Œã§ã®æ€¥æ—‹å›ç­‰)ãŒç¶šãã¨ã€ä¸‹ã®Slerpå¹³æ»‘åŒ–
+                            // ã¯æœ¬å½“ã®ç¾åœ¨å‘ãã‚ˆã‚Šé…ã‚Œç¶šã‘ã¦ã—ã¾ã„ã€ãã®é…ã‚ŒãŸå€¤ã‚’
+                            // catch-upåˆ¤å®šã«ä½¿ã†ã¨ã€Œä½•å‘¨ã‹ã—ãªã„ã¨è¿½ã„ã¤ã„ãŸåˆ¤å®šã«
+                            // ãªã‚‰ãªã„ã€åŸå› ã«ãªã‚‹ãŸã‚ã€åˆ¤å®šã«ã¯ã“ã¡ã‚‰ã‚’ä½¿ã†ã€‚
                             {
                                 Vector3 orbitRawStableForward = Vector3.Transform(new Vector3(0.0f, 0.0f, 1.0f), clampBaseRotation);
                                 if (orbitRawStableForward.X * orbitRawStableForward.X + orbitRawStableForward.Z * orbitRawStableForward.Z > 0.0001f)
@@ -4533,7 +4574,7 @@ namespace NewCamera
                                     orbitCachedRawStableForwardYawValid = true;
                                 }
                             }
-                            //ver9‚±‚±‚Ü‚Å
+                            //ver9ã“ã“ã¾ã§
 
                             float activeClampBaseSmoothing = getActiveClampBaseSmoothing();
                             if (!orbitClampBaseSmoothedInit)
@@ -4546,11 +4587,11 @@ namespace NewCamera
                                 // Slerp takes the shorter path automatically
                                 // (handles quaternion double-cover), same
                                 // as the final-rotation limiter below.
-                                // ƒtƒŒ[ƒ€ƒŒ[ƒg”ñˆË‘¶‰»: ‚±‚Ì’l‚ÍAƒvƒƒtƒ@ƒCƒ‹’†‚Å‚à
-                                // –³ğŒ‚ÉŒvZ‚³‚êAWritePadInputHook‚ÌDecouple
-                                // Movement From Look•â³‚ª’¼ÚQÆ‚·‚é‚½‚ßA
-                                // ‚±‚±‚Ìalpha‚ª–¢•â³‚¾‚Æİ’è‚ÌON/OFF‚ÉŠÖŒW‚È‚­
-                                // ¶ƒXƒeƒBƒbƒN‚Ìù‰ñŠ´‚ªFPS‚²‚Æ‚É•Ï‚í‚Á‚Ä‚¢‚½B
+                                // ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆéä¾å­˜åŒ–: ã“ã®å€¤ã¯Aãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ä¸­ã§ã‚‚
+                                // ç„¡æ¡ä»¶ã«è¨ˆç®—ã•ã‚Œã€WritePadInputHookã®Decouple
+                                // Movement From Lookè£œæ­£ãŒç›´æ¥å‚ç…§ã™ã‚‹ãŸã‚ã€
+                                // ã“ã“ã®alphaãŒæœªè£œæ­£ã ã¨è¨­å®šã®ON/OFFã«é–¢ä¿‚ãªã
+                                // å·¦ã‚¹ãƒ†ã‚£ãƒƒã‚¯ã®æ—‹å›æ„ŸãŒFPSã”ã¨ã«å¤‰ã‚ã£ã¦ã„ãŸã€‚
                                 float baseAlpha = frameRateIndependentAlpha(activeClampBaseSmoothing, deltaTime);
                                 orbitClampBaseRotationSmoothed = Quaternion.Slerp(orbitClampBaseRotationSmoothed, clampBaseRotation, baseAlpha);
                             }
@@ -4564,38 +4605,89 @@ namespace NewCamera
                             if (!orbitLastIsFullRotation)
                             {
                                 bool orbitInC = !orbitLastIsBaseOnly; // reached here means !orbitLastIsFullRotation already
+                                //ver16
                                 if (orbitInC)
                                 {
-                                    if (!orbitWasInC || !orbitSpotPointValid)
+                                    OrbitProfile? spotProfile = (orbitLastProfileIndex >= 0 && orbitLastProfileIndex < orbitProfiles.Count)
+                                        ? orbitProfiles[orbitLastProfileIndex]
+                                        : null;
+                                    bool holdSpot = spotProfile != null && spotProfile.HoldSpot;
+
+                                    Vector3 spotForward = Vector3.Transform(new Vector3(0.0f, 0.0f, 1.0f), clampBaseRotation);
+
+                                    //ver16.2
+                                    // ã‚¹ãƒãƒƒãƒˆã®åŸºæº–ç‚¹ã€‚é€šå¸¸ã¯é¼»ã€‚Body Anchor ON ã®ã¨ãã¯ä½“(Body Joint 0)ã®
+                                    // æ°´å¹³ä½ç½®ã«ã™ã‚‹ã€‚é«˜ã•ã ã‘ã¯é¼»ã«æƒãˆã‚‹(ãƒ”ãƒƒãƒã‚’ä½“ã®æ­£é¢ã«ä¸€è‡´ã•ã›ã‚‹ãŸã‚)ã€‚
+                                    Vector3 spotAnchor = target;
+                                    if (spotProfile != null && spotProfile.SpotAnchorBody)
                                     {
-                                        Vector3 spotForward = Vector3.Transform(new Vector3(0.0f, 0.0f, 1.0f), clampBaseRotation);
-                                        orbitSpotPoint = target + spotForward * orbitSpotDistance;
+                                        spotAnchor = bodyJoints.Count > 0
+                                            ? MemoryUtil.GetRef<Vector3>(bodyJoints[0] + 0x50)
+                                            : player.Position;
+                                        spotAnchor.Y = target.Y;
+                                    }
+                                    //ver16.2ã“ã“ã¾ã§
+
+                                    // Hold Spot ãŒ OFF ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€æ¯ãƒ•ãƒ¬ãƒ¼ãƒ å–ã‚Šç›´ã™(=å¸¸ã«ç¾åœ¨ã®æ­£é¢ã«è¿½å¾“)ã€‚
+                                    bool needCapture = !holdSpot || !orbitWasInC || !orbitSpotPointValid;
+
+                                    // æ”»æ’ƒã§å‰é€²ã—ã¦ã‚¹ãƒãƒƒãƒˆã‚’è¿½ã„è¶Šã—ãŸã‚‰å–ã‚Šç›´ã™(çœŸå¾Œã‚ã‚’å‘ãã®ã‚’é˜²ã)ã€‚
+                                    if (!needCapture)
+                                    {
+                                        //ver16.1
+                                        Vector3 aheadVec = orbitSpotPoint - target;
+                                        aheadVec.Y = 0.0f;
+                                        Vector3 captureDirFlat = orbitSpotCaptureLookDir;
+                                        captureDirFlat.Y = 0.0f;
+                                        float aheadDistance = captureDirFlat.LengthSquared() > 0.0001f
+                                            ? Vector3.Dot(aheadVec, Vector3.Normalize(captureDirFlat))
+                                            : orbitSpotDistance;
+                                        //ver16.1ã“ã“ã¾ã§
+                                        if (aheadDistance < orbitSpotDistance * 0.3f)
+                                        {
+                                            needCapture = true;
+                                        }
+                                    }
+
+                                    if (needCapture)
+                                    {
+                                        //orbitSpotPoint = target - spotForward * orbitSpotDistance;~ver16.1
+                                        orbitSpotPoint = spotAnchor - spotForward * orbitSpotDistance;//ver16.2
+                                        orbitSpotCaptureLookDir = -spotForward;
+                                        orbitSpotCaptureBodyYawDeg = Single.RadiansToDegrees(MathF.Atan2(spotForward.X, spotForward.Z));//ver16.3
                                         orbitSpotPointValid = true;
                                     }
+                                    //ver16.3
                                     else if (orbitSpotReanchorRate > 0.0f)
                                     {
-                                        // Slowly nudge the spot point toward
-                                        // where it would be if recaptured
-                                        // fresh from the *current* live base
-                                        // direction - slow enough not to
-                                        // disrupt spotting during any single
-                                        // rotation, but fast enough that a
-                                        // long attack's net drift (e.g. root
-                                        // motion repositioning the character
-                                        // slightly) doesn't build up into a
-                                        // noticeable correction once C ends
-                                        // and hands off to B's live reference.
-                                        Vector3 freshSpotForward = Vector3.Transform(new Vector3(0.0f, 0.0f, 1.0f), clampBaseRotation);
-                                        Vector3 freshSpotPoint = target + freshSpotForward * orbitSpotDistance;
-                                        float reanchorT = Math.Clamp(orbitSpotReanchorRate * deltaTime, 0.0f, 1.0f);
-                                        orbitSpotPoint = Vector3.Lerp(orbitSpotPoint, freshSpotPoint, reanchorT);
+                                        // ã“ã“ã«æ¥ã‚‹ã®ã¯ Hold Spot ON ã§ã€ã‚¹ãƒãƒƒãƒˆãŒç”Ÿãã¦ã„ã‚‹ã¨ãã ã‘ã€‚
+                                        // ä½“ã®å‘ããŒã€ã‚¹ãƒãƒƒãƒˆã‚’ä½œã£ãŸ(ã¾ãŸã¯æœ€å¾Œã«å¯„ã›ãŸ)æ™‚ã®å‘ãã‹ã‚‰
+                                        // ã—ãã„å€¤ã‚’è¶…ãˆã¦å¤‰ã‚ã£ãŸã¨ãã ã‘ã€è¶…ãˆãŸåˆ†ã‚’ç¾åœ¨ã®æ­£é¢ã¸å¯„ã›ã‚‹ã€‚
+                                        // ã—ãã„å€¤ä»¥å†…(æŸ±ã‚’æ®´ã£ã¦ã„ã‚‹é–“ãªã©)ã¯å®Œå…¨ã«å›ºå®šã®ã¾ã¾ã€‚
+                                        float holdSpotThresholdDeg = spotProfile != null ? spotProfile.HoldSpotThresholdDeg : 15.0f;
+                                        float bodyYawNowDeg = Single.RadiansToDegrees(MathF.Atan2(spotForward.X, spotForward.Z));
+                                        float bodyYawDeviationDeg = MathF.Abs(deltaAngleDeg(orbitSpotCaptureBodyYawDeg, bodyYawNowDeg));
+                                        float excessDeg = bodyYawDeviationDeg - holdSpotThresholdDeg;
+                                        if (excessDeg > 0.0f)
+                                        {
+                                            // ã—ãã„å€¤ã‚’è¶…ãˆãŸç›´å¾Œã¯å¼±ãã€10åº¦è¶…ãˆãŸã‚ãŸã‚Šã§å…¨é–‹(ã‚«ã‚¯ã¤ãé˜²æ­¢)ã€‚
+                                            float followRamp = Math.Clamp(excessDeg / 10.0f, 0.0f, 1.0f);
+                                            followRamp = followRamp * followRamp * (3.0f - 2.0f * followRamp);
+                                            // ã€Œ1ç§’ã‚ãŸã‚Šã®å‰²åˆã€ã€‚ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆãŒå¤‰ã‚ã£ã¦ã‚‚åŒã˜é€Ÿã•ã«ãªã‚‹ã€‚
+                                            float followT = (1.0f - MathF.Exp(-orbitSpotReanchorRate * (deltaTime / 60.0f))) * followRamp;
+                                            Vector3 freshSpotPoint = spotAnchor - spotForward * orbitSpotDistance;
+                                            orbitSpotPoint = Vector3.Lerp(orbitSpotPoint, freshSpotPoint, followT);
+                                            orbitSpotCaptureBodyYawDeg = lerpAngleDeg(orbitSpotCaptureBodyYawDeg, bodyYawNowDeg, followT);
+                                        }
                                     }
+                                    //ver16.3ã“ã“ã¾ã§
                                 }
                                 else
                                 {
                                     orbitSpotPointValid = false;
                                 }
                                 orbitWasInC = orbitInC;
+                                //ver16ã“ã“ã¾ã§
 
                                 // While in C: look toward the fixed spot point
                                 // captured above (a point in the room, like
@@ -4608,12 +4700,39 @@ namespace NewCamera
                                 Quaternion clampReferenceRotation = clampBaseRotation;
                                 if (orbitInC && orbitSpotPointValid)
                                 {
-                                    Vector3 dirToSpot = orbitSpotPoint - target;
-                                    if (dirToSpot.LengthSquared() > 1.0f)
+                                    //ver16.2
+                                    //ver16.1                                    
+                                    Vector3 dirToSpot = target - orbitSpotPoint;
+                                    Vector3 baseForwardForPitch = Vector3.Transform(new Vector3(0.0f, 0.0f, 1.0f), clampBaseRotation);
+
+                                    // Body Anchor ON ã®ã¨ãã€ã‚¹ãƒãƒƒãƒˆãŒé¼»ã®å¾Œã‚å´ã«å…¥ã£ã¦å‘ããŒ
+                                    // é€†è»¢ã—ãªã„ã‚ˆã†ã€ãã®å ´åˆã¯ä½“ã®æ­£é¢ã‚’ä½¿ã†ã€‚
+                                    bool spotBodyAnchorActive = orbitLastProfileIndex >= 0 && orbitLastProfileIndex < orbitProfiles.Count
+                                        && orbitProfiles[orbitLastProfileIndex].SpotAnchorBody;
+                                    if (spotBodyAnchorActive && Vector3.Dot(dirToSpot, baseForwardForPitch) <= 0.0f)
+                                    {
+                                        dirToSpot = baseForwardForPitch;
+                                    }
+
+                                    // ãƒ”ãƒƒãƒç„¡è¦–: å·¦å³(Yaw)ã®å‘ãã ã‘ã‚¹ãƒãƒƒãƒˆã‹ã‚‰å–ã‚Šã€
+                                    // ä¸Šä¸‹è§’ã¯ç¾åœ¨ã®ä½“ã®æ­£é¢(clampBaseRotation)ã®ã‚‚ã®ã‚’ä½¿ã†ã€‚
+                                    if (orbitSpotIgnorePitch)
+                                    {
+                                        float spotHorizontalLen = MathF.Sqrt(dirToSpot.X * dirToSpot.X + dirToSpot.Z * dirToSpot.Z);
+                                        float baseHorizontalLen = MathF.Sqrt(baseForwardForPitch.X * baseForwardForPitch.X + baseForwardForPitch.Z * baseForwardForPitch.Z);
+                                        if (spotHorizontalLen > 1.0f && baseHorizontalLen > 0.01f)
+                                        {
+                                            float horizontalScale = baseHorizontalLen / spotHorizontalLen;
+                                            dirToSpot = new Vector3(dirToSpot.X * horizontalScale, baseForwardForPitch.Y, dirToSpot.Z * horizontalScale);
+                                        }
+                                    }
+                                    if (dirToSpot.LengthSquared() > 0.0001f)
+                                    //ver16.2ã“ã“ã¾ã§
                                     {
                                         Vector3 upRef = Vector3.Transform(new Vector3(0.0f, 1.0f, 0.0f), clampBaseRotation);
                                         clampReferenceRotation = lookRotation(dirToSpot, upRef);
                                     }
+                                    //ver16.1ã“ã“ã¾ã§
                                 }
 
                                 // The raw face-basis "rotation" here uses a different
@@ -4662,7 +4781,7 @@ namespace NewCamera
                                     // point) - smoothing here just avoids an
                                     // abrupt snap and converges fine over a
                                     // few frames, no lag problem.
-                                    // ƒtƒŒ[ƒ€ƒŒ[ƒg”ñˆË‘¶‰»: orbitClampBaseSmoothing‚Æ“¯‚¶——RB
+                                    // ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆéä¾å­˜åŒ–: orbitClampBaseSmoothingã¨åŒã˜ç†ç”±ã€‚
                                     float clampAlpha = frameRateIndependentAlpha(orbitClampSmoothing, deltaTime);
                                     orbitClampSmoothedYaw = lerpAngleDeg(orbitClampSmoothedYaw, clampRelYaw, clampAlpha);
                                     orbitClampSmoothedPitch = lerpAngleDeg(orbitClampSmoothedPitch, clampRelPitch, clampAlpha);
@@ -4767,14 +4886,14 @@ namespace NewCamera
                                     ? orbitProfiles[orbitLastProfileIndex]
                                     : null;
 
-                                // Gaze Keyframes ‚ÍAƒ‚[ƒVƒ‡ƒ“‘S‘Ì‚Å‚Í‚È‚­
-                                // GazeRanges ‚Åw’è‚µ‚½ T ‹æŠÔ‚ÌŠÔ‚¾‚¯—LŒø‚É‚Å‚«‚é
-                                // (Limit Gaze To Ranges)B‹æŠÔ‚ÌŠO‚Å‚Í]—ˆ‚Ç‚¨‚è‚Ì
-                                // Range/Blend ’Ç]‚É–ß‚èA‹æŠÔ‚Ì‹«–Ú‚ÍŠe‹æŠÔ‚Ì
-                                // Blend •‚Å Slerp ƒNƒƒXƒtƒF[ƒh‚³‚ê‚é‚Ì‚Å”ò‚Î‚È‚¢B
-                                // —á: ‰½‰ñ“]‚à‚·‚éUŒ‚‚ÅAU‚è‚©‚Ô‚è‚Æ\‚¦’¼‚µ‚Ì
-                                // 2 ‹æŠÔ‚¾‚¯ Gaze ‚Å—h‚ê‚ğ—}‚¦AŠÔ‚Ì‰ñ“]•”•ª‚Í
-                                // ‚»‚Ì‚Ü‚ÜŠ®‘S’Ç]‚É”C‚¹‚éA‚Æ‚¢‚¤g‚¢•ª‚¯‚ª‚Å‚«‚éB
+                                // Gaze Keyframes ã¯ã€ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³å…¨ä½“ã§ã¯ãªã
+                                // GazeRanges ã§æŒ‡å®šã—ãŸ T åŒºé–“ã®é–“ã ã‘æœ‰åŠ¹ã«ã§ãã‚‹
+                                // (Limit Gaze To Ranges)ã€‚åŒºé–“ã®å¤–ã§ã¯å¾“æ¥ã©ãŠã‚Šã®
+                                // Range/Blend è¿½å¾“ã«æˆ»ã‚Šã€åŒºé–“ã®å¢ƒç›®ã¯å„åŒºé–“ã®
+                                // Blend å¹…ã§ Slerp ã‚¯ãƒ­ã‚¹ãƒ•ã‚§ãƒ¼ãƒ‰ã•ã‚Œã‚‹ã®ã§é£›ã°ãªã„ã€‚
+                                // ä¾‹: ä½•å›è»¢ã‚‚ã™ã‚‹æ”»æ’ƒã§ã€æŒ¯ã‚Šã‹ã¶ã‚Šã¨æ§‹ãˆç›´ã—ã®
+                                // 2 åŒºé–“ã ã‘ Gaze ã§æºã‚Œã‚’æŠ‘ãˆã€é–“ã®å›è»¢éƒ¨åˆ†ã¯
+                                // ãã®ã¾ã¾å®Œå…¨è¿½å¾“ã«ä»»ã›ã‚‹ã€ã¨ã„ã†ä½¿ã„åˆ†ã‘ãŒã§ãã‚‹ã€‚
 
                                 //10.1
                                 bool gazeAvailable = matchedProfile != null
@@ -4784,9 +4903,9 @@ namespace NewCamera
                                 Quaternion gazeRelative = Quaternion.Identity;
                                 if (gazeAvailable)
                                 {
-                                    // GazeUseSubStateTimer ‚ª ON ‚Ìƒvƒƒtƒ@ƒCƒ‹‚ÍAƒ‚[ƒVƒ‡ƒ“
-                                    // ƒtƒŒ[ƒ€‚Å‚Í‚È‚­ƒTƒuƒXƒe[ƒgŒo‰ßŠÔ‚ğ T ‚Æ‚µ‚Äg‚¤
-                                    // (getCurrentActionSubState / orbitSubStateElapsedSec QÆ)B
+                                    // GazeUseSubStateTimer ãŒ ON ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³
+                                    // ãƒ•ãƒ¬ãƒ¼ãƒ ã§ã¯ãªãã‚µãƒ–ã‚¹ãƒ†ãƒ¼ãƒˆçµŒéæ™‚é–“ã‚’ T ã¨ã—ã¦ä½¿ã†
+                                    // (getCurrentActionSubState / orbitSubStateElapsedSec å‚ç…§)ã€‚
                                     float motionProgress = matchedProfile!.GazeUseSubStateTimer
                                         ? getSubStateProgress(matchedProfile.GazeSubStateDuration)
                                         : getMotionProgress(player);
@@ -4796,7 +4915,7 @@ namespace NewCamera
                                         : 1.0f;
                                 }
                                 orbitLastGazeWeight = gazeWeight;
-                                //10.1‚±‚±‚Ü‚Å
+                                //10.1ã“ã“ã¾ã§
 
                                 Quaternion clampBlendedRelative;
                                 if (gazeAvailable && gazeWeight >= 0.9999f)
@@ -4843,8 +4962,8 @@ namespace NewCamera
 
                                     if (gazeAvailable && gazeWeight > 0.0001f)
                                     {
-                                        // ‹æŠÔ‚Ìo“ü‚èŒû: ’Êí’Ç]‚Æ Gaze ‚ğ
-                                        // ¬‚º‚Ä‚¢‚éÅ’†B
+                                        // åŒºé–“ã®å‡ºå…¥ã‚Šå£: é€šå¸¸è¿½å¾“ã¨ Gaze ã‚’
+                                        // æ··ãœã¦ã„ã‚‹æœ€ä¸­ã€‚
                                         clampBlendedRelative = Quaternion.Slerp(normalRelative, gazeRelative, gazeWeight);
                                         extractYawPitchRollDeg(clampBlendedRelative, out orbitLastRelYaw, out orbitLastRelPitch, out orbitLastRelRoll);
                                     }
@@ -4854,7 +4973,7 @@ namespace NewCamera
                                     }
                                 }
                                 rotation = (clampReferenceRotation * clampBlendedRelative) * clampFlip;
-                                //ver10‚±‚±‚Ü‚Å
+                                //ver10ã“ã“ã¾ã§
 
                                 if (orbitForceLevelRoll)
                                 {
@@ -4896,13 +5015,13 @@ namespace NewCamera
                             orbitPrevRawInit = false;
                         }
 
-                        //ver9 cameraYaw‚ğæZ‚·‚é’¼‘O‚Ì"‘f‚Ìƒx[ƒX•ûŒü"‚ğƒLƒƒƒbƒVƒ…
-                        // (Keep‚ÌƒtƒB[ƒhƒtƒHƒ[ƒhŒvZ‚Åg‚¤BcameraYaw‚æ‚è‘O‚Ì’l
-                        // ‚È‚Ì‚ÅƒtƒB[ƒhƒoƒbƒNƒ‹[ƒv‚É‚È‚ç‚È‚¢)
-                        // ‚±‚Ì‚·‚®‰º‚ÅclampFlip(X²ü‚è180“x)‚ªrotation‚Éæ‚Á‚Ä‚¨‚èA
-                        // ‚±‚ê‚ªcameraYaw‚ÌŒø‚«•û‚Ì•„†‚ğ”½“]‚³‚¹‚é
-                        // (world = base - cameraYawB’Êí‚Ìworld = cameraYaw + base
-                        // ‚Å‚Í‚È‚¢)BorbitCachedBaseYawFlipped‚Å‚»‚ê‚ğKeep‘¤‚É“`‚¦‚éB
+                        //ver9 cameraYawã‚’ä¹—ç®—ã™ã‚‹ç›´å‰ã®"ç´ ã®ãƒ™ãƒ¼ã‚¹æ–¹å‘"ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥
+                        // (Keepã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒ•ã‚©ãƒ¯ãƒ¼ãƒ‰è¨ˆç®—ã§ä½¿ã†ã€‚cameraYawã‚ˆã‚Šå‰ã®å€¤
+                        // ãªã®ã§ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ãƒ«ãƒ¼ãƒ—ã«ãªã‚‰ãªã„)
+                        // ã“ã®ã™ãä¸‹ã§clampFlip(Xè»¸å‘¨ã‚Š180åº¦)ãŒrotationã«ä¹—ã£ã¦ãŠã‚Šã€
+                        // ã“ã‚ŒãŒcameraYawã®åŠ¹ãæ–¹ã®ç¬¦å·ã‚’åè»¢ã•ã›ã‚‹
+                        // (world = base - cameraYawã€‚é€šå¸¸ã®world = cameraYaw + base
+                        // ã§ã¯ãªã„)ã€‚orbitCachedBaseYawFlippedã§ãã‚Œã‚’Keepå´ã«ä¼ãˆã‚‹ã€‚
                         {
                             Vector3 orbitBaseForwardForKeep = Vector3.Transform(new Vector3(0.0f, 0.0f, 1.0f), rotation);
                             if (orbitBaseForwardForKeep.X * orbitBaseForwardForKeep.X + orbitBaseForwardForKeep.Z * orbitBaseForwardForKeep.Z > 0.0001f)
@@ -4912,7 +5031,7 @@ namespace NewCamera
                                 orbitCachedBaseYawFlipped = true;
                             }
                         }
-                        //ver9‚±‚±‚Ü‚Å
+                        //ver9ã“ã“ã¾ã§
 
                         rotation *= Quaternion.CreateFromYawPitchRoll(
                             Single.DegreesToRadians(cameraYaw),
@@ -4992,9 +5111,9 @@ namespace NewCamera
                                     Single.DegreesToRadians(orbitRotationJointRollOffset));
                             }
                         }
-                        //ver9 cameraYaw‚ğæZ‚·‚é’¼‘O‚Ì"‘f‚Ìƒx[ƒX•ûŒü"‚ğƒLƒƒƒbƒVƒ…
-                        // (ƒvƒƒtƒ@ƒCƒ‹B/CŒo˜HB‚±‚¿‚ç‚ÍclampFlip‚Ì‚æ‚¤‚È”½“]‚ª
-                        // ‹²‚Ü‚ç‚È‚¢‚Ì‚ÅAcameraYaw‚ÌŒø‚«•û‚Í’Êí‚Ì‘«‚µZ‚Ì‚Ü‚Ü)
+                        //ver9 cameraYawã‚’ä¹—ç®—ã™ã‚‹ç›´å‰ã®"ç´ ã®ãƒ™ãƒ¼ã‚¹æ–¹å‘"ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥
+                        // (ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«B/CçµŒè·¯ã€‚ã“ã¡ã‚‰ã¯clampFlipã®ã‚ˆã†ãªåè»¢ãŒ
+                        // æŒŸã¾ã‚‰ãªã„ã®ã§ã€cameraYawã®åŠ¹ãæ–¹ã¯é€šå¸¸ã®è¶³ã—ç®—ã®ã¾ã¾)
                         {
                             Vector3 orbitBaseForwardForKeep = Vector3.Transform(new Vector3(0.0f, 0.0f, 1.0f), rotation);
                             if (orbitBaseForwardForKeep.X * orbitBaseForwardForKeep.X + orbitBaseForwardForKeep.Z * orbitBaseForwardForKeep.Z > 0.0001f)
@@ -5004,7 +5123,7 @@ namespace NewCamera
                                 orbitCachedBaseYawFlipped = false;
                             }
                         }
-                        //ver9‚±‚±‚Ü‚Å
+                        //ver9ã“ã“ã¾ã§
 
                         // Manual "recenter" input snaps the free-look offset back to zero,
                         // replacing the base game's recenter button which this free camera
@@ -5050,7 +5169,7 @@ namespace NewCamera
                 // the speed cap. The speed cap still runs afterward as a
                 // second safety net for jumps from other causes (recenter,
                 // etc.), same as before.
-                //* ver’Ç‰Á
+                //* verè¿½åŠ 
                 float transitionAlpha = 1.0f;
                 bool isTransitioning = false;
                 if (orbitProfileTransitionActive)
@@ -5122,8 +5241,8 @@ namespace NewCamera
                 orbitY += cameraFrame.Y;
                 //ver11
                 var (activeTargetY, activeTargetRight, activeTargetForward) = getActiveOrbitTargetOffset();
-                //* ver2’Ç‰Á
-                // XYZ Position ƒuƒŒƒ“ƒh“K—p
+                //* ver2è¿½åŠ 
+                // XYZ Position ãƒ–ãƒ¬ãƒ³ãƒ‰é©ç”¨
                 if (isTransitioning)
                 {
                     activeTargetY = orbitProfileTransitionStartTargetY + (activeTargetY - orbitProfileTransitionStartTargetY) * transitionAlpha;
@@ -5131,18 +5250,18 @@ namespace NewCamera
                     activeTargetForward = orbitProfileTransitionStartTargetForward + (activeTargetForward - orbitProfileTransitionStartTargetForward) * transitionAlpha;
                 }
 
-                // ŸƒtƒŒ[ƒ€‚ÌQÆ—p‚ÉAÀÛ‚É“K—p‚³‚ê‚½ƒIƒtƒZƒbƒg‚ğ•Û‘¶
+                // æ¬¡ãƒ•ãƒ¬ãƒ¼ãƒ ã®å‚ç…§ç”¨ã«ã€å®Ÿéš›ã«é©ç”¨ã•ã‚ŒãŸã‚ªãƒ•ã‚»ãƒƒãƒˆã‚’ä¿å­˜
                 orbitPrevTargetY = activeTargetY;
                 orbitPrevTargetRight = activeTargetRight;
                 orbitPrevTargetForward = activeTargetForward;
                 //*/
 
-                // Use Gaze Keyframes ‚Ì XYZ ”Å (Use Gaze Position Keyframes)B
-                // Target Y/Right/Forward ‚ğARotation‘¤‚ÌGaze Keyframes‚Æ“¯‚¶ T
-                // (motionProgressA‚Ü‚½‚Í GazeUseSubStateTimer ‚ª ON ‚È‚çƒTƒu
-                // ƒXƒe[ƒgŒo‰ßŠÔ) ‚É‰ˆ‚Á‚Äã‘‚«‚·‚éBGazeUseRanges ‚ª ON ‚Ì
-                // ê‡‚Í Rotation ‘¤‚Æ‹¤’Ê‚Ì‹æŠÔEBlend İ’è‚Å’Êí’l‚Æ‚Ì
-                // ƒNƒƒXƒtƒF[ƒh‚É‚à‘Î‰‚·‚éB
+                // Use Gaze Keyframes ã® XYZ ç‰ˆ (Use Gaze Position Keyframes)ã€‚
+                // Target Y/Right/Forward ã‚’ã€Rotationå´ã®Gaze Keyframesã¨åŒã˜ T
+                // (motionProgressã€ã¾ãŸã¯ GazeUseSubStateTimer ãŒ ON ãªã‚‰ã‚µãƒ–
+                // ã‚¹ãƒ†ãƒ¼ãƒˆçµŒéæ™‚é–“) ã«æ²¿ã£ã¦ä¸Šæ›¸ãã™ã‚‹ã€‚GazeUseRanges ãŒ ON ã®
+                // å ´åˆã¯ Rotation å´ã¨å…±é€šã®åŒºé–“ãƒ»Blend è¨­å®šã§é€šå¸¸å€¤ã¨ã®
+                // ã‚¯ãƒ­ã‚¹ãƒ•ã‚§ãƒ¼ãƒ‰ã«ã‚‚å¯¾å¿œã™ã‚‹ã€‚
                 if (orbitFaceClampEnable && orbitLastProfileIndex >= 0 && orbitLastProfileIndex < orbitProfiles.Count)
                 {
                     OrbitProfile gazePositionProfile = orbitProfiles[orbitLastProfileIndex];
@@ -5168,7 +5287,7 @@ namespace NewCamera
                 target.X += activeTargetRight * right.X;
                 target.Z += activeTargetRight * right.Z;
                 target += activeTargetForward * forwardOffsetAxis;
-                //ver11‚±‚±‚Ü‚Å
+                //ver11ã“ã“ã¾ã§
                 Vector3 position;
                 float dist = orbitDistance;
                 if (targetJoint)
@@ -5414,7 +5533,7 @@ namespace NewCamera
             hookOrder = 4;
 #endif
 
-            // --- ƒtƒŒ[ƒ€’†‚É•Ê‰ÓŠ‚Å NearClip ‚ª‘‚©‚ê‚Ä‚µ‚Ü‚¤‰Â”\«‚É‘Î‰ ---
+            // --- ãƒ•ãƒ¬ãƒ¼ãƒ ä¸­ã«åˆ¥ç®‡æ‰€ã§ NearClip ãŒæ›¸ã‹ã‚Œã¦ã—ã¾ã†å¯èƒ½æ€§ã«å¯¾å¿œ ---
             if (vCamera != null)
             {
                 vCamera.NearClip = 1.0f;
@@ -5614,7 +5733,7 @@ namespace NewCamera
                 vCamera.Target = cameraTarget;
                 vCamera.FieldOfView = cameraFov;
 
-                // NearClip ‚ğÄ“K—piƒeƒ“ƒg“à“™‚Åã‘‚«‚³‚ê‚é‘Îôj
+                // NearClip ã‚’å†é©ç”¨ï¼ˆãƒ†ãƒ³ãƒˆå†…ç­‰ã§ä¸Šæ›¸ãã•ã‚Œã‚‹å¯¾ç­–ï¼‰
                 vCamera.NearClip = 1.0f;
 
                 setCameraRoll(vCamera);
@@ -5755,7 +5874,7 @@ namespace NewCamera
                 }
             }
 
-            blockRightStickLookDuringL1 = enableFreeCamera && buttonWasDown(Button.L1);//L1‰Ÿ‰º’†ƒJƒƒ‰ƒƒbƒN
+            blockRightStickLookDuringL1 = enableFreeCamera && buttonWasDown(Button.L1);//L1æŠ¼ä¸‹ä¸­ã‚«ãƒ¡ãƒ©ãƒ­ãƒƒã‚¯
 
             if (enableCombo && freeCameraCombo != null)
             {
@@ -6127,11 +6246,11 @@ namespace NewCamera
 
             return checkMovementHook!.Original(stickValue, alwaysZero);
         }
-        //DODGE_R‚ÌƒƒOæ‚è
+        //DODGE_Rã®ãƒ­ã‚°å–ã‚Š
         private nint ActionRequestHook(nint player, int requestId)
         {
             Player? p = getPlayer();
-            nint myActionController = p != null ? p.ActionController.Instance : 0; // © ÀÛ‚ÌƒvƒƒpƒeƒB–¼‚É’u‚«Š·‚¦
+            nint myActionController = p != null ? p.ActionController.Instance : 0; // â† å®Ÿéš›ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã«ç½®ãæ›ãˆ
 
             if (myActionController != 0 && player == myActionController)
             {
@@ -6307,7 +6426,7 @@ namespace NewCamera
             // clicking "Hide All" or from the "default hidden" setting.
             if (part == Armor.Face || part == Armor.EyeLens)
             {
-                // ¥ NPC‚ªÁ‚¦‚Ä‚µ‚Ü‚¤Œ´ˆö‚È‚Ì‚ÅƒRƒƒ“ƒgƒAƒEƒg‚·‚é
+                // â–¼ NPCãŒæ¶ˆãˆã¦ã—ã¾ã†åŸå› ãªã®ã§ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆã™ã‚‹
                 /*
                 if (stickyHideArmor[part] && firstTimeThisSlot)
                 {
@@ -6318,9 +6437,9 @@ namespace NewCamera
             //ver13
             else if (part == Armor.Slinger)
             {
-                // ver13: è“®‚ÌHide All(stickyHideArmor)‚É‰Á‚¦‚ÄAŒ»İ
-                // ƒ}ƒbƒ`‚µ‚Ä‚¢‚éƒvƒƒtƒ@ƒCƒ‹‚ÌHideSlingerWhileActive‚Å‚à
-                // ‹­§”ñ•\¦‚É‚·‚éB‚Ç‚¿‚ç‚Å‚à‚È‚¯‚ê‚Î©“®‚ÅÄ•\¦‚·‚éB
+                // ver13: æ‰‹å‹•ã®Hide All(stickyHideArmor)ã«åŠ ãˆã¦ã€ç¾åœ¨
+                // ãƒãƒƒãƒã—ã¦ã„ã‚‹ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã®HideSlingerWhileActiveã§ã‚‚
+                // å¼·åˆ¶éè¡¨ç¤ºã«ã™ã‚‹ã€‚ã©ã¡ã‚‰ã§ã‚‚ãªã‘ã‚Œã°è‡ªå‹•ã§å†è¡¨ç¤ºã™ã‚‹ã€‚
                 if (stickyHideArmor[part] || orbitSlingerHiddenByProfile)
                 {
                     hideArmorPartAllLods(addr);
@@ -6334,7 +6453,7 @@ namespace NewCamera
             {
                 hideArmorPartAllLods(addr);
             }
-            //ver13‚±‚±‚Ü‚Å
+            //ver13ã“ã“ã¾ã§
             int jointCount = MemoryUtil.Read<int>(baseAddr + 0x4A0);
             nint jointAddr = MemoryUtil.Read<nint>(baseAddr + 0x4A8);
             for (int i = 0; i < jointCount; i++)
@@ -7059,7 +7178,7 @@ namespace NewCamera
                 }
             }
         }
-        //ver13‚±‚±‚Ü‚Å
+        //ver13ã“ã“ã¾ã§
         private void drawModelParts(nint armorAddr, nint partsAddr = 0x0, int armorCategory = -1)
         {
             if (partsAddr == 0x0)
@@ -7293,7 +7412,7 @@ namespace NewCamera
                 {
                     refreshArmorState(player);
 
-                    // ¥ ‚±‚±‚©‚ç’Ç‰ÁFƒvƒŒƒCƒ„[‚ÌŠç‚ÆƒAƒCƒŒƒ“ƒY‚Ì”ñ•\¦‚à‚µ‚­‚Í“§–¾“x‚ğ 0.0f ‚É‚µ‚ÄŠ®‘S“§–¾‚É‚·‚é
+                    // â–¼ ã“ã“ã‹ã‚‰è¿½åŠ ï¼šãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®é¡”ã¨ã‚¢ã‚¤ãƒ¬ãƒ³ã‚ºã®éè¡¨ç¤ºã‚‚ã—ãã¯é€æ˜åº¦ã‚’ 0.0f ã«ã—ã¦å®Œå…¨é€æ˜ã«ã™ã‚‹
                     if (stickyHideArmor[Armor.Face])
                     {
                         MemoryUtil.GetRef<float>(playerArmor[Armor.Face] + 0x314) = 0.0f;
@@ -7302,7 +7421,7 @@ namespace NewCamera
                     {
                         MemoryUtil.GetRef<float>(playerArmor[Armor.EyeLens] + 0x314) = 0.0f;
                     }
-                    // £ ‚±‚±‚Ü‚Å’Ç‰Á
+                    // â–² ã“ã“ã¾ã§è¿½åŠ 
 
                     foreach ((nint addr, List<Vector3> offsets) in faceOffsets)
                     {
@@ -7999,14 +8118,14 @@ namespace NewCamera
                     drawModelParts(playerArmor[Armor.Leg]);
                     ImGui.Separator();
                 }
-                /*
+                //*
                 expaned = ImGui.CollapsingHeader("Weapon");
                 if (expaned)
                 {
                     drawModelParts(playerArmor[Armor.Weapon]);
                     ImGui.Separator();
                 }
-                */
+                //*/
                 expaned = ImGui.CollapsingHeader("Slinger");
                 ImGui.SameLine();
                 ImGui.Text($"(id: {MemoryUtil.Read<int>(player.Instance + 0x13D8C):X}_{MemoryUtil.Read<int>(player.Instance + 0x13D90):X})");
@@ -9187,10 +9306,10 @@ namespace NewCamera
                 if (vCamera != null || pCamera != null)
                 {
                     ImGui.Text("Camera");
-                    //ver9 L1ƒŠƒZƒbƒg‚ÌØ‚è•ª‚¯—pƒfƒoƒbƒO•\¦BŒ´ˆö‚ª“Á’è‚Å‚«‚½‚ç
-                    // íœ‚µ‚Ä\‚¢‚Ü‚¹‚ñB‚±‚ÌƒR[ƒhƒx[ƒX‚ÌdeltaTime‚ÍAÀ‚ÍÀŠÔ‚Ì•b”‚Å‚Í‚È‚­u60FPSŠî€‚ÌƒtƒŒ[ƒ€Š·Z’lv‚Å‚µ‚½
+                    //ver9 L1ãƒªã‚»ãƒƒãƒˆã®åˆ‡ã‚Šåˆ†ã‘ç”¨ãƒ‡ãƒãƒƒã‚°è¡¨ç¤ºã€‚åŸå› ãŒç‰¹å®šã§ããŸã‚‰
+                    // å‰Šé™¤ã—ã¦æ§‹ã„ã¾ã›ã‚“ã€‚ã“ã®ã‚³ãƒ¼ãƒ‰ãƒ™ãƒ¼ã‚¹ã®deltaTimeã¯ã€å®Ÿã¯å®Ÿæ™‚é–“ã®ç§’æ•°ã§ã¯ãªãã€Œ60FPSåŸºæº–ã®ãƒ•ãƒ¬ãƒ¼ãƒ æ›ç®—å€¤ã€ã§ã—ãŸ
                     //ImGui.Text($"orbitLookState: {orbitLookState} | orbitRecenterHeldSec: {orbitRecenterHeldSec:0.000} | L1 down: {buttonWasDown(Button.L1)}");
-                    //ver9‚±‚±‚Ü‚Å
+                    //ver9ã“ã“ã¾ã§
                     if (vCamera != null)
                     {
                         ImGui.Text($"Visible Camera: 0x{vCamera.Instance:X}");
@@ -9623,6 +9742,14 @@ namespace NewCamera
                             ImGui.Text("Base Rotation Joint / player.Rotation may use a different\nforward/up convention than the face-basis rotation. Stand still\nfacing normally and adjust these three until Deviation below\nreads ~0 on all axes.\n\nThese three fields are the fallback used only when a motion\nmatches none of the profiles below at all (defaults to \"A\").\nEvery profile below - any Mode, including an explicit Full\nRotation profile - has its own independent Correction Yaw/Pitch/\nRoll that takes priority whenever it matches, so tune a profile's\nown fields instead if this doesn't seem to be taking effect.\n\nIMPORTANT: whichever Correction actually applies (this fallback,\nor a matched profile's own) still feeds the shared movement/\nlook-decoupling reference (\"Decouple Movement From Look\" above)\nat all times, even during Full Rotation motions (which never use\nit for their OWN rendered view - only for that shared reference) -\nso if movement direction feels wrong, check here first regardless\nof which mode is active.");
                             ImGui.EndTooltip();
                         }
+                        //ver16.2
+                        ImGui.Checkbox("Spot Ignore Pitch##SimpleLock", ref orbitSpotIgnorePitch);
+                        if (ImGui.BeginItemTooltip())
+                        {
+                            ImGui.Text("ON: ã‚¹ãƒãƒƒãƒˆã¯å·¦å³(Yaw)ã ã‘è¦‹ã‚‹ã€‚ä¸Šä¸‹è§’ã¯ä½“ã®æ­£é¢ã®ã‚‚ã®ã‚’ä½¿ã†ã€‚\nOFF: ã‚¹ãƒãƒƒãƒˆã¸ã®ä¸Šä¸‹ã®è§’åº¦ã«ã‚‚è¿½å¾“ã™ã‚‹ã€‚\né•ã„ãŒå‡ºã‚‹ã®ã¯ Hold Spot ON ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã ã‘ã€‚\n(Hold Spot OFF / Body Anchor å˜ä½“ã§ã¯ã€ã‚¹ãƒãƒƒãƒˆã®é«˜ã•ãŒé¼»ã®é«˜ã•ã«\næƒã†ã®ã§è¦‹ãŸç›®ã¯å¤‰ã‚ã‚‰ãªã„)\nâ€» å†èµ·å‹•ã™ã‚‹ã¨ ON ã«æˆ»ã‚‹ã€‚");
+                            ImGui.EndTooltip();
+                        }
+                        //ver16.2ã“ã“ã¾ã§
                         ImGui.DragFloat("Spot Distance##SimpleLock", ref orbitSpotDistance, 10.0f, 1.0f, 5000.0f);
                         if (ImGui.BeginItemTooltip())
                         {
@@ -9659,16 +9786,16 @@ namespace NewCamera
                         ImGui.Text($"Action SubState (+0x760): {orbitActionSubState}");
                         if (ImGui.BeginItemTooltip())
                         {
-                            ImGui.Text("ActionController + 0x760 ‚Ì¶‚Ì’l (Cheat Engine ‚ÅŒ©‚Ä‚¢‚½‚à‚Ì‚Æ“¯‚¶)B\nƒ‚[ƒVƒ‡ƒ“–¼‚à {Lmt}.{Id} ‚à•Ï‚í‚ç‚È‚¢‚Ü‚ÜAã”¼g‘¤‚Ìó‘Ô‚¾‚¯‚ª\n•Ï‚í‚éê–Ê (‰ñ•œ–ò‚ğˆù‚Ş=8 / ‚µ‚Ü‚¤=9A‹|‚Ìƒrƒ“‘•“U=14 / ‰ğœ=15 ‚È‚Ç)\n‚Å‚±‚±‚¾‚¯‚ª•Ï‰»‚·‚éB\n\n‚±‚Ì’l‚ğƒL[ƒ[ƒh—“‚Åg‚¤‚É‚ÍA––”ö‚É \"#<”’l>\" ‚ğ•t‚¯‚é:\n  #8                      c ’l‚ª 8 ‚Ì‚Æ‚«‚¾‚¯ˆê’v (ƒ‚[ƒVƒ‡ƒ“–¼‚Í•s–â)\n  Common::IDLE#8          c ƒAƒNƒVƒ‡ƒ“–¼ˆê’v ‚©‚Â ’l‚ª 8\n  WP_11::IDLE@12.156#14   c ƒAƒNƒVƒ‡ƒ“–¼ + {Lmt}.{Id} + ’l\n\n-1 ‚Í‚Ü‚¾“Ç‚ß‚Ä‚¢‚È‚¢ó‘ÔB");
+                            ImGui.Text("ActionController + 0x760 ã®ç”Ÿã®å€¤ (Cheat Engine ã§è¦‹ã¦ã„ãŸã‚‚ã®ã¨åŒã˜)ã€‚\nãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³åã‚‚ {Lmt}.{Id} ã‚‚å¤‰ã‚ã‚‰ãªã„ã¾ã¾ã€ä¸ŠåŠèº«å´ã®çŠ¶æ…‹ã ã‘ãŒ\nå¤‰ã‚ã‚‹å ´é¢ (å›å¾©è–¬ã‚’é£²ã‚€=8 / ã—ã¾ã†=9ã€å¼“ã®ãƒ“ãƒ³è£…å¡«=14 / è§£é™¤=15 ãªã©)\nã§ã“ã“ã ã‘ãŒå¤‰åŒ–ã™ã‚‹ã€‚\n\nã“ã®å€¤ã‚’ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰æ¬„ã§ä½¿ã†ã«ã¯ã€æœ«å°¾ã« \"#<æ•°å€¤>\" ã‚’ä»˜ã‘ã‚‹:\n  #8                      â€¦ å€¤ãŒ 8 ã®ã¨ãã ã‘ä¸€è‡´ (ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³åã¯ä¸å•)\n  Common::IDLE#8          â€¦ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³åä¸€è‡´ ã‹ã¤ å€¤ãŒ 8\n  WP_11::IDLE@12.156#14   â€¦ ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å + {Lmt}.{Id} + å€¤\n\n-1 ã¯ã¾ã èª­ã‚ã¦ã„ãªã„çŠ¶æ…‹ã€‚");
                             ImGui.EndTooltip();
                         }
                         ImGui.Text($"SubState Elapsed: {orbitSubStateElapsedSec:F2}s");
                         if (ImGui.BeginItemTooltip())
                         {
-                            ImGui.Text("Action SubState (+0x760) ‚ªÅŒã‚É•Ï‰»‚µ‚Ä‚©‚ç‚ÌŒo‰ß•b”B\n0 ‚ÉƒŠƒZƒbƒg‚³‚ê‚½uŠÔ‚ªA‚»‚ÌƒTƒu“®ì‚Ì \"ŠJn\" ‚Æ‚İ‚È‚³‚ê‚éB\n\"Use SubState Timer for T\" ‚ğ ON ‚É‚µ‚½ƒvƒƒtƒ@ƒCƒ‹‚Ì Gaze\nKeyframes / GazeRanges ‚ÍA‚±‚Ì’l‚ğ Assumed Duration ‚Å\nŠ„‚Á‚½‚à‚Ì‚ğ T ‚Æ‚µ‚Äg‚¤BÀÛ‚ÉƒTƒu“®ì‚ª‚Ç‚ê‚­‚ç‚¢\n‘±‚­‚©A‚±‚Ì”’l‚ğƒXƒgƒbƒvƒEƒHƒbƒ`‘ã‚í‚è‚ÉÀ‘ª‚µ‚Ä\nAssumed Duration ‚ğŒˆ‚ß‚éB");
+                            ImGui.Text("Action SubState (+0x760) ãŒæœ€å¾Œã«å¤‰åŒ–ã—ã¦ã‹ã‚‰ã®çµŒéç§’æ•°ã€‚\n0 ã«ãƒªã‚»ãƒƒãƒˆã•ã‚ŒãŸç¬é–“ãŒã€ãã®ã‚µãƒ–å‹•ä½œã® \"é–‹å§‹\" ã¨ã¿ãªã•ã‚Œã‚‹ã€‚\n\"Use SubState Timer for T\" ã‚’ ON ã«ã—ãŸãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã® Gaze\nKeyframes / GazeRanges ã¯ã€ã“ã®å€¤ã‚’ Assumed Duration ã§\nå‰²ã£ãŸã‚‚ã®ã‚’ T ã¨ã—ã¦ä½¿ã†ã€‚å®Ÿéš›ã«ã‚µãƒ–å‹•ä½œãŒã©ã‚Œãã‚‰ã„\nç¶šãã‹ã€ã“ã®æ•°å€¤ã‚’ã‚¹ãƒˆãƒƒãƒ—ã‚¦ã‚©ãƒƒãƒä»£ã‚ã‚Šã«å®Ÿæ¸¬ã—ã¦\nAssumed Duration ã‚’æ±ºã‚ã‚‹ã€‚");
                             ImGui.EndTooltip();
                         }
-                        //ver10.1‚±‚±‚Ü‚Å
+                        //ver10.1ã“ã“ã¾ã§
                         string motionStatus = orbitLastProfileIndex >= 0
                             ? $"-> Profile {orbitLastProfileIndex + 1} ({orbitProfiles[orbitLastProfileIndex].Mode})"
                             : "-> A: Full Rotation (default, unmatched - clamp bypassed)";
@@ -9691,7 +9818,7 @@ namespace NewCamera
                             ? $"Profile Switch Blend: {orbitProfileTransitionTimer:F2}/{orbitCurrentTransitionDuration:F2}s"
                             : "Profile Switch Blend: (idle)");
                         
-                        // --- [‰ü‘P1] Animation ‚Ì Frame ƒXƒ‰ƒCƒ_[ & Paused ‚ğ‚±‚±‚É”z’u ---ver7
+                        // --- [æ”¹å–„1] Animation ã® Frame ã‚¹ãƒ©ã‚¤ãƒ€ãƒ¼ & Paused ã‚’ã“ã“ã«é…ç½® ---ver7
                         if (lastPlayer != null && lastPlayer.AnimationLayer != null)
                         {
                             var animLayer = lastPlayer.AnimationLayer;
@@ -9725,18 +9852,18 @@ namespace NewCamera
                         for (int profileIndex = 0; profileIndex < orbitProfiles.Count; profileIndex++)
                         {
                             OrbitProfile profile = orbitProfiles[profileIndex];
-                            // ID ‚ğƒŠƒXƒgã‚ÌˆÊ’u‚Å‚Í‚È‚­ƒvƒƒtƒ@ƒCƒ‹©‘Ì‚ÉŒÅ’è‚·‚éB
-                            // ‚±‚ê‚ğ‚µ‚È‚¢‚ÆA•À‚Ñ‘Ö‚¦‚ª‹N‚«‚½ƒtƒŒ[ƒ€‚Åu“¯‚¶ˆÊ’u‚Ì
-                            // “ü—Í—“v‚ª•Ê‚Ìƒvƒƒtƒ@ƒCƒ‹‚Ì’†g‚É·‚µ‘Ö‚í‚èA•ÒW“à—e‚ª
-                            // —×‚Ìƒvƒƒtƒ@ƒCƒ‹‚É‘‚«‚Ü‚ê‚Ä‚µ‚Ü‚¤B
+                            // ID ã‚’ãƒªã‚¹ãƒˆä¸Šã®ä½ç½®ã§ã¯ãªããƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«è‡ªä½“ã«å›ºå®šã™ã‚‹ã€‚
+                            // ã“ã‚Œã‚’ã—ãªã„ã¨ã€ä¸¦ã³æ›¿ãˆãŒèµ·ããŸãƒ•ãƒ¬ãƒ¼ãƒ ã§ã€ŒåŒã˜ä½ç½®ã®
+                            // å…¥åŠ›æ¬„ã€ãŒåˆ¥ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸­èº«ã«å·®ã—æ›¿ã‚ã‚Šã€ç·¨é›†å†…å®¹ãŒ
+                            // éš£ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã«æ›¸ãè¾¼ã¾ã‚Œã¦ã—ã¾ã†ã€‚
                             ImGui.PushID(profile.Uid);
                             bool profileMatchedNow = orbitLastProfileIndex == profileIndex;
 
-                            // --- •Šíí(WeaponGroup)‚²‚Æ‚ÌÜ‚è‚½‚½‚İŒ©o‚µ ---
-                            // ’¼‘O‚Ìƒvƒƒtƒ@ƒCƒ‹‚ÆWeaponGroup‚ª•Ï‚í‚Á‚½‰ÓŠ‚Å‚¾‚¯AV‚µ‚¢Œ©o‚µ‚ğ•`‰æ‚·‚éB
-                            // “¯‚¶WeaponGroup‚Ìƒvƒƒtƒ@ƒCƒ‹‚ÍAƒŠƒXƒgã‚Å˜A‘±‚µ‚Ä•À‚ñ‚Å‚¢‚é•K—v‚ª‚ ‚é
-                            // (£¥‚âƒhƒ‰ƒbƒO•ƒhƒƒbƒv‚Å•À‚Ñ‡‚ğ‚Ü‚Æ‚ß‚Ä‚©‚çAWeaponGroup—“‚É
-                            // “¯‚¶•¶š—ñ‚ğ“ü—Í‚·‚é‚±‚Æ)B
+                            // --- æ­¦å™¨ç¨®(WeaponGroup)ã”ã¨ã®æŠ˜ã‚ŠãŸãŸã¿è¦‹å‡ºã— ---
+                            // ç›´å‰ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã¨WeaponGroupãŒå¤‰ã‚ã£ãŸç®‡æ‰€ã§ã ã‘ã€æ–°ã—ã„è¦‹å‡ºã—ã‚’æç”»ã™ã‚‹ã€‚
+                            // åŒã˜WeaponGroupã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€ãƒªã‚¹ãƒˆä¸Šã§é€£ç¶šã—ã¦ä¸¦ã‚“ã§ã„ã‚‹å¿…è¦ãŒã‚ã‚‹
+                            // (â–²â–¼ã‚„ãƒ‰ãƒ©ãƒƒã‚°ï¼†ãƒ‰ãƒ­ãƒƒãƒ—ã§ä¸¦ã³é †ã‚’ã¾ã¨ã‚ã¦ã‹ã‚‰ã€WeaponGroupæ¬„ã«
+                            // åŒã˜æ–‡å­—åˆ—ã‚’å…¥åŠ›ã™ã‚‹ã“ã¨)ã€‚
                             if (profileIndex == 0 || profile.WeaponGroup != currentWeaponGroup)
                             {
                                 if (profileIndex > 0 && weaponGroupIndented)
@@ -9750,7 +9877,7 @@ namespace NewCamera
                                 weaponGroupSectionOpen = ImGui.CollapsingHeader($"{weaponGroupLabel}###WeaponGroup_{weaponGroupLabel}");
                                 weaponGroupIndented = weaponGroupSectionOpen;
 
-                                // --- ƒOƒ‹[ƒvŒ©o‚µ©‘Ì‚ğƒhƒ‰ƒbƒO&ƒhƒƒbƒv‚Å•À‚Ñ‘Ö‚¦‚é ---
+                                // --- ã‚°ãƒ«ãƒ¼ãƒ—è¦‹å‡ºã—è‡ªä½“ã‚’ãƒ‰ãƒ©ãƒƒã‚°&ãƒ‰ãƒ­ãƒƒãƒ—ã§ä¸¦ã³æ›¿ãˆã‚‹ ---
                                 if (ImGui.BeginDragDropSource())
                                 {
                                     int dragPayloadGroupIndex = profileIndex;
@@ -9774,8 +9901,8 @@ namespace NewCamera
                                             }
                                         }
                                     }
-                                    // ƒvƒƒtƒ@ƒCƒ‹1Œ‚ğŒ©o‚µ‚É—‚Æ‚·‚ÆA‚»‚ÌƒOƒ‹[ƒv‚ÖˆÚĞ‚·‚é
-                                    // (ƒOƒ‹[ƒv–¼‚à©“®“I‚É‘‚«Š·‚í‚é)B
+                                    // ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«1ä»¶ã‚’è¦‹å‡ºã—ã«è½ã¨ã™ã¨ã€ãã®ã‚°ãƒ«ãƒ¼ãƒ—ã¸ç§»ç±ã™ã‚‹
+                                    // (ã‚°ãƒ«ãƒ¼ãƒ—åã‚‚è‡ªå‹•çš„ã«æ›¸ãæ›ã‚ã‚‹)ã€‚
                                     ImGuiPayloadPtr intoGroupPayload = ImGui.AcceptDragDropPayload("NEWCAMERA_PROFILE");
                                     if (intoGroupPayload.NativePtr != null)
                                     {
@@ -9803,10 +9930,10 @@ namespace NewCamera
                             }
 
                             //ver14
-                            // --- •À‚Ñ‘Ö‚¦‚ÍŒ©o‚µ‚Ìƒhƒ‰ƒbƒO&ƒhƒƒbƒv‚Ås‚¤ ---
+                            // --- ä¸¦ã³æ›¿ãˆã¯è¦‹å‡ºã—ã®ãƒ‰ãƒ©ãƒƒã‚°&ãƒ‰ãƒ­ãƒƒãƒ—ã§è¡Œã† ---
                             //ver10
                             bool profileRemoved = false;
-                            //ver14‚±‚±‚Ü‚Å
+                            //ver14ã“ã“ã¾ã§
 
                             if (ImGui.Button($"X##del_{profileIndex}"))
                             {
@@ -9821,11 +9948,11 @@ namespace NewCamera
                             string profileHeaderLabel = $"Profile {profileIndex + 1} ({profile.Mode}){profileCommentLabel} - {profile.Keywords.Count} keyword(s){(profileMatchedNow ? " [ACTIVE]" : "")}###ProfileHeader";
                             bool profileOpen = ImGui.CollapsingHeader(profileHeaderLabel);
 
-                            // --- Œ©o‚µ‚ğ’Í‚ñ‚Åƒhƒ‰ƒbƒO•ƒhƒƒbƒv‚Å•À‚Ñ‘Ö‚¦ ---
-                            // ’Í‚ñ‚¾ƒvƒƒtƒ@ƒCƒ‹‚Ì”Ô†‚ğƒyƒCƒ[ƒh‚Æ‚µ‚Ä“n‚µA—‚Æ‚µ‚½
-                            // æ‚Ìƒvƒƒtƒ@ƒCƒ‹”Ô†‚ğˆÚ“®æ‚É‚·‚éBÀÛ‚Ì•À‚Ñ‘Ö‚¦‚Í
-                            // ƒ‹[ƒv‚ğ”²‚¯‚½‚ ‚Æ (‰º‚Ì moveProfileFrom/To ‚Ìˆ—) ‚Å
-                            // s‚¤‚Ì‚ÅA•`‰æ’†‚ÉƒŠƒXƒg‚ª‰ó‚ê‚é‚±‚Æ‚Í‚È‚¢B
+                            // --- è¦‹å‡ºã—ã‚’æ´ã‚“ã§ãƒ‰ãƒ©ãƒƒã‚°ï¼†ãƒ‰ãƒ­ãƒƒãƒ—ã§ä¸¦ã³æ›¿ãˆ ---
+                            // æ´ã‚“ã ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã®ç•ªå·ã‚’ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰ã¨ã—ã¦æ¸¡ã—ã€è½ã¨ã—ãŸ
+                            // å…ˆã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ç•ªå·ã‚’ç§»å‹•å…ˆã«ã™ã‚‹ã€‚å®Ÿéš›ã®ä¸¦ã³æ›¿ãˆã¯
+                            // ãƒ«ãƒ¼ãƒ—ã‚’æŠœã‘ãŸã‚ã¨ (ä¸‹ã® moveProfileFrom/To ã®å‡¦ç†) ã§
+                            // è¡Œã†ã®ã§ã€æç”»ä¸­ã«ãƒªã‚¹ãƒˆãŒå£Šã‚Œã‚‹ã“ã¨ã¯ãªã„ã€‚
                             if (ImGui.BeginDragDropSource())
                             {
                                 int dragPayloadIndex = profileIndex;
@@ -9846,15 +9973,15 @@ namespace NewCamera
                                     {
                                         moveProfileFrom = draggedProfileIndex;
                                         moveProfileTo = profileIndex;
-                                        // •ÊƒOƒ‹[ƒv‚Ìƒvƒƒtƒ@ƒCƒ‹‚Ìã‚É—‚Æ‚µ‚½ê‡‚ÍA
-                                        // —‚Æ‚µ‚½æ‚ÌƒOƒ‹[ƒv‚ÖˆÚĞ‚µ‚½‚à‚Ì‚Æ‚µ‚Äˆµ‚¤B
+                                        // åˆ¥ã‚°ãƒ«ãƒ¼ãƒ—ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸Šã«è½ã¨ã—ãŸå ´åˆã¯ã€
+                                        // è½ã¨ã—ãŸå…ˆã®ã‚°ãƒ«ãƒ¼ãƒ—ã¸ç§»ç±ã—ãŸã‚‚ã®ã¨ã—ã¦æ‰±ã†ã€‚
                                         moveProfileToGroup = profile.WeaponGroup ?? "";
                                     }
-                                    //ver14‚±‚±‚Ü‚Å
+                                    //ver14ã“ã“ã¾ã§
                                 }
                                 ImGui.EndDragDropTarget();
                             }
-                            //ver10‚±‚±‚Ü‚Å
+                            //ver10ã“ã“ã¾ã§
 
                             if (!profileRemoved && profileOpen)
                             {
@@ -9865,7 +9992,7 @@ namespace NewCamera
                                 ImGui.InputText("Comment##Profile", ref profile.Comment, 128);
                                 if (ImGui.BeginItemTooltip())
                                 {
-                                    ImGui.Text("ƒvƒƒtƒ@ƒCƒ‹‚ÌŒ©o‚µ‚É‚»‚Ì‚Ü‚Ü•\¦‚³‚ê‚é©—R‹L“ü‚Ìƒƒ‚B\nƒcƒŠ[‚ğŠJ‚©‚È‚­‚Ä‚à‰½‚Ìƒvƒƒtƒ@ƒCƒ‹‚©•ª‚©‚é‚æ‚¤‚É‚·‚é‚½‚ß‚Ì‚à‚Ì‚ÅA\nƒ}ƒbƒ`ƒ“ƒO”»’è‚É‚ÍˆêØg‚í‚ê‚È‚¢BSave Settings ‚Å NewCamera.json ‚É\n•Û‘¶‚³‚ê‚éB\n\n’ˆÓ: ImGui ‚Ì•W€ƒtƒHƒ“ƒg‚Í“ú–{Œê‚ÌšŒ`‚ğ‚Á‚Ä‚¢‚È‚¢‚½‚ßA\n“ú–{Œê‚Íƒƒ‚’ ‚Éˆê“x‘‚¢‚Ä“\‚è•t‚¯‚é•K—v‚ª‚ ‚éB\n(“ú–{Œê‚Å‚àJSON‚É‚Í•Û‘¶‚³‚ê‚é)");
+                                    ImGui.Text("ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã®è¦‹å‡ºã—ã«ãã®ã¾ã¾è¡¨ç¤ºã•ã‚Œã‚‹è‡ªç”±è¨˜å…¥ã®ãƒ¡ãƒ¢ã€‚\nãƒ„ãƒªãƒ¼ã‚’é–‹ã‹ãªãã¦ã‚‚ä½•ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã‹åˆ†ã‹ã‚‹ã‚ˆã†ã«ã™ã‚‹ãŸã‚ã®ã‚‚ã®ã§ã€\nãƒãƒƒãƒãƒ³ã‚°åˆ¤å®šã«ã¯ä¸€åˆ‡ä½¿ã‚ã‚Œãªã„ã€‚Save Settings ã§ NewCamera.json ã«\nä¿å­˜ã•ã‚Œã‚‹ã€‚\n\næ³¨æ„: ImGui ã®æ¨™æº–ãƒ•ã‚©ãƒ³ãƒˆã¯æ—¥æœ¬èªã®å­—å½¢ã‚’æŒã£ã¦ã„ãªã„ãŸã‚ã€\næ—¥æœ¬èªã¯ãƒ¡ãƒ¢å¸³ã«ä¸€åº¦æ›¸ã„ã¦è²¼ã‚Šä»˜ã‘ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚\n(æ—¥æœ¬èªã§ã‚‚JSONã«ã¯ä¿å­˜ã•ã‚Œã‚‹)");
                                     ImGui.EndTooltip();
                                 }
                                 //ver14
@@ -9880,13 +10007,13 @@ namespace NewCamera
                                 ImGui.Text("Weapon Group");
                                 if (ImGui.BeginItemTooltip())
                                 {
-                                    ImGui.Text("•Šíí‚È‚Ç‚Åƒvƒƒtƒ@ƒCƒ‹‚ğƒOƒ‹[ƒv‰»‚·‚é‚½‚ß‚Ì–¼‘O(©—R‹L“ü)B\n¶‚Ì—“‚É“ü—Í‚µ‚½‚¾‚¯‚Å‚Í‰½‚à‹N‚±‚ç‚È‚¢B\"Set Group\" ƒ{ƒ^ƒ“‚ğ\n‰Ÿ‚µ‚½uŠÔ‚¾‚¯Šm’è‚µA‘¼‚É“¯‚¶–¼‘O‚Ìƒvƒƒtƒ@ƒCƒ‹‚ª‚ ‚ê‚Î\n‚»‚Ì––”ö‚Ö©“®“I‚ÉˆÚ“®‚µ‚Ä1‚Â‚ÌÜ‚è‚½‚½‚İŒ©o‚µ‚É‚Ü‚Æ‚Ü‚éB\n‹ó—“‚ÅŠm’è‚·‚é‚Æ (Ungrouped) ‚É‚Ü‚Æ‚Ü‚éB\n\nƒOƒ‹[ƒvŠÔ‚ÌˆÚ“®‚ÍAƒvƒƒtƒ@ƒCƒ‹‚ÌŒ©o‚µ‚ğ‚Â‚©‚ñ‚ÅˆÚ“®æ‚Ì\nƒOƒ‹[ƒvŒ©o‚µ (‚Ü‚½‚ÍˆÚ“®æƒOƒ‹[ƒv“à‚Ìƒvƒƒtƒ@ƒCƒ‹Œ©o‚µ) ‚É\nƒhƒƒbƒv‚µ‚Ä‚às‚¦‚é (ƒOƒ‹[ƒv–¼‚à©“®‚Å‘‚«Š·‚í‚é)B\nƒOƒ‹[ƒvŒ©o‚µ“¯m‚ğƒhƒ‰ƒbƒO&ƒhƒƒbƒv‚·‚é‚ÆAƒOƒ‹[ƒv‘S‘Ì‚ğ\n1‚Â‚Ì‰ò‚Æ‚µ‚Ä•À‚Ñ‘Ö‚¦‚ç‚ê‚éB");
+                                    ImGui.Text("æ­¦å™¨ç¨®ãªã©ã§ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚°ãƒ«ãƒ¼ãƒ—åŒ–ã™ã‚‹ãŸã‚ã®åå‰(è‡ªç”±è¨˜å…¥)ã€‚\nå·¦ã®æ¬„ã«å…¥åŠ›ã—ãŸã ã‘ã§ã¯ä½•ã‚‚èµ·ã“ã‚‰ãªã„ã€‚\"Set Group\" ãƒœã‚¿ãƒ³ã‚’\næŠ¼ã—ãŸç¬é–“ã ã‘ç¢ºå®šã—ã€ä»–ã«åŒã˜åå‰ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ãŒã‚ã‚Œã°\nãã®æœ«å°¾ã¸è‡ªå‹•çš„ã«ç§»å‹•ã—ã¦1ã¤ã®æŠ˜ã‚ŠãŸãŸã¿è¦‹å‡ºã—ã«ã¾ã¨ã¾ã‚‹ã€‚\nç©ºæ¬„ã§ç¢ºå®šã™ã‚‹ã¨ (Ungrouped) ã«ã¾ã¨ã¾ã‚‹ã€‚\n\nã‚°ãƒ«ãƒ¼ãƒ—é–“ã®ç§»å‹•ã¯ã€ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã®è¦‹å‡ºã—ã‚’ã¤ã‹ã‚“ã§ç§»å‹•å…ˆã®\nã‚°ãƒ«ãƒ¼ãƒ—è¦‹å‡ºã— (ã¾ãŸã¯ç§»å‹•å…ˆã‚°ãƒ«ãƒ¼ãƒ—å†…ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«è¦‹å‡ºã—) ã«\nãƒ‰ãƒ­ãƒƒãƒ—ã—ã¦ã‚‚è¡Œãˆã‚‹ (ã‚°ãƒ«ãƒ¼ãƒ—åã‚‚è‡ªå‹•ã§æ›¸ãæ›ã‚ã‚‹)ã€‚\nã‚°ãƒ«ãƒ¼ãƒ—è¦‹å‡ºã—åŒå£«ã‚’ãƒ‰ãƒ©ãƒƒã‚°&ãƒ‰ãƒ­ãƒƒãƒ—ã™ã‚‹ã¨ã€ã‚°ãƒ«ãƒ¼ãƒ—å…¨ä½“ã‚’\n1ã¤ã®å¡Šã¨ã—ã¦ä¸¦ã³æ›¿ãˆã‚‰ã‚Œã‚‹ã€‚");
                                     ImGui.EndTooltip();
                                 }
-                                //ver14‚±‚±‚Ü‚Å
+                                //ver14ã“ã“ã¾ã§
                                 int modeInt = (int)profile.Mode;
                                 ImGui.SetNextItemWidth(width * 0.4f);
-                                //ver10‚±‚±‚Ü‚Å
+                                //ver10ã“ã“ã¾ã§
 
                                 if (ImGui.Combo("Camera Mode##Profile", ref modeInt, "Full Rotation (A)\0Base Only Ignore-X (B Ignore-X)\0Base Only (B)\0Normal (C, Clamped/Spotted)\0"))
                                 {
@@ -9898,13 +10025,13 @@ namespace NewCamera
                                     ImGui.EndTooltip();
                                 }
 
-                                // --- [‰ü‘P3] Add Keyword “ü—Í—“‚ğƒŠƒXƒg‚ÌÅã•”‚É”z’u & æ“ª‚É’Ç‰Á ---
+                                // --- [æ”¹å–„3] Add Keyword å…¥åŠ›æ¬„ã‚’ãƒªã‚¹ãƒˆã®æœ€ä¸Šéƒ¨ã«é…ç½® & å…ˆé ­ã«è¿½åŠ  ---
                                 ImGui.SetNextItemWidth(width * 0.3f);
                                 ImGui.InputText("##NewProfileKeyword", ref profile.KeywordInput, 64);
                                 ImGui.SameLine();
                                 if (ImGui.Button("Add Keyword") && profile.KeywordInput.Length > 0)
                                 {
-                                    profile.Keywords.Insert(0, profile.KeywordInput); // æ“ª‚É‘}“ü
+                                    profile.Keywords.Insert(0, profile.KeywordInput); // å…ˆé ­ã«æŒ¿å…¥
                                     profile.KeywordInput = "";
                                 }
 
@@ -9926,7 +10053,7 @@ namespace NewCamera
                                     }
                                     ImGui.PopID();
                                 }
-                                //ver7‚±‚±‚Ü‚Å
+                                //ver7ã“ã“ã¾ã§
 
                                 if (profile.Mode == OrbitProfileMode.Normal)
                                 {
@@ -9970,7 +10097,7 @@ namespace NewCamera
                                         ImGui.EndTooltip();
                                     }
                                 }
-                                //ver12‚±‚±‚Ü‚Å
+                                //ver12ã“ã“ã¾ã§
                                 ImGui.DragFloat("Correction Yaw (deg)##Profile", ref profile.CorrectionYaw, 1.0f, -180.0f, 180.0f);
                                 ImGui.SameLine();
                                 ImGui.DragFloat("Correction Pitch (deg)##Profile", ref profile.CorrectionPitch, 1.0f, -180.0f, 180.0f);
@@ -10040,15 +10167,43 @@ namespace NewCamera
                                         ImGui.Text("While this profile is matched (e.g. AIM_IDLE), forces the\nSlinger (Armor.Slinger) fully hidden, and shows it again the\nmoment this profile stops matching. Confirmed to work during\nactual hunting, unlike per-part Body hiding.");
                                         ImGui.EndTooltip();
                                     }
-                                    //ver13‚±‚±‚Ü‚Å
+                                    //ver13ã“ã“ã¾ã§
                                     //ver15
+                                    //ver16
+                                    ImGui.Checkbox("Hold Spot (fix aim point in the world)##Profile", ref profile.HoldSpot);
+                                    if (ImGui.BeginItemTooltip())
+                                    {
+                                        ImGui.Text("ON: ã“ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã®é–“ã€ã‚¹ãƒãƒƒãƒˆ(ãƒ¯ãƒ¼ãƒ«ãƒ‰ä¸Šã®å›ºå®šç‚¹)ã‚’å›ºå®šã™ã‚‹ã€‚\næŸ±ã‚’æ”»æ’ƒã™ã‚‹ã¨ããªã©ã€ä½“ãŒå‹•ã„ã¦ã‚‚åŒã˜ç‚¹ã‚’è¦‹ç¶šã‘ãŸã„å ´åˆã«ä½¿ã†ã€‚\nOFF: å¸¸ã«ç¾åœ¨ã®ä½“ã®æ­£é¢ã¸è¿½å¾“ã™ã‚‹(IDLE/WALKãªã©ã¯ã“ã¡ã‚‰)ã€‚");
+                                        ImGui.EndTooltip();
+                                    }
+                                    //ver16ã“ã“ã¾ã§
+                                    //ver16.3
+                                    if (profile.HoldSpot)
+                                    {
+                                        ImGui.SetNextItemWidth(width * 0.2f);
+                                        ImGui.DragFloat("Hold Spot Threshold (deg)##Profile", ref profile.HoldSpotThresholdDeg, 0.5f, 1.0f, 90.0f);
+                                        if (ImGui.BeginItemTooltip())
+                                        {
+                                            ImGui.Text("ä½“ã®å‘ããŒã€ã‚¹ãƒãƒƒãƒˆã‚’ä½œã£ãŸæ™‚ã®å‘ãã‹ã‚‰ã“ã®è§’åº¦ä»¥å†…ãªã‚‰ã€ã‚¹ãƒãƒƒãƒˆã¯å®Œå…¨ã«å›ºå®šã€‚\nã“ã‚Œã‚’è¶…ãˆãŸåˆ†ã ã‘ã€Spot Re-anchor Rate ã®é€Ÿã•ã§ã‚¹ãƒãƒƒãƒˆã‚’ç¾åœ¨ã®æ­£é¢ã¸å¯„ã›ã‚‹ã€‚\nå°ã•ã„: æ—‹å›ã«ã™ãä»˜ã„ã¦ãã‚‹ãŒã€æ”»æ’ƒä¸­ã®ä½“ã®ã‚ãšã‹ãªå‘ãã®å¤‰åŒ–ã«ã‚‚åå¿œã—ã¦æŸ±ãŒãšã‚Œã‚„ã™ã„ã€‚\nå¤§ãã„: æŸ±ã‚’æ‰ãˆç¶šã‘ã‚„ã™ã„ãŒã€æ—‹å›ã—ã¦ã‚‚é•·ãè¦‹ã¤ã‚ãŸã¾ã¾ã«ãªã‚Šã€é¦–ãŒæŠ˜ã‚Œã‚„ã™ã„ã€‚\nâ€» Spot Re-anchor Rate ãŒ 0 ã ã¨è¿½å¾“ã—ãªã„(å®Œå…¨å›ºå®š)ã€‚3ã€œ5 ç¨‹åº¦ã«ã™ã‚‹ã“ã¨ã€‚");
+                                            ImGui.EndTooltip();
+                                        }
+                                    }
+                                    //ver16.3ã“ã“ã¾ã§
+                                    //ver16.2
+                                    ImGui.Checkbox("Body Anchor (spot ahead of the body, not the nose)##Profile", ref profile.SpotAnchorBody);
+                                    if (ImGui.BeginItemTooltip())
+                                    {
+                                        ImGui.Text("ON: ã‚¹ãƒãƒƒãƒˆã‚’é¼»ã§ã¯ãªãä½“(Body Joint 0)ã®ä½ç½®ã‹ã‚‰ Spot Distance å…ˆã«ç½®ãã€‚\nä½“ã®å‘ãã«ä»˜ã„ã¦ãã‚‹ç‚¹ã‚’è¦‹ç¶šã‘ã‚‹ã®ã§ã€å·¦ã‚¹ãƒ†ã‚£ãƒƒã‚¯ã§æ—‹å›ã—ãªãŒã‚‰\næ”»æ’ƒã‚’ç¶šã‘ã‚‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³(å¤ªåˆ€ã®ãƒ«ãƒ¼ãƒ—ãªã©)å‘ã‘ã€‚\nHold Spot ã¨ä½µç”¨ã™ã‚‹ã¨ã€ä½“åŸºæº–ã§ä½œã£ãŸç‚¹ã‚’ãƒ¯ãƒ¼ãƒ«ãƒ‰ã«å›ºå®šã™ã‚‹ã€‚\nSpot Distance ã¯80ä»¥ä¸Šã«ã™ã‚‹ã“ã¨ã€‚");
+                                        ImGui.EndTooltip();
+                                    }
+                                    //ver16.2ã“ã“ã¾ã§
                                     ImGui.Checkbox("Disable Free Camera While Active##Profile", ref profile.DisableFreeCameraWhileActive);
                                     if (ImGui.BeginItemTooltip())
                                     {
                                         ImGui.Text("While this profile is matched (e.g. clutch claw grapple or\nmonster riding), forces Enable Free Camera off, switching\nback to the game's own native third-person camera - useful\nwhen this mod's first-person view shakes too much for these\nmotions. The moment this profile stops matching, Enable Free\nCamera is restored to whatever it was set to before this\nprofile forced it off.");
                                         ImGui.EndTooltip();
                                     }
-                                    //ver15‚±‚±‚Ü‚Å
+                                    //ver15ã“ã“ã¾ã§
                                     ImGui.Separator();
                                     ImGui.Checkbox("Use Gaze Keyframes (ignore Range/Blend above)", ref profile.UseGazeKeyframes);
                                     if (ImGui.BeginItemTooltip())
@@ -10065,7 +10220,7 @@ namespace NewCamera
                                         ImGui.Checkbox("Use SubState Timer for T (instead of Motion Frame)##GazeSubState", ref profile.GazeUseSubStateTimer);
                                         if (ImGui.BeginItemTooltip())
                                         {
-                                            ImGui.Text("OFF (default): T ‚Íƒ‚[ƒVƒ‡ƒ“‚ÌÄ¶ˆÊ’u (Frame/MaxFrame) ‚©‚çæ‚éB\nON: T ‚Ì‘ã‚í‚è‚É \"Action SubState (+0x760) ‚ªÅŒã‚É•Ï‰»‚µ‚Ä‚©‚ç\n‰½•bŒo‚Á‚½‚©\" € Assumed Duration ‚ğg‚¤B\n\nActionName/motionKey ‚ª•Ï‚í‚ç‚È‚¢‚Ü‚Üã”¼g‘¤‚Ìó‘Ô‚¾‚¯‚ª\n•Ï‚í‚éê–Ê (‰ñ•œ–ò‚ğˆù‚Ş=8 ‚È‚ÇAƒL[ƒ[ƒh‚ğ \"#8\" ‚Å\nƒ}ƒbƒ`‚³‚¹‚Ä‚¢‚éƒvƒƒtƒ@ƒCƒ‹) ‚ÍAƒx[ƒXƒ‚[ƒVƒ‡ƒ“‚Ì\nƒtƒŒ[ƒ€‚ª‚»‚ÌƒTƒu“®ì‚Ìis‚Æˆê’v‚µ‚È‚¢‚½‚ßA‚±‚¿‚ç‚ğg‚¤B\n\n‚±‚Ì‰º‚Ì Keyframe ‚Ì T ‚ÍA‚¢‚¸‚ê‚Ìê‡‚à 0.0-1.0 ‚Ì‚Ü‚Ü\n‹¤’Ê‚Å‰ğß‚³‚ê‚é (’P‚É‰½‚ğŠî€‚É 0.0-1.0 ‚ğ‘ª‚é‚©‚ª•Ï‚í‚é‚¾‚¯)B");
+                                            ImGui.Text("OFF (default): T ã¯ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã®å†ç”Ÿä½ç½® (Frame/MaxFrame) ã‹ã‚‰å–ã‚‹ã€‚\nON: T ã®ä»£ã‚ã‚Šã« \"Action SubState (+0x760) ãŒæœ€å¾Œã«å¤‰åŒ–ã—ã¦ã‹ã‚‰\nä½•ç§’çµŒã£ãŸã‹\" Ã· Assumed Duration ã‚’ä½¿ã†ã€‚\n\nActionName/motionKey ãŒå¤‰ã‚ã‚‰ãªã„ã¾ã¾ä¸ŠåŠèº«å´ã®çŠ¶æ…‹ã ã‘ãŒ\nå¤‰ã‚ã‚‹å ´é¢ (å›å¾©è–¬ã‚’é£²ã‚€=8 ãªã©ã€ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’ \"#8\" ã§\nãƒãƒƒãƒã•ã›ã¦ã„ã‚‹ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«) ã¯ã€ãƒ™ãƒ¼ã‚¹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã®\nãƒ•ãƒ¬ãƒ¼ãƒ ãŒãã®ã‚µãƒ–å‹•ä½œã®é€²è¡Œã¨ä¸€è‡´ã—ãªã„ãŸã‚ã€ã“ã¡ã‚‰ã‚’ä½¿ã†ã€‚\n\nã“ã®ä¸‹ã® Keyframe ã® T ã¯ã€ã„ãšã‚Œã®å ´åˆã‚‚ 0.0-1.0 ã®ã¾ã¾\nå…±é€šã§è§£é‡ˆã•ã‚Œã‚‹ (å˜ã«ä½•ã‚’åŸºæº–ã« 0.0-1.0 ã‚’æ¸¬ã‚‹ã‹ãŒå¤‰ã‚ã‚‹ã ã‘)ã€‚");
                                             ImGui.EndTooltip();
                                         }
                                         if (profile.GazeUseSubStateTimer)
@@ -10075,7 +10230,7 @@ namespace NewCamera
                                             ImGui.DragFloat("Assumed Duration (sec)##GazeSubState", ref profile.GazeSubStateDuration, 0.05f, 0.05f, 10.0f);
                                             if (ImGui.BeginItemTooltip())
                                             {
-                                                ImGui.Text("Œo‰ß•b”‚ğ‚±‚Ì’l‚ÅŠ„‚Á‚½‚à‚Ì‚ğ T (0.0-1.0) ‚Æ‚µ‚Äg‚¤B\n‚±‚ÌƒTƒuƒXƒe[ƒg‚ªÀÛ‚É‚Ç‚ê‚­‚ç‚¢‘±‚­‚©A\"SubState Elapsed\"\n(DEBUG ‰æ–Ê) ‚ğƒXƒgƒbƒvƒEƒHƒbƒ`‘ã‚í‚è‚ÉŒ©‚È‚ª‚çÀ‘ª‚µ‚Ä\n‹ß‚¢’l‚É‡‚í‚¹‚éB’Z‚·‚¬‚é‚Æ T=1.0 ‚É“\‚è•t‚¢‚½‚Ü‚Ü\nI”Õ‚ÌƒL[ƒtƒŒ[ƒ€‚ÅŒÅ’è‚³‚êA’·‚·‚¬‚é‚Æ T ‚ªÅŒã‚Ü‚Å\n1.0 ‚É“Í‚©‚È‚¢B");
+                                                ImGui.Text("çµŒéç§’æ•°ã‚’ã“ã®å€¤ã§å‰²ã£ãŸã‚‚ã®ã‚’ T (0.0-1.0) ã¨ã—ã¦ä½¿ã†ã€‚\nã“ã®ã‚µãƒ–ã‚¹ãƒ†ãƒ¼ãƒˆãŒå®Ÿéš›ã«ã©ã‚Œãã‚‰ã„ç¶šãã‹ã€\"SubState Elapsed\"\n(DEBUG ç”»é¢) ã‚’ã‚¹ãƒˆãƒƒãƒ—ã‚¦ã‚©ãƒƒãƒä»£ã‚ã‚Šã«è¦‹ãªãŒã‚‰å®Ÿæ¸¬ã—ã¦\nè¿‘ã„å€¤ã«åˆã‚ã›ã‚‹ã€‚çŸ­ã™ãã‚‹ã¨ T=1.0 ã«è²¼ã‚Šä»˜ã„ãŸã¾ã¾\nçµ‚ç›¤ã®ã‚­ãƒ¼ãƒ•ãƒ¬ãƒ¼ãƒ ã§å›ºå®šã•ã‚Œã€é•·ã™ãã‚‹ã¨ T ãŒæœ€å¾Œã¾ã§\n1.0 ã«å±Šã‹ãªã„ã€‚");
                                                 ImGui.EndTooltip();
                                             }
                                             ImGui.Text($"SubState Elapsed: {orbitSubStateElapsedSec:F2}s  ->  T: {getSubStateProgress(profile.GazeSubStateDuration):F3}");
@@ -10083,7 +10238,7 @@ namespace NewCamera
                                         }
 
                                         int gazeKeyframeRemoveIndex = -1;
-                                        //ver10.1‚±‚±‚Ü‚Å
+                                        //ver10.1ã“ã“ã¾ã§
 
                                         for (int gazeKeyframeIndex = 0; gazeKeyframeIndex < profile.GazeKeyframes.Count; gazeKeyframeIndex++)
                                         {
@@ -10133,7 +10288,7 @@ namespace NewCamera
                                         ImGui.Checkbox("Limit Gaze To Ranges##GazeRange", ref profile.GazeUseRanges);
                                         if (ImGui.BeginItemTooltip())
                                         {
-                                            ImGui.Text("OFF: Gaze Keyframes ‚ğƒ‚[ƒVƒ‡ƒ“‘S‘Ì‚Åg‚¤ (]—ˆ‚Ç‚¨‚è)B\nON : ‰º‚Åw’è‚µ‚½ T ‹æŠÔ‚Ì’†‚Å‚¾‚¯ Gaze Keyframes ‚ğg‚¢A\n     ‹æŠÔ‚ÌŠO‚Å‚Íã‚Ì Range/Blend ‚É‚æ‚é’Êí‚Ì’Ç]‚É–ß‚éB\n\n‰½‰ñ“]‚à‚·‚éUŒ‚‚ÅuÅ‰‚ÌU‚è‚©‚Ô‚èv‚ÆuÅŒã‚ÉŒ•‚ğ”²‚¢‚Ä\n\‚¦’¼‚·‚Æ‚±‚ëv‚¾‚¯—h‚ê‚ğ—}‚¦AŠÔ‚Ì‰ñ“]•”•ª‚ÍŠ®‘S’Ç]‚É\n”C‚¹‚½‚¢A‚Æ‚¢‚¤ê‡‚Ég‚¤B‹æŠÔ‚Í•¡”“o˜^‚Å‚«‚éB\n\n‹æŠÔ‚ğ‚Ğ‚Æ‚Â‚à“o˜^‚µ‚Ä‚¢‚È‚¢ê‡‚Í§ŒÀ‚È‚µ (‘S‘Ì‚Å—LŒø) ˆµ‚¢B");
+                                            ImGui.Text("OFF: Gaze Keyframes ã‚’ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³å…¨ä½“ã§ä½¿ã† (å¾“æ¥ã©ãŠã‚Š)ã€‚\nON : ä¸‹ã§æŒ‡å®šã—ãŸ T åŒºé–“ã®ä¸­ã§ã ã‘ Gaze Keyframes ã‚’ä½¿ã„ã€\n     åŒºé–“ã®å¤–ã§ã¯ä¸Šã® Range/Blend ã«ã‚ˆã‚‹é€šå¸¸ã®è¿½å¾“ã«æˆ»ã‚‹ã€‚\n\nä½•å›è»¢ã‚‚ã™ã‚‹æ”»æ’ƒã§ã€Œæœ€åˆã®æŒ¯ã‚Šã‹ã¶ã‚Šã€ã¨ã€Œæœ€å¾Œã«å‰£ã‚’æŠœã„ã¦\næ§‹ãˆç›´ã™ã¨ã“ã‚ã€ã ã‘æºã‚Œã‚’æŠ‘ãˆã€é–“ã®å›è»¢éƒ¨åˆ†ã¯å®Œå…¨è¿½å¾“ã«\nä»»ã›ãŸã„ã€ã¨ã„ã†å ´åˆã«ä½¿ã†ã€‚åŒºé–“ã¯è¤‡æ•°ç™»éŒ²ã§ãã‚‹ã€‚\n\nåŒºé–“ã‚’ã²ã¨ã¤ã‚‚ç™»éŒ²ã—ã¦ã„ãªã„å ´åˆã¯åˆ¶é™ãªã— (å…¨ä½“ã§æœ‰åŠ¹) æ‰±ã„ã€‚");
                                             ImGui.EndTooltip();
                                         }
                                         if (profile.GazeUseRanges)
@@ -10143,7 +10298,7 @@ namespace NewCamera
                                             ImGui.Text($"Gaze Weight now: {orbitLastGazeWeight:F2}");
                                             if (ImGui.BeginItemTooltip())
                                             {
-                                                ImGui.Text("‚¢‚ÜÀÛ‚É Gaze Keyframes ‚ª‚Ç‚ê‚¾‚¯Œø‚¢‚Ä‚¢‚é‚©B\n1.00 = Gaze ‚Ì‚İA0.00 = ’Êí‚Ì Range/Blend ’Ç]‚Ì‚İA\n“r’†‚Ì’l = ‹æŠÔ‚Ìo“ü‚èŒû‚ÅƒNƒƒXƒtƒF[ƒh’†B\n‚±‚Ìƒvƒƒtƒ@ƒCƒ‹‚ª [ACTIVE] ‚Ì‚Æ‚«‚¾‚¯ˆÓ–¡‚Ì‚ ‚é’l‚É‚È‚éB");
+                                                ImGui.Text("ã„ã¾å®Ÿéš›ã« Gaze Keyframes ãŒã©ã‚Œã ã‘åŠ¹ã„ã¦ã„ã‚‹ã‹ã€‚\n1.00 = Gaze ã®ã¿ã€0.00 = é€šå¸¸ã® Range/Blend è¿½å¾“ã®ã¿ã€\né€”ä¸­ã®å€¤ = åŒºé–“ã®å‡ºå…¥ã‚Šå£ã§ã‚¯ãƒ­ã‚¹ãƒ•ã‚§ãƒ¼ãƒ‰ä¸­ã€‚\nã“ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ãŒ [ACTIVE] ã®ã¨ãã ã‘æ„å‘³ã®ã‚ã‚‹å€¤ã«ãªã‚‹ã€‚");
                                                 ImGui.EndTooltip();
                                             }
                                             int gazeRangeRemoveIndex = -1;
@@ -10184,7 +10339,7 @@ namespace NewCamera
                                     ImGui.Checkbox("Use Gaze Position Keyframes (XYZ)##ProfilePos", ref profile.UseGazePositionKeyframes);
                                     if (ImGui.BeginItemTooltip())
                                     {
-                                        ImGui.Text("Yaw/Pitch/Roll‚Å‚Í‚È‚­ATarget Y/Right/Forward (ƒJƒƒ‰‚Ì\nˆÊ’uƒIƒtƒZƒbƒg) ‘¤‚ğ T ‚²‚Æ‚Éw’è‚·‚éƒo[ƒWƒ‡ƒ“Bã‚Ì\nRotation—p Gaze Keyframes‚Æ“¯‚¶ T (Use SubState Timer for T /\nLimit Gaze To Ranges ‚Ìİ’è‚à‹¤’Ê‚Åg‚í‚ê‚é) ã‚ÅA\nˆÊ’u‚¾‚¯‚ğ•Ê‚Éè‘Å‚¿‚Å‚«‚éB\n\n—á: U‚è‚©‚Ô‚è‚Å‚í‚¸‚©‚ÉŒã‚ë‚Öˆø‚­ (Forward‚ğƒ}ƒCƒiƒX‚É)A\n\‚¦’¼‚µ‚ÅŒ³‚ÌˆÊ’u‚É–ß‚·A‚Æ‚¢‚Á‚½‰‰o‚Ég‚¤B");
+                                        ImGui.Text("Yaw/Pitch/Rollã§ã¯ãªãã€Target Y/Right/Forward (ã‚«ãƒ¡ãƒ©ã®\nä½ç½®ã‚ªãƒ•ã‚»ãƒƒãƒˆ) å´ã‚’ T ã”ã¨ã«æŒ‡å®šã™ã‚‹ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã€‚ä¸Šã®\nRotationç”¨ Gaze Keyframesã¨åŒã˜ T (Use SubState Timer for T /\nLimit Gaze To Ranges ã®è¨­å®šã‚‚å…±é€šã§ä½¿ã‚ã‚Œã‚‹) ä¸Šã§ã€\nä½ç½®ã ã‘ã‚’åˆ¥ã«æ‰‹æ‰“ã¡ã§ãã‚‹ã€‚\n\nä¾‹: æŒ¯ã‚Šã‹ã¶ã‚Šã§ã‚ãšã‹ã«å¾Œã‚ã¸å¼•ã (Forwardã‚’ãƒã‚¤ãƒŠã‚¹ã«)ã€\næ§‹ãˆç›´ã—ã§å…ƒã®ä½ç½®ã«æˆ»ã™ã€ã¨ã„ã£ãŸæ¼”å‡ºã«ä½¿ã†ã€‚");
                                         ImGui.EndTooltip();
                                     }
                                     if (profile.UseGazePositionKeyframes)
@@ -10220,9 +10375,9 @@ namespace NewCamera
                                         }
                                         if (ImGui.Button("Add Keyframe##GazePosKeyframe"))
                                         {
-                                            // V‚µ‚¢ƒL[ƒtƒŒ[ƒ€‚ÍA’¼‘O‚ÌƒL[ƒtƒŒ[ƒ€‚Ì’¼Œã(‚È‚¯‚ê‚ÎT=0)A
-                                            // ’l‚à’¼‘O‚Ì‚à‚Ì‚ğˆø‚«Œp‚® (‚È‚¯‚ê‚Î‚±‚Ìƒvƒƒtƒ@ƒCƒ‹‚ÌŒ»İ‚Ì
-                                            // Target Y/Right/Forward) - ’Ç‰Á‚µ‚½uŠÔ‚ÉƒJƒN‚Â‚©‚È‚¢‚æ‚¤‚ÉB
+                                            // æ–°ã—ã„ã‚­ãƒ¼ãƒ•ãƒ¬ãƒ¼ãƒ ã¯ã€ç›´å‰ã®ã‚­ãƒ¼ãƒ•ãƒ¬ãƒ¼ãƒ ã®ç›´å¾Œ(ãªã‘ã‚Œã°T=0)ã€
+                                            // å€¤ã‚‚ç›´å‰ã®ã‚‚ã®ã‚’å¼•ãç¶™ã (ãªã‘ã‚Œã°ã“ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã®ç¾åœ¨ã®
+                                            // Target Y/Right/Forward) - è¿½åŠ ã—ãŸç¬é–“ã«ã‚«ã‚¯ã¤ã‹ãªã„ã‚ˆã†ã«ã€‚
                                             float nextT = profile.GazePositionKeyframes.Count > 0
                                                 ? Math.Clamp(profile.GazePositionKeyframes[^1].T + 0.05f, 0.0f, 1.0f)
                                                 : 0.0f;
@@ -10249,15 +10404,15 @@ namespace NewCamera
                         {
                             ImGui.Unindent();
                         }
-                        //ver14‚±‚±‚Ü‚Å
+                        //ver14ã“ã“ã¾ã§
 
                         //ver10
-                        // --- ƒ‹[ƒvŠ®—¹Œã‚ÉˆÀ‘S‚É•À‚Ñ‘Ö‚¦‚é ---ver7
-                        // £¥ (—×‚Æ‚ÌˆÚ“®) ‚ÆAƒhƒ‰ƒbƒO•ƒhƒƒbƒv (”CˆÓ‚ÌˆÊ’u‚ÖˆÚ“®) ‚Ì
-                        // —¼•û‚ğ‚±‚±‚Åˆ—‚·‚éB’Pƒ‚È“ü‚ê‘Ö‚¦‚Å‚Í‚È‚­u‚¢‚Á‚½‚ñ”²‚¢‚Ä
-                        // –Ú“I‚ÌˆÊ’u‚É·‚µ‚Şv•û®‚É‚µ‚Ä‚ ‚é‚Ì‚ÅA—£‚ê‚½ˆÊ’u‚Ö
-                        // ƒhƒƒbƒv‚µ‚Ä‚àŠÔ‚Ìƒvƒƒtƒ@ƒCƒ‹‚Ì•À‚Ñ‡‚ª•Û‚½‚ê‚éB
-                        // —×“¯m‚ÌˆÚ“®‚Ìê‡‚ÍŒ‹‰Ê‚ª]—ˆ‚Ì“ü‚ê‘Ö‚¦‚ÆŠ®‘S‚É“¯‚¶B
+                        // --- ãƒ«ãƒ¼ãƒ—å®Œäº†å¾Œã«å®‰å…¨ã«ä¸¦ã³æ›¿ãˆã‚‹ ---ver7
+                        // â–²â–¼ (éš£ã¨ã®ç§»å‹•) ã¨ã€ãƒ‰ãƒ©ãƒƒã‚°ï¼†ãƒ‰ãƒ­ãƒƒãƒ— (ä»»æ„ã®ä½ç½®ã¸ç§»å‹•) ã®
+                        // ä¸¡æ–¹ã‚’ã“ã“ã§å‡¦ç†ã™ã‚‹ã€‚å˜ç´”ãªå…¥ã‚Œæ›¿ãˆã§ã¯ãªãã€Œã„ã£ãŸã‚“æŠœã„ã¦
+                        // ç›®çš„ã®ä½ç½®ã«å·®ã—è¾¼ã‚€ã€æ–¹å¼ã«ã—ã¦ã‚ã‚‹ã®ã§ã€é›¢ã‚ŒãŸä½ç½®ã¸
+                        // ãƒ‰ãƒ­ãƒƒãƒ—ã—ã¦ã‚‚é–“ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸¦ã³é †ãŒä¿ãŸã‚Œã‚‹ã€‚
+                        // éš£åŒå£«ã®ç§»å‹•ã®å ´åˆã¯çµæœãŒå¾“æ¥ã®å…¥ã‚Œæ›¿ãˆã¨å®Œå…¨ã«åŒã˜ã€‚
                         if (moveProfileFrom >= 0 && moveProfileTo >= 0
                             && moveProfileFrom != moveProfileTo
                             && moveProfileFrom < orbitProfiles.Count
@@ -10265,8 +10420,8 @@ namespace NewCamera
                         {
                             //ver14
                             OrbitProfile movedProfile = orbitProfiles[moveProfileFrom];
-                            // •ÊƒOƒ‹[ƒv‚Öƒhƒƒbƒv‚µ‚½ê‡‚ÍAˆÚ“®‚Æ“¯‚É
-                            // ƒOƒ‹[ƒv–¼‚àˆÚ“®æ‚Ì‚à‚Ì‚É‘‚«Š·‚¦‚éB
+                            // åˆ¥ã‚°ãƒ«ãƒ¼ãƒ—ã¸ãƒ‰ãƒ­ãƒƒãƒ—ã—ãŸå ´åˆã¯ã€ç§»å‹•ã¨åŒæ™‚ã«
+                            // ã‚°ãƒ«ãƒ¼ãƒ—åã‚‚ç§»å‹•å…ˆã®ã‚‚ã®ã«æ›¸ãæ›ãˆã‚‹ã€‚
                             if (moveProfileToGroup != null)
                             {
                                 movedProfile.WeaponGroup = moveProfileToGroup;
@@ -10275,9 +10430,9 @@ namespace NewCamera
                             orbitProfiles.RemoveAt(moveProfileFrom);
                             orbitProfiles.Insert(moveProfileTo, movedProfile);
                         }
-                        //ver14‚±‚±‚Ü‚Å
+                        //ver14ã“ã“ã¾ã§
 
-                        // --- ƒOƒ‹[ƒvŒ©o‚µ‚Ìƒhƒ‰ƒbƒO&ƒhƒƒbƒv‚É‚æ‚éAƒOƒ‹[ƒv’PˆÊ‚Ì•À‚Ñ‘Ö‚¦ ---
+                        // --- ã‚°ãƒ«ãƒ¼ãƒ—è¦‹å‡ºã—ã®ãƒ‰ãƒ©ãƒƒã‚°&ãƒ‰ãƒ­ãƒƒãƒ—ã«ã‚ˆã‚‹ã€ã‚°ãƒ«ãƒ¼ãƒ—å˜ä½ã®ä¸¦ã³æ›¿ãˆ ---
                         if (moveGroupFromName != null && moveGroupToName != null
                             && moveGroupFromName != moveGroupToName)
                         {
@@ -10298,9 +10453,9 @@ namespace NewCamera
                             orbitProfiles.InsertRange(groupInsertAt, movedGroupBlock);
                         }
                         //ver14
-                        // --- "Set Group" ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚¾‚¯A‚»‚Ìƒvƒƒtƒ@ƒCƒ‹1‚Â‚ğ
-                        // Šm’è‚µAŠù‘¶‚Ì“¯–¼ƒOƒ‹[ƒv‚Ì––”ö‚ÖˆÚ“®‚·‚éB
-                        // “ü—Í’†‚ÍˆêØ“®‚©‚³‚È‚¢‚Ì‚ÅA•ÒW“à—e‚ª—×‚É”ò‚Ô‚±‚Æ‚Í‚È‚¢B---
+                        // --- "Set Group" ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸæ™‚ã ã‘ã€ãã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«1ã¤ã‚’
+                        // ç¢ºå®šã—ã€æ—¢å­˜ã®åŒåã‚°ãƒ«ãƒ¼ãƒ—ã®æœ«å°¾ã¸ç§»å‹•ã™ã‚‹ã€‚
+                        // å…¥åŠ›ä¸­ã¯ä¸€åˆ‡å‹•ã‹ã•ãªã„ã®ã§ã€ç·¨é›†å†…å®¹ãŒéš£ã«é£›ã¶ã“ã¨ã¯ãªã„ã€‚---
                         if (commitWeaponGroupIndex >= 0 && commitWeaponGroupIndex < orbitProfiles.Count)
                         {
                             OrbitProfile committedProfile = orbitProfiles[commitWeaponGroupIndex];
@@ -10327,7 +10482,7 @@ namespace NewCamera
                                 orbitProfiles.Insert(committedInsertAt, committedProfile);
                             }
                         }
-                        //ver14‚±‚±‚Ü‚Å
+                        //ver14ã“ã“ã¾ã§
 
                         if (ImGui.Button("Add Profile"))
                         {
@@ -10507,7 +10662,7 @@ namespace NewCamera
                     ImGui.Text("Only a *short tap* (held no longer than this many seconds)\nrecenters, matching the base game (a long hold instead opens\nthe item wheel and is left alone). This is real time, not\nframes, so it behaves the same at any framerate. Raise this if\nquick taps aren't being recognized; lower it if long holds\nsometimes recenter by mistake.");
                     ImGui.EndTooltip();
                 }
-                //ver9.3‚±‚±‚Ü‚Å
+                //ver9.3ã“ã“ã¾ã§
                 ImGui.Separator();
                 ImGui.Checkbox("Return-to-Center Look", ref orbitReturnToCenterLook);
                 if (ImGui.BeginItemTooltip())
@@ -10529,7 +10684,7 @@ namespace NewCamera
                         ImGui.Text("Pitch offset (degrees) at full stick tilt, up or down.");
                         ImGui.EndTooltip();
                     }
-                    //ver8 ‘SüƒAƒ“ƒOƒ‹ƒXƒiƒbƒvƒXƒ‰ƒCƒ_[’Ç‰Á
+                    //ver8 å…¨å‘¨ã‚¢ãƒ³ã‚°ãƒ«ã‚¹ãƒŠãƒƒãƒ—ã‚¹ãƒ©ã‚¤ãƒ€ãƒ¼è¿½åŠ 
                     ImGui.DragFloat("Return Speed", ref orbitReturnToCenterSpeed, 0.25f, 0.5f, 30.0f);
                     if (ImGui.BeginItemTooltip())
                     {
@@ -10543,7 +10698,7 @@ namespace NewCamera
                         ImGui.EndTooltip();
                     }
                 }
-                //ver8 ‚±‚±‚Ü‚Å
+                //ver8 ã“ã“ã¾ã§
                 ImGui.PopItemWidth();
                 ImGui.PopID();
 

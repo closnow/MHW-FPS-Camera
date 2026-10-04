@@ -329,6 +329,9 @@ namespace NewCamera
                 //ver12ここまで
                 HideSlingerWhileActive = false;//ver13
                 DisableFreeCameraWhileActive = false;//ver15
+                HoldSpot = false;//ver16
+                SpotAnchorBody = false;//ver16.2
+                HoldSpotThresholdDeg = 15.0f;//ver16.3
             }
 
             public OrbitProfileMode Mode { get; set; }
@@ -430,6 +433,9 @@ namespace NewCamera
             // 一人称視点だと画面が揺れ過ぎる場面向け。マッチしなくなったら、
             // ユーザーが元々選んでいたEnable Free Cameraの状態に自動で戻す。
             public bool DisableFreeCameraWhileActive { get; set; }
+            public bool HoldSpot { get; set; }//ver16
+            public bool SpotAnchorBody { get; set; }//ver16.2
+            public float HoldSpotThresholdDeg { get; set; }//ver16.3
         }
         //ver11ここまで
 
