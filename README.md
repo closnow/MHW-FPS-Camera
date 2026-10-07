@@ -109,15 +109,15 @@ These fields exist on every profile entry in `Profiles`. Fields marked **(Mode 3
 * **Yaw/Pitch/Roll Range & Blend** *(Mode 3 / Normal only)*: `Range` is how far (in degrees) the head can turn before the camera starts to clamp it; `Blend` is the width of the gradual transition zone just outside `Range`, where the camera gradually stops following further rotation instead of snapping.
 * **Correction Yaw/Pitch/Roll**: This profile's own baseline "forward" direction on top of the base joint's own direction. Use this to fix a fixed angular offset (e.g. a reticle sitting a few degrees off-center) that a position offset can't fix.
 * **Target Y/Right/Forward**: This profile's own eye-position offset (up/right/forward from the anchor joint), independent of every other profile's own offset.
-* **Position/Basis Joint Override** *(Mode 3 / Normal only, experimental)*: Lets this profile anchor the camera to a different joint than the mod's global setting, for motions where the default anchor doesn't track correctly.
+* **Position/Basis Joint Override** *(works in any Mode, experimental)*: Lets this profile anchor the camera to a different joint than the mod's global setting, for motions where the default anchor doesn't track correctly.
 * **Base Smoothing (Clamp Base Smoothing)**: Low-pass filter strength on the base direction used for clamping. 1.0 = instant/raw, lower = smoother.
 * **Enable Transition Blend / Profile Switch Blend Time**: Whether switching into/out of this profile triggers a smooth Slerp blend, and how long it takes for this profile specifically.
 * **Shake Suppress** *(Mode 3 / Normal only)*: Freezes the raw joint deviation for a set number of seconds starting the instant R2 is pressed/released. 0 = disabled.
 * **Look Sensitivity Multiplier** *(Mode 3 / Normal only)*: 1.0 = the same right-stick response as ordinary free-look. Lets this profile's stick sensitivity be tuned independently of every other profile.
 * **Use Native Aim Camera (+ Delay)** *(Mode 3 / Normal only)*: Uses the game's own native camera pose directly instead of this mod's joint-based reconstruction. The Delay setting (seconds) postpones the switch-over after L2 is pressed, in case the native camera itself needs a moment to catch up to the player's facing.
 * **Disable Look While Aiming** *(Mode 3 / Normal only, applies while L2 is held)*: Suppresses this mod's own right-stick-driven camera tracking while aiming; the reticle still follows the stick normally through the base game's own aim response.
-* **Hide Slinger While Active** *(Mode 3 / Normal only)*: Per-profile toggle — hides the slinger model only while this specific profile is active, not a blanket setting for every profile.
-* **Disable Free Camera While Active** *(Mode 3 / Normal only)*: Per-profile toggle that temporarily forces the game's native third-person camera back on while this profile is active, then returns to FPS view once it's no longer matched. This is the mechanism behind the Clutch Claw/mounting auto-fallback described above — it can be applied to any other motion the same way.
+* **Hide Slinger While Active** *(works in any Mode; the checkbox is only shown in the GUI while the profile is set to Mode 3 / Normal)*: Per-profile toggle — hides the slinger model only while this specific profile is active, not a blanket setting for every profile.
+* **Disable Free Camera While Active** *(works in any Mode; the checkbox is only shown in the GUI while the profile is set to Mode 3 / Normal)*: Per-profile toggle that temporarily forces the game's native third-person camera back on while this profile is active, then returns to FPS view once it's no longer matched. This is the mechanism behind the Clutch Claw/mounting auto-fallback described above — it can be applied to any other motion the same way.
 * **Comment / WeaponGroup**: Free-text fields for your own organization in the GUI's profile list. They are saved to `NewCamera.json` but never used for matching — safe to write anything here.
 * **Hold Spot / Hold Spot Threshold** *(Mode 3 / Normal only)*: ON keeps the aim point fixed in the world, e.g. to keep a target centered while attacking it. The aim point follows the body only after the body's facing turns more than the threshold (degrees), at the speed of Spot Re-anchor Rate (must be above 0). OFF follows the body's facing every frame.
 * **Body Anchor** *(Mode 3 / Normal only)*: Places the aim point ahead of the body instead of ahead of the nose.
@@ -245,15 +245,15 @@ JSONファイルを直接編集する必要があるのは、一括変更や、�
 * **Yaw/Pitch/Roll の Range・Blend** *(Mode 3 / Normal 専用)*：`Range` は頭がどこまで（度数で）回転してもカメラがクランプを始めない範囲、`Blend` は `Range` のすぐ外側にある、急に止めるのではなく徐々に追従を弱めていく緩衝帯の幅です。
 * **Correction Yaw/Pitch/Roll**：基準ジョイントの向きに上乗せする、そのプロファイル固有の「正面」の補正値。位置オフセットでは直せない、一定角度のズレ（照準が数度ずれて見える等）を直すためのものです。
 * **Target Y/Right/Forward**：そのプロファイル固有の視点位置オフセット（アンカーとなるジョイントからの上/右/前方向）。他のどのプロファイルの値からも独立しています。
-* **Position/Basis Joint Override** *(Mode 3 / Normal 専用、実験的機能)*：このプロファイルだけ、MOD全体のデフォルトとは別のジョイントをカメラの基準にできる機能。デフォルトのアンカーがうまく追従しないモーション向けです。
+* **Position/Basis Joint Override** *(どのModeでも有効、実験的機能)*：このプロファイルだけ、MOD全体のデフォルトとは別のジョイントをカメラの基準にできる機能。デフォルトのアンカーがうまく追従しないモーション向けです。
 * **Base Smoothing (Clamp Base Smoothing)**：クランプの基準方向にかけるローパスフィルタの強さ。1.0で生の値そのまま、値を下げるほど滑らかになります。
 * **Enable Transition Blend / Profile Switch Blend Time**：このプロファイルへの切り替わり/切り替え後に、滑らかなスラープブレンドを行うかどうかと、その所要時間（このプロファイル固有の値）。
 * **Shake Suppress** *(Mode 3 / Normal 専用)*：R2を押した/離した瞬間から指定秒数、関節の生の変位をフリーズします。0で無効。
 * **Look Sensitivity Multiplier** *(Mode 3 / Normal 専用)*：1.0で通常のフリールックと同じ右スティック感度になります。このプロファイル中だけ、他のプロファイルとは独立してスティック感度を調整できます。
 * **Use Native Aim Camera (+ Delay)** *(Mode 3 / Normal 専用)*：本MOD独自のジョイントベースの再構築ではなく、ゲーム本来のカメラ姿勢をそのまま使います。Delay（秒）は、L2を押してから切り替わるまでの遅延で、ゲーム側のカメラ自体がプレイヤーの向きに追いつくまで少し待たせたい場合に使います。
 * **Disable Look While Aiming** *(Mode 3 / Normal 専用、L2を押している間のみ有効)*：照準中、本MOD側の右スティック追従を止めます。照準自体はゲーム本来の挙動どおりスティックに追従し続けます。
-* **Hide Slinger While Active** *(Mode 3 / Normal 専用)*：プロファイル単位のトグルです。そのプロファイルが有効な間だけスリンガーを非表示にするもので、全プロファイル共通の自動仕様ではありません。
-* **Disable Free Camera While Active** *(Mode 3 / Normal 専用)*：このプロファイルが有効な間だけ、一時的にゲーム本来の三人称視点に戻し、条件から外れたらFPS視点に復帰させるプロファイル単位のトグルです。上記のクラッチクロー・搭乗時の自動三人称化は、この仕組みを使って実現されています。同じ方法で他の好きなモーションにも適用できます。
+* **Hide Slinger While Active** *(どのModeでも有効。ただしチェックボックスは Mode 3 / Normal のときだけGUIに表示されます。一度ONにしてからModeを変えると、効果は残ったままGUIから見えなくなります)*：プロファイル単位のトグルです。そのプロファイルが有効な間だけスリンガーを非表示にするもので、全プロファイル共通の自動仕様ではありません。
+* **Disable Free Camera While Active** *(どのModeでも有効。ただしチェックボックスは Mode 3 / Normal のときだけGUIに表示されます。一度ONにしてからModeを変えると、効果は残ったままGUIから見えなくなります)*：このプロファイルが有効な間だけ、一時的にゲーム本来の三人称視点に戻し、条件から外れたらFPS視点に復帰させるプロファイル単位のトグルです。上記のクラッチクロー・搭乗時の自動三人称化は、この仕組みを使って実現されています。同じ方法で他の好きなモーションにも適用できます。
 * **Comment / WeaponGroup**：GUIのプロファイル一覧を整理するための自由記述欄です。`NewCamera.json` には保存されますが、マッチング処理には一切使われません。自由に書き換えて問題ありません。
 * **Hold Spot / Hold Spot Threshold** *(Mode 3 / Normal 専用)*：ONにすると視点の基準点をワールドに固定します（ターゲットを攻撃しながら中央に捉え続けたい場合など）。体の向きがしきい値（度）を超えて変わったときだけ、Spot Re-anchor Rate（0より大きい値が必要）の速さで体に追従します。OFFなら毎フレーム体の正面に追従します。
 * **Body Anchor** *(Mode 3 / Normal 専用)*：視点の基準点を、鼻ではなく体の前方に置きます。
