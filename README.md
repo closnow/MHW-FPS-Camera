@@ -78,6 +78,7 @@ Based on [NewCamera](https://www.nexusmods.com/monsterhunterworld/mods/8300) by 
 Profiles in `NewCamera.json` are evaluated **top-to-bottom; the first matching profile is used**. If no profile matches, it defaults to **Mode 0 (Profile A)**.
 
 #### 1. Camera Modes
+> **Note:** These four modes were added one after another during development, so they overlap. For a new profile, **Mode 3 (Profile C) is usually all you need**: Range 0 behaves almost like A (full follow), and Range 360 behaves almost like B (base direction only). Modes 0–2 mainly exist for existing profiles. Two things Mode 3 cannot fully replace: the hip-projected eye position of Mode 1 (B Ignore-X), and the low-speed shake smoothing that only Mode 0 (A) applies.
 * **Mode 0 (Profile A - Full Rotation)**:
   * Fully follows raw face rotation (YPR) without clamping. Used for rolls, cartwheels, and full-body spins.
 * **Mode 1 (Profile B Ignore-X)**:
@@ -214,6 +215,7 @@ If you enjoy this mod, you can support me here:
 `NewCamera.json` のプロファイルは**上から順に照合され、最初に一致したものが適用**されます。一致するものがない場合は **Mode 0 (Profile A)** にフォールバックします。
 
 #### 1. 各モード（Camera Mode）の役割
+> **補足:** この4つのモードは開発の過程で順に追加したため、機能が重なっています。新しくプロファイルを作る場合は、**基本的に Mode 3 (Profile C) だけで足ります**。Range を 0 にすると A（完全追従）にほぼ近く、Range を 360 にすると B（基準方向のみ）にほぼ近い動きになります。Mode 0〜2 は主に既存プロファイルのために残しています。ただし Mode 3 で完全には代替できないものが2つあります。Mode 1 (B Ignore-X) の「目の位置を腰基準に投影する処理」と、Mode 0 (A) だけに掛かる「低速時の揺れ抑制」です。
 * **Mode 0 (Profile A - フル追従)**:
   * クランプ（可動制限）なし。頭部ボーンの回転に完全追従します。前転回避や激しい回転技向け。
 * **Mode 1 (Profile B Ignore-X - X軸ブレ無視)**:
